@@ -2,7 +2,6 @@
 
 double long2double(long long myLong)
 {
-	double finalResult;
 	int numsArr[64]; //Array, which will contain digits of "long long myLong".
 	double stepen = 0; //i hate this variable and how i use it. i`m sorry
 	double fractDecNum = 0.0; // fraction number
@@ -41,10 +40,10 @@ double long2double(long long myLong)
 	}
 
 	if (expDecNum > 0 && expDecNum < 2047) {
-		finalResult = (pow(-1, signDecNum) * pow(2, expDecNum - 1023) * (fractDecNum + 1));
+		return (pow(-1, signDecNum) * pow(2, expDecNum - 1023) * (fractDecNum + 1));
 	}
 	if (expDecNum != 0 && fractDecNum != 0) {
-		finalResult = (pow(-1, signDecNum) * pow(2, -1022) * (fractDecNum - 1));
+		return (pow(-1, signDecNum) * pow(2, -1022) * (fractDecNum - 1));
 	}
 	else if (expDecNum == 0 && fractDecNum == 0)
 	{
