@@ -1,6 +1,6 @@
 #include <math.h>
 
-int long2double(long long myLong) {
+double long2double(long long myLong) {
 	
 	int numsArr[64];
 	double expArr[11], fractArr[52];
