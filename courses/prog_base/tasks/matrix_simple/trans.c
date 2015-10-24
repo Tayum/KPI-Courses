@@ -5,7 +5,6 @@
 /* This method fills a matrix 4x4 with random numbers */
 void fillRand(int mat[4][4]) {
 	int i, j;
-	srand(time(NULL));
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
 			mat[i][j] = 1000 - rand()%2000;
