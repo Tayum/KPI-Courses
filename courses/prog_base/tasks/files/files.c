@@ -34,6 +34,7 @@ void fprocess(const char * pread, const char * pwrite) {
 
 	file = fopen(pwrite, "w+");
 	fprintf(file, wordToWrite);
+	fclose(file);
 }
 
 int main(void) {
