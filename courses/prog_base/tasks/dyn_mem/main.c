@@ -27,7 +27,8 @@ int main(void) {
 	else {
 		putchar(result[0]);
 	}
+	free(result);
+	free(myLine);
 
-	getchar();
 	return 0;
 }
