@@ -1,11 +1,10 @@
+#include "behavior.h"
 #include <stdio.h>
 #include <Windows.h>
 #include <string.h>
 #include <tchar.h>
 #include <conio.h>
-#include <strsafe.h>	
-#include "design.h"
-#include "behavior.h"
+#include <strsafe.h>
 
 int userLen;
 
@@ -87,9 +86,14 @@ void drawGreetings(char *myText [], int len) {
 
 	//Add user input to *myText[]
 	drawRectangle(11, 69, 6, 19, 0x808080);
-	setCursorPosition(22, 7);
-	printf("Please, enter your %d lines (not more!)", userLen);
-	setCursorPosition(22, 8);
+	setCursorPosition(18, 7);
+	printf("Please, enter your %d lines with max 20 length", userLen);
+	setTextColor(FOREGROUND_RED | FOREGROUND_INTENSITY);
+	for (i = 0; i < userLen; i++) {
+		setCursorPosition(39, 9 + i);
+		printf("|");
+	}
+	setTextColor(0x00 | 0x808080);
 	gets_s(buffer, 20);
 	for (i = 0; i < userLen; i++) {
 		setCursorPosition(17, 9 + i);
@@ -137,7 +141,6 @@ void drawConsole(char *myText [], int len) {
 		setCursorPosition(14, 7 + i);
 		printf("%s", myText[i]);
 	}
-
 	//User behavior - commands mostly
 	setTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | 0x00);
 	setCursorPosition(10, 24);
@@ -337,19 +340,48 @@ void drawConsole(char *myText [], int len) {
 			printf("Words in each line:");
 			for (i = 0; i < userLen; i++) {
 				setCursorPosition(47, 9 + i);
-				printf("Line %d has %d words", i + 1, tempArrForWords[i]);
+				if (tempArrForWords[i] == 1) {
+					printf("Line %d has 1 word", i + 1);
+				}
+				else {
+					printf("Line %d has %d words", i + 1, tempArrForWords[i]);
+				}
+				
 			}
 			setTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | 0x00);
 			setCursorPosition(8, 28); printf("Ready! Press any key to continue.");
 			getch();
 		}
-
 		//findnum - check all lines if they consist of digits only
-		/*else if (strcmp(userChoice, "findnum") == 0) {
-
+		else if (strcmp(userChoice, "findnum") == 0) {
+			int i, tempVarForFindNum;
+			setTextColor(0x00 | 0x808080);
+			setCursorPosition(44, 7);
+			printf("Lines with digits only");
+			for (i = 0; i < userLen; i++) {
+				tempVarForFindNum = findNumInStr(myText, userLen, i);
+				if (tempVarForFindNum == 0) {
+					setCursorPosition(47, 9 + i);
+					printf("Not a \"number\" line");
+				}
+				else {
+					setCursorPosition(47, 9 + i);
+					printf("%d", tempVarForFindNum);
+				}
+			}
+			setTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | 0x00);
+			setCursorPosition(8, 28); printf("Ready! Press any key to continue.");
+			getch();
 		}
-		*/
-
+		//quit action
+		else if(strcmp(userChoice, "exit") == 0){
+			
+			int i;
+			for (i = 0; i < len; i++) {
+				free(myText[i]);
+			}
+			return EXIT_SUCCESS;
+		}
 		//invalid action
 		else {
 			setTextColor(FOREGROUND_RED | FOREGROUND_INTENSITY);
@@ -357,8 +389,5 @@ void drawConsole(char *myText [], int len) {
 			setCursorPosition(8, 29); printf("Press any key to continue");
 			getch();
 		}
-	}
-	for (i = 0; i < len; i++) {
-		free(myText[i]);
 	}
 }

@@ -3,15 +3,17 @@
 
 void printArray(char *[], int);
 
-void lengthOrder(char * [], int , int arr[10]); //lengthorder
-char *getLongest(char * [], int); //longest
-char *getShortest(char * [], int); //shortest
-void fillRandom(char * [], int, int); //random
-void swapShLn(char * [], int); //swap
-void lessThan(char * [], int, int, char *tempStrArrForLessThan []); //lessthan
-void moreThan(char * [], int, int, char *tempStrArrForMoreThan []); //morethan
-void wordsCount(char * [], int, int []); //words
-void findNumInStr(char * [], int, int); //findnum
-void findNumInAllStrings(char * [], int); //findAll
+void lengthOrder(char * [], int , int arr[10]);
+char *getLongest(char * [], int);
+char *getShortest(char * [], int);
+void fillRandom(char * [], int, int);
+void swapShLn(char * [], int);
+void lessThan(char * [], int, int, char *tempStrArrForLessThan []);
+void moreThan(char * [], int, int, char *tempStrArrForMoreThan []);
+void wordsCount(char * [], int, int []);
+int findNumInStr(char * [], int, int);
+void findNumInAllStrings(char * [], int);
+
+void drawConsole(char * [], int);
 
 #endif

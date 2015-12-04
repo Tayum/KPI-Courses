@@ -10,24 +10,6 @@ int sortfunc(const void * a, const void * b)
 	return (*(int*)b - *(int*) a);
 }
 
-void checkDigitsStr(char * s, int index, int val) {
-	while (*s) {
-		if (isdigit(*s++) == 0) {
-			printf("String num %d is not string with the number only\n", index);
-			return;
-		}
-	}	
-	printf("String num %d consists of number %d\n", index, val);
-}
-
-void printArray(char *myText [], int len) {
-	int i;
-	//Print all items in myText array.
-	for (i = 0; i < len; i++) {
-		printf("%s\n", *(myText + i));
-	}
-}
-
 void lengthOrder(char *myText[], int len, int arr[10]) {
 	int i, myStrLen = 0;
 	//Add lengthes of items in myText to arr.
@@ -36,10 +18,6 @@ void lengthOrder(char *myText[], int len, int arr[10]) {
 		arr[i] = myStrLen;
 	}
 	qsort(arr, len, sizeof(int), sortfunc);
-	////Print lengthes of strings.
-	//for (;len--;) {
-	//	printf("%d ", arr[len]);
-	//}
 }
 
 char *getLongest(char *myText[], int len) {
@@ -49,8 +27,6 @@ char *getLongest(char *myText[], int len) {
 			longest = myText[len];
 		}
 	}
-	//print longest string
-	//puts(longest);
 	return longest;
 }
 
@@ -62,8 +38,6 @@ char *getShortest(char *myText[], int len) {
 			shortest = myText[i];
 		}
 	}
-	//print shortest string
-	//puts(shortest);
 	return shortest;
 }
 
@@ -72,7 +46,6 @@ void fillRandom(char *myText [], int len, int n) {
 	srand((unsigned) time(&t));
 	int i, j;
 	char *randChars;
-
 	//Fill an array.
 	for (i = 0; i < len; i++) {
 		randChars = (char*)malloc(n*sizeof(char));
@@ -131,7 +104,6 @@ void wordsCount(char *myText [], int len, int wordsResult[]) {
 	//Invalid characters, that are NOT letters.
 	const char *invalid_characters = " 1234567890!@#$%^&*()_+=-{}[];:<>,./?|\\\"'~`";
 	int words, i = 0;
-
 	for (i = 0; i < len; i++) {
 		char *c = myText[i];
 		words = 0;
@@ -145,31 +117,12 @@ void wordsCount(char *myText [], int len, int wordsResult[]) {
 			}
 			c++;
 		}
-		//Just for fun :)
 		wordsResult[i] = words;
-		/*if (words == 1) {
-			printf("%d`st line has %d word\n", i, words);
-		}
-		else {
-			printf("%d`st line has %d words\n", i, words);
-		}*/
 	}
 }
 
-void findNumInStr(char * myText [], int len, int index) {
+int findNumInStr(char * myText [], int len, int index) {
 	int val;
-	//Check if index is not more then length of array
-	if (index >= len) {
-		puts("Sorry, index is out of range of array");
-		return;
-	}
 	val = atoi(myText[index]);
-	checkDigitsStr(myText[index], index, val);
-}
-
-void findNumInAllStrings(char * myText [], int len) {
-	int i;
-	for (i = 0; i < len; i++) {
-		findNumInStr(myText, len, i);
-	}
+	return val;
 }
