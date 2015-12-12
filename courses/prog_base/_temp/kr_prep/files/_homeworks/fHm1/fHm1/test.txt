@@ -1,0 +1,15 @@
+asdfasdf
+asdfasdfvzxcv zdsfa sdf asdf asdf asdf fasdf d
+asfdasdf afsdasdfasd sdaafsdf asdf as
+Hello world thisisthelongset fc fuck you
+while (fgets(sentence, 100, fRead) != NULL) {
+char *word, *maxWord;
+size_t maxLength = 0;
+maxWord = (char *) calloc(40, sizeof(char));
+word = (char *) calloc(40, sizeof(char));
+while (word != NULL) {
+if (strlen(word) > maxLength) {
+maxLength = strlen(word);
+strcpy(maxWord, word);
+}			
+word = strtok(N
