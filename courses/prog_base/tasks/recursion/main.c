@@ -29,7 +29,7 @@ int main(void) {
 
 	//Get the string from user.
 	char buff[ARRLEN];
-	puts("Please, enter 10 characters :");
+	puts("Please, enter your line! :");
 	gets_s(buff, ARRLEN * sizeof(char));
 	int len = strlen(buff);
 
