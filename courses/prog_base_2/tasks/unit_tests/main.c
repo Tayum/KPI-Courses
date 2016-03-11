@@ -8,7 +8,7 @@
 #include "set.h" //main logic functions & defines
 
 //Test for Set_new function.
-static void new_void_MemoryAllocatedSizeIsZero(void ** state)
+static void new_void_MemoryAllocated(void ** state)
 {
     Set_T * testSet = Set_new(TESTSIZE_EMPTY);
     assert_non_null(testSet);
@@ -147,7 +147,7 @@ int main()
     //Execute unit-tests.
     const struct CMUnitTest tests[] =
     {
-        cmocka_unit_test(new_void_MemoryAllocatedSizeIsZero),
+        cmocka_unit_test(new_void_MemoryAllocated),
         cmocka_unit_test(getSize_oneNumber_isLengthNotZero),
         cmocka_unit_test(getValueAt_fiveNumbersAndIndex_isValueOnIndexCorrect),
         cmocka_unit_test(fill_void_isSetFilledWithUnsigned),
