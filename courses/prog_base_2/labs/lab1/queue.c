@@ -26,11 +26,30 @@ queue_t *queue_new()
     out->items = 0;
     return (out);
 }
+visitor_t * visitor_new(long when)
+{
+    visitor_t * out = (visitor_t *) malloc(sizeof(visitor_t));
+    out->arrive = when;
+    out->processtime = rand() % 3 + 1;
+    return (out);
+}
 void queue_delete(queue_t * self)
 {
     visitor_t tmp;
     while(!queue_isEmpty(self))
         queue_dequeue(&tmp, self);
+}
+void visitor_delete(visitor_t * self)
+{
+    free(self);
+}
+long visitor_getArrive(const visitor_t * self)
+{
+    return (self->arrive);
+}
+int visitor_getProcesstime(const visitor_t * self)
+{
+    return (self->processtime);
 }
 bool queue_isEmpty(const queue_t * self)
 {
@@ -44,7 +63,7 @@ int queue_itemCount(const queue_t * self)
 {
     return (self->items);
 }
-bool queue_enqueue(visitor_t visitor, queue_t * self)
+bool queue_enqueue(visitor_t * visitor, queue_t * self)
 {
     node_t * pnew;
     if(queue_isFull(self))
@@ -55,7 +74,7 @@ bool queue_enqueue(visitor_t visitor, queue_t * self)
         fprintf(stderr, "Cannot reserve memory for pointer.\n");
         exit(1);
     }
-    pnew->visitor = visitor;
+    pnew->visitor = *visitor;
     pnew->next = NULL;
     if(queue_isEmpty(self))
         self->front = pnew;

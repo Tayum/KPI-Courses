@@ -1,6 +1,6 @@
 #pragma once
 #include <stdbool.h> //boolean type
-#define MAXQUEUE 10
+#define MAXQUEUE 1000
 
 /* Structure to describe visitor.
     Fields:
@@ -24,11 +24,17 @@ typedef struct node_s node_t;
 */
 typedef struct queue_s queue_t;
 
-// Constructor.
+// Constructors.
 queue_t * queue_new();
+visitor_t * visitor_new(long when);
 
-// Destructor.
+// Destructor's.
 void queue_delete(queue_t * self);
+void visitor_delete(visitor_t * self);
+
+//Getters & setters for visitor
+long visitor_getArrive(const visitor_t * self);
+int visitor_getProcesstime(const visitor_t * self);
 
 // Essential helping functions.
 bool queue_isFull(const queue_t * self);
@@ -36,7 +42,7 @@ bool queue_isEmpty(const queue_t * self);
 int queue_itemCount(const queue_t * self);
 
 // Adding an item to the queue.
-bool queue_enqueue(visitor_t visitor, queue_t * self);
+bool queue_enqueue(visitor_t * visitor, queue_t * self);
 
 // Deleting an item from the queue.
 bool queue_dequeue(visitor_t * visitor_deleted, queue_t * self);

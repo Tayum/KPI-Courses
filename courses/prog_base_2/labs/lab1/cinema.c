@@ -23,10 +23,18 @@ void cinema_delete(cinema_t * self)
 
 bool cinema_isFull(const cinema_t * self)
 {
-    return (self->places == MAXPLACES);
+    return (MAXPLACES == queue_itemCount(self->line));
 }
 
 bool cinema_isEmpty(const cinema_t * self)
 {
     return (0 == self->places);
+}
+
+bool cinema_newvisitor(double x)
+{
+    if(rand() * x / RAND_MAX < 1)
+        return (true);
+    else
+        return (false);
 }
