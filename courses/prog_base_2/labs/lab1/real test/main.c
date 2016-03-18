@@ -62,7 +62,6 @@ int main(void)
     }
     if(customers > 0)
     {
-        //printf("Visitors, that came to our queue: %ld\n", customers);
         printf("Into cinema: %ld\n", served);
         printf("Turnaways: %ld\n", turnaways);
         printf("Cinema is %s.\n", served == MAXPLACES ? "full" : "not full");
@@ -73,7 +72,7 @@ int main(void)
         puts("no clients!");
     puts("- - - End of the program. - - -");
     //Free allocated memory
-    cinema_delete(cinema);
+    cinema_delete(cinema); //delete queue HERE
     visitor_delete(currentVisitor);
     return (0);
 }
