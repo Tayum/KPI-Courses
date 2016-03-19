@@ -43,7 +43,7 @@ static void queue_isFull_isEmpty__oneVisitor__currentState(void ** state)
     assert_false(queue_isFull(testQueue));
 }
 
-// Unit-test for queue_enqueue, queue_dequeue methods.
+// Unit-test for queue_enqueue, queue_dequeue and queue_itemCount methods.
 static void queue_itemCount_enqueue_dequeue__oneVisitor__addingDeletingCorrect(void ** state)
 {
     visitor_t *testVisitor = visitor_new(TEST_LONG);
@@ -51,6 +51,8 @@ static void queue_itemCount_enqueue_dequeue__oneVisitor__addingDeletingCorrect(v
     queue_enqueue(testVisitor, testQueue);
     queue_enqueue(testVisitor, testQueue);
     assert_int_equal(queue_itemCount(testQueue), 2);
+    queue_dequeue(testVisitor, testQueue);
+    assert_int_equal(queue_itemCount(testQueue), 1);
 }
 
 int main(void) {
