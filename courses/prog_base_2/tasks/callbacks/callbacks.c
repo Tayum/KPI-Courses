@@ -8,13 +8,11 @@ void alert2(void) { puts("from alert2: Really?"); }
 void alert3(void) { puts("from alert3: No changes."); }
 
 //public:
-void check1(const char l, const char r)
+void check1(const char l, const char r, alertCB alertSample)
 {
-    alertCB alertSample;
     if(l > r)
     {
         printf("Calling alertFunction for [%c] and [%c]!\n", l, r);
-        alertSample = &alert1;
         alertSample();
         return;
     }
@@ -23,13 +21,11 @@ void check1(const char l, const char r)
     alertSample();
 }
 
-void check2(const char l, const char r)
+void check2(const char l, const char r, alertCB alertSample)
 {
-    alertCB alertSample;
     if(r > l)
     {
         printf("Calling alertFunction for [%c] and [%c]!\n", l, r);
-        alertSample = &alert2;
         alertSample();
         return;
     }
@@ -38,10 +34,10 @@ void check2(const char l, const char r)
     alertSample();
 }
 
-void check(const char *str, const size_t size, checkCB checkSample)
+void check(const char *str, const size_t size, checkCB checkSample, alertCB alertSample)
 {
     for(size_t i = 0; i < size - 1; i++) //size-1 to avoid \0 character.
     {
-        checkSample(str[i], str[i+1]);
+        checkSample(str[i], str[i+1], alertSample);
     }
 }
