@@ -3,7 +3,7 @@
 #include "mutex.h"
 
 #define SHARED_ARR_SIZE 4
-#define SLEEP_TIME 80
+#define SLEEP_TIME 30
 #ifndef TRUE
     #define TRUE 1
 #endif

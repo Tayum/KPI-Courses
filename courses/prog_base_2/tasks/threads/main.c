@@ -7,15 +7,6 @@
 #include "thread.h"
 #include "logic.h"
 
-
-/*
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-
-Why do I need 2 consumers & 2 producers, if mutex ensures, that
-only 1 thread will execute?
-
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-*/
 int main()
 {
     SetConsoleTitleA("Gonchar Maxim KP-51 Threads");
