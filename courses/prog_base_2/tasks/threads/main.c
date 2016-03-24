@@ -15,12 +15,11 @@ int main()
     sharedObject.mu = mutex_new();
     // Create and run primary threads/
     thread_t *producer = thread_create_args(producerFunc, &sharedObject);
-    thread_t *draw = thread_create_args(drawInfo, &sharedObject);
     thread_t *consumer = thread_create_args(consumerFunc, &sharedObject);
     // Wait here.
     _getch();
+    _getch();
     // Delete threads and free allocated memory.
-    thread_free(draw);
     thread_free(producer);
     thread_free(consumer);
     // Delete mutex.

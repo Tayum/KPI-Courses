@@ -30,6 +30,10 @@ void *producerFunc(void *args)
         shObj->arr[index] = rand()%10;
         index++;
         index%=4;
+        system("cls");
+        printf("Array: %4i%4i%4i%4i\n", shObj->arr[0], shObj->arr[1], shObj->arr[2], shObj->arr[3]);
+        printf("A process can take a while...\n\n");
+        fflush(stdout);
         mutex_unlock(shObj->mu);
         Sleep(SLEEP_TIME);
     }
@@ -46,28 +50,9 @@ void *consumerFunc(void *args)
         {
             puts("Array in ascending order!\n"
                  "See you later!\n"
-                 "Wait ~3 seconds.");
-            // Sleep to show user result of consumerFunc.
-            // If Sleep will be missing here - "cls" function
-            // will clear result of consumerFunc.
-            Sleep(SLEEP_TIME + 3000);
+                 "Wait +-2 seconds.");
+            Sleep(2000);
         }
-        mutex_unlock(shObj->mu);
-        Sleep(SLEEP_TIME);
-    }
-    return (NULL);
-}
-
-void *drawInfo(void *args)
-{
-    sharedObj_t *shObj = (sharedObj_t *)args;
-    while(TRUE)
-    {
-        mutex_lock(shObj->mu);
-        system("cls");
-        printf("Array: %4i%4i%4i%4i\n", shObj->arr[0], shObj->arr[1], shObj->arr[2], shObj->arr[3]);
-        printf("A process can take a while...\n\n");
-        fflush(stdout);
         mutex_unlock(shObj->mu);
         Sleep(SLEEP_TIME);
     }

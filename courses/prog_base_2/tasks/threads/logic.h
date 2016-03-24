@@ -16,4 +16,3 @@ typedef struct sharedObj_s
 
 void *producerFunc(void *args);
 void *consumerFunc(void *args);
-void *drawInfo(void *args);
