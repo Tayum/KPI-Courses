@@ -13,7 +13,8 @@ enum
     BUTTON_ID_QUIT = 2,
     BUTTON_ID_SET = 3,
     BUTTON_ID_REVERSE = 4,
-    LABEL_ID = 5
+    LABEL_ID = 5,
+    BUTTON_ID_CLEAR = 6
 };
 
 // Main window procedure
@@ -116,12 +117,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         //TODO: label - enable WS_VSCROLL parameter + ES_AUTOVSCROLL WS_VSCROLL
         hLabel = CreateWindowEx(0, WC_STATIC, "Label", WS_CHILD | WS_VISIBLE | SS_CENTER, 200, 10, 110, 115, hwnd, (HMENU)LABEL_ID, hInst, NULL);
         SetWindowText(hLabel, "Your text will appear here!");
-        hEdit = CreateWindowEx(0, WC_EDIT, "", WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN, 20, 10, 170, 115, hwnd, (HMENU)EDIT_ID, hInst, NULL);
+        hEdit = CreateWindowEx(0, WC_EDIT, "", WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN, 20, 10, 160, 115, hwnd, (HMENU)EDIT_ID, hInst, NULL);
         hButton_Set = CreateWindowEx(0, WC_BUTTON, "Set", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 20, 140, 80, 30, hwnd, (HMENU)BUTTON_ID_SET, hInst, NULL);
         OldButtonProc = (WNDPROC) SetWindowLong (hButton_Set, GWL_WNDPROC, (LONG) ButtonProc);
         CreateWindowEx(0, WC_BUTTON, "Exit", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,  200, 140, 110, 30, hwnd, (HMENU)BUTTON_ID_QUIT, hInst, NULL);
         hButton_Reverse = CreateWindowEx(0, WC_BUTTON, "Reverse", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON, 110, 140, 80, 30, hwnd, (HMENU)BUTTON_ID_REVERSE, hInst, NULL);
         OldButtonProc_reverse = (WNDPROC) SetWindowLong (hButton_Reverse, GWL_WNDPROC, (LONG) ButtonProc_reverse);
+        CreateWindowEx(0, WC_BUTTON, "X", WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,  180, 10, 20, 115, hwnd, (HMENU)BUTTON_ID_CLEAR, hInst, NULL);
         break;
     case WM_COMMAND:
         if((HIWORD(wParam) == EN_CHANGE) && (LOWORD(wParam) == EDIT_ID))
@@ -132,7 +134,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         {
             PostQuitMessage(WM_QUIT);
         }
-
+        if(LOWORD(wParam) == BUTTON_ID_CLEAR)
+        {
+           SetWindowText(hEdit, TEXT(""));
+        }
 
         break;
     case WM_CLOSE:
