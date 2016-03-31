@@ -4,13 +4,16 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
-    m_button = new QPushButton("My button", this);
-    m_button->setGeometry(QRect(QPoint(100, 100), QSize(200, 50)));
+    this->counter = 0;
+    m_button = new QPushButton("MONSTER", this);
+    m_button->setGeometry(QRect(QPoint(20, 20), QSize(100, 30)));
+    m_label = new QLabel(QString::number(counter), this);
+    m_label->setGeometry(QRect(QPoint(20, 60), QSize(30, 20)));
     connect(m_button, SIGNAL(released()), this, SLOT(handleButton()));
 }
 
 void MainWindow::handleButton()
 {
-    m_button->setText("Example");
-    m_button->resize(100,100);
+    counter++;
+    m_label->setText(QString::number(counter));
 }

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QLabel>
 
 namespace Ui {
     class MainWindow;
@@ -18,6 +19,8 @@ private slots:
     void handleButton();
 private:
     QPushButton *m_button;
+    QLabel *m_label;
+    int counter;
 };
 
 #endif // MAINWINDOW_H
