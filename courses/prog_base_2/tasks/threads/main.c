@@ -1,29 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
 #include <conio.h>
 
 #include "mutex.h"
-#include "thread.h"
-#include "logic.h"
+#include "producer.h"
+#include "consumer.h"
 
 int main()
 {
-    SetConsoleTitleA("Gonchar Maxim KP-51 Threads");
     // Shared data structure.
     sharedObj_t sharedObject = { {0,0,0,0} };
     sharedObject.mu = mutex_new();
+
     // Create and run primary threads/
-    thread_t *producer = thread_create_args(producerFunc, &sharedObject);
-    thread_t *consumer = thread_create_args(consumerFunc, &sharedObject);
+    producer_t * producer1 = producer_new(&sharedObject);
+    consumer_t * consumer1 = consumer_new(&sharedObject);
+    producer_t * producer2 = producer_new(&sharedObject);
+    consumer_t * consumer2 = consumer_new(&sharedObject);
+
     // Wait here.
     _getch();
-    _getch();
+
     // Delete threads and free allocated memory.
-    thread_free(producer);
-    thread_free(consumer);
+    producer_delete(producer1);
+    consumer_delete(consumer1);
+    producer_delete(producer2);
+    consumer_delete(consumer2);
     // Delete mutex.
     mutex_free(sharedObject.mu);
+
     // End of the program
     puts("End of the program.");
     return (0);

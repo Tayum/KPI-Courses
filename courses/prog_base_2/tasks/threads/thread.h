@@ -1,5 +1,7 @@
 #pragma once
 
+typedef unsigned long DWORD;
+
 // Basic types
 typedef struct thread_s thread_t;
 typedef void *(*thread_func_t)(void *);
