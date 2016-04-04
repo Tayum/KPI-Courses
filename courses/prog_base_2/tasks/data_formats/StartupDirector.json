@@ -1,0 +1,35 @@
+[
+    {
+         "name" : "Maxim",
+         "surname" : "Gonchar",
+         "birthDate" : "1998-07-08",
+         "enthusiasm" : 5,
+         "money" : 100000,
+         "startup" : {
+            "name" : "Apple",
+            "budget" : 50000
+         }
+    },
+    {
+         "name" : "Grigoriy",
+         "surname" : "Komar",
+         "birthDate" : "1998-21-04",
+         "enthusiasm" : 8,
+         "money" : 500000,
+         "startup" : {
+            "name" : "Synthesator",
+            "budget" : 10000
+         }
+    },
+    {
+         "name" : "Kostya",
+         "surname" : "Sharovarskiy",
+         "birthdate" : "1998-26-03",
+         "enthusiasm" : 7,
+         "money" : 200000,
+         "startup" : {
+            "name" : "CapInc",
+            "budget" : 80000
+         }
+    }
+]
