@@ -31,3 +31,10 @@ void SortDialog::setColumnRange(QChar first, QChar last)
     }
 
 }
+
+void SortDialog::on_moreButton_toggled(bool checked)
+{
+    QString labelText = (checked) ? "More>>"
+                                  : "<<More";
+    moreButton->setText(labelText);
+}

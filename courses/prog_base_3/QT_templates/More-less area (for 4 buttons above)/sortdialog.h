@@ -12,6 +12,8 @@ public:
     SortDialog(QWidget *parent = 0);
     void setColumnRange(QChar first, QChar last);
 
+private slots:
+    void on_moreButton_toggled(bool checked);
 };
 
 #endif // SORTDIALOG_H
