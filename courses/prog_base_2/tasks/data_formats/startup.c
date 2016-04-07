@@ -31,8 +31,8 @@ static void startup_from_xml(Startup_T *startup, xmlNode * curNode)
 
 static Director_T *director_from_xml(Director_T *curDirector, xmlNode * curNode)
 {
-    char *data = (char *)malloc(100);
-    char *properties = (char *)malloc(100);
+    char *data;
+    char *properties;
 
     // Get "name" string attribute.
     properties = (char *) xmlGetProp(curNode, (const xmlChar *)"name");
@@ -108,19 +108,6 @@ Director_T *director_new(void)
 void director_delete(Director_T *director)
 {
     free(director);
-}
-
-Startup_T *startup_new(void)
-{
-    Startup_T *startup = (Startup_T *)malloc(sizeof(struct Startup_S));
-    startup->budget = 0;
-    strcpy(startup->name, "");
-    return (startup);
-}
-
-void startup_delete(Startup_T *startup)
-{
-    free(startup);
 }
 
 void xmlParse(Director_T **directorSet, const char * XMLFileName)
