@@ -2,15 +2,13 @@
 #include <stdio.h>
 #include <strings.h>
 #include <time.h>
-#include <stdbool.h>
 
 #include <libxml/tree.h>
 #include "startupDirector.h"
 
 // private:
-static Startup_T *startup_from_xml(xmlNode * curNode)
+static void startup_from_xml(Startup_T *startup, xmlNode * curNode)
 {
-    Startup_T *startup = startup_new();
     char * data;
     for(curNode = curNode->children; curNode != NULL; curNode = curNode->next)
     {
@@ -29,12 +27,10 @@ static Startup_T *startup_from_xml(xmlNode * curNode)
             continue;
         }
     }
-    return (startup);
 }
 
-static Director_T *director_from_xml(xmlNode * curNode)
+static Director_T *director_from_xml(Director_T *curDirector, xmlNode * curNode)
 {
-    Director_T *curDirector = director_new();
     char *data = (char *)malloc(100);
     char *properties = (char *)malloc(100);
 
@@ -87,7 +83,7 @@ static Director_T *director_from_xml(xmlNode * curNode)
         // Get "startup" (string,integer) complex field.
         if(!xmlStrcmp(curNode->name, (xmlChar *)"startup"))
         {
-            curDirector->startup = startup_from_xml(curNode);
+            startup_from_xml(&(curDirector->startup), curNode);
             continue;
         }
     }
@@ -97,7 +93,6 @@ static Director_T *director_from_xml(xmlNode * curNode)
 Director_T *director_new(void)
 {
     Director_T *director = (Director_T *)malloc(sizeof(struct Director_S));
-    Startup_T *startup = (Startup_T *)malloc(sizeof(struct Startup_S));
     strcpy(director->name, "");
     strcpy(director->surname, "");
     strcpy(director->nationality, "");
@@ -105,15 +100,13 @@ Director_T *director_new(void)
     director->enthusiasm = 0;
     director->experience = 0;
     director->money = 0;
-    strcpy(startup->name, "");
-    startup->budget = 0;
-    director->startup = startup;
+    strcpy(director->startup.name, "");
+    director->startup.budget = 0;
     return (director);
 }
 
 void director_delete(Director_T *director)
 {
-    free(director->startup);
     free(director);
 }
 
@@ -125,7 +118,12 @@ Startup_T *startup_new(void)
     return (startup);
 }
 
-void xmlParse(Director_T *directorSet[], const char * XMLFileName)
+void startup_delete(Startup_T *startup)
+{
+    free(startup);
+}
+
+void xmlParse(Director_T **directorSet, const char * XMLFileName)
 {
     xmlDoc * doc = xmlReadFile(XMLFileName, "UTF-8", 0);
     if(doc == NULL)
@@ -140,7 +138,7 @@ void xmlParse(Director_T *directorSet[], const char * XMLFileName)
     {
         if(!xmlStrcmp(curNode->name, (const xmlChar *)"director"))
         {
-            directorSet[i++] = director_from_xml(curNode);
+            director_from_xml(directorSet[i++], curNode);
         }
     }
     xmlFreeDoc(doc);
@@ -153,7 +151,7 @@ void printDirectorInfo(Director_T *director)
            "\t[%s]\n"
            "\t%d-%d-%d\n"
            "\t%i\n"
-           "\t%lf\n"
+           "\t%f\n"
            "\t%i\n"
            "\t[%s]\n"
            "\t%i\n\n",
@@ -164,7 +162,7 @@ void printDirectorInfo(Director_T *director)
            director->enthusiasm,
            director->experience,
            director->money,
-           director->startup->name,
-           director->startup->budget
+           director->startup.name,
+           director->startup.budget
           );
 }

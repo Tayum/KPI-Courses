@@ -22,15 +22,15 @@ int main()
     for(int i = 0; i < DIRECTORS_COUNT; i++)
     {
         directors[i] = director_new();
-
     }
+
     // Parse elements from .xml file.
     xmlParse(directors, filePath);
 
     // Print parsed info.
     for(int i = 0; i < DIRECTORS_COUNT; i++)
     {
-        printf("STARTUP_DIRECTOR #%i\n", i);
+        printf("STARTUP_DIRECTOR #%i\n", (i+1));
         printDirectorInfo(directors[i]);
     }
 
