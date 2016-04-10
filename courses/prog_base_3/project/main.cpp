@@ -1,12 +1,12 @@
-#include "mainwindow.h"
+#include "battlefield.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow window;
-    window.setFixedSize(200,200);
-    window.show();
+    QApplication app(argc, argv);
 
-    return a.exec();
+    BattleField battleField;
+    battleField.show();
+
+    return app.exec();
 }
