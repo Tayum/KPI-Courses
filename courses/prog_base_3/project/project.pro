@@ -13,8 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        battlefield.cpp
+        battlefield.cpp \
+    currentstate.cpp \
+    dragonenemy.cpp \
+    generalstate.cpp
 
-HEADERS  += battlefield.h
+HEADERS  += battlefield.h \
+    currentstate.h \
+    dragonenemy.h \
+    generalstate.h
 
 FORMS    += battlefield.ui
