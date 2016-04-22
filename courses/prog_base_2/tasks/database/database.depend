@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1461353781 source:c:\users\maxgo\desktop\database\director.c
+	<stdio.h>
+	"director.h"
+
+1461353417 c:\users\maxgo\desktop\database\director.h
+
+1461356534 source:c:\users\maxgo\desktop\database\main.c
+	<stdio.h>
+	<stdlib.h>
+	"director.h"
+	"dbModule.h"
+
+1461356511 c:\users\maxgo\desktop\database\dbmodule.h
+	"director.h"
+
+1461356523 source:c:\users\maxgo\desktop\database\dbmodule.c
+	<stdlib.h>
+	<stdio.h>
+	<strings.h>
+	<sqlite3.h>
+	"dbModule.h"
+	"director.h"
+
+1450771366 c:\users\maxgo\desktop\database\headers\sqlite3.h
+	<stdarg.h>
+
