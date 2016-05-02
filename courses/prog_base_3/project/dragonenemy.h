@@ -1,5 +1,4 @@
-#ifndef DRAGONENEMY_H
-#define DRAGONENEMY_H
+#pragma once
 
 class DragonEnemy
 {
@@ -11,5 +10,3 @@ public:
     int GoldDropped;
     int DiamondsDropped;
 };
-
-#endif // DRAGONENEMY_H

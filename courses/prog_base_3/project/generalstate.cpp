@@ -2,7 +2,12 @@
 
 GeneralState::GeneralState()
 {
-    this->LevelsCompleted = 0;
+    this->CurrentLevel = 1;
+    this->CurrentGold = 0;
+    this->CurrentDiamonds = 0;
+    this->CurrentTapDamage = 1;
+    this->CurrentArmyDamage = 0;
+    this->CurrentCriticalChance = 0.1;
     this->MissionsCompleted = 0;
     this->ArmyAmount = 0;
     this->ArtifactsUnlocked = 0;
@@ -11,8 +16,9 @@ GeneralState::GeneralState()
     this->DPSMultiplier = 0.0;
     this->GoldMultiplier = 0.0;
     this->CriticalHitMultiplier = 0.0;
-    this->GoldCollected = 0;
-    this->TapsMade = 0;
-    this->MonsterKills = 0;
-    this->PlayTime = QTime(0,0,0,0);
+    this->TotalGoldCollected = 0;
+    this->TotalDiamondsCollected = 0;
+    this->TotalTapsMade = 0;
+    this->TotalMonsterKills = 0;
+    this->TotalPlayTime = QTime(0,0,0,0);
 }

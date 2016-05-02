@@ -11,16 +11,20 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = project
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         battlefield.cpp \
-    currentstate.cpp \
     dragonenemy.cpp \
-    generalstate.cpp
+    generalstate.cpp \
+    achievements.cpp \
+    army.cpp \
+    hirearmy.cpp
 
 HEADERS  += battlefield.h \
-    currentstate.h \
     dragonenemy.h \
-    generalstate.h
+    generalstate.h \
+    achievements.h \
+    army.h \
+    hirearmy.h
 
-FORMS    += battlefield.ui
+FORMS    += battlefield.ui \
+    hirearmy.ui
