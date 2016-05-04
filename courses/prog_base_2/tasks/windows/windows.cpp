@@ -79,7 +79,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     // Handlers for labels and edit controls.
     static HWND hStatic1, hStatic2, hStatic3, descrStatic;
     static HWND hEdit1, hEdit2, hEdit3;
-    static HBRUSH hBrush = CreateSolidBrush(RGB(230,230,230));
+
+    // Buffer to handle with edit text.
     char buff[512] = "";
 
     switch (message)
