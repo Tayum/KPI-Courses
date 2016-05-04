@@ -1,5 +1,4 @@
-#ifndef GENERALSTATE_H
-#define GENERALSTATE_H
+#pragma once
 
 #include <QTime>
 
@@ -8,7 +7,14 @@ class GeneralState
 public:
     GeneralState();
 
-    int LevelsCompleted;
+    // Current state fields.
+    int CurrentLevel;
+    int CurrentGold;
+    int CurrentDiamonds;
+    int CurrentTapDamage;
+    int CurrentArmyDamage;
+    double CurrentCriticalChance;
+    // General state fields.
     int MissionsCompleted;
     int ArmyAmount;
     int ArtifactsUnlocked;
@@ -17,10 +23,9 @@ public:
     double DPSMultiplier;
     double GoldMultiplier;
     double CriticalHitMultiplier;
-    int GoldCollected;
-    int TapsMade;
-    int MonsterKills;
-    QTime PlayTime;
+    int TotalGoldCollected;
+    int TotalDiamondsCollected;
+    int TotalTapsMade;
+    int TotalMonsterKills;
+    QTime TotalPlayTime;
 };
-
-#endif // GENERALSTATE_H

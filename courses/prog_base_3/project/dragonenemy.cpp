@@ -9,7 +9,7 @@ DragonEnemy::DragonEnemy(int currentLevel)
      * 2. currLevel + someNum
      * 3. different f-as for [0,10], [10,20] and so on levels.     *
      */
-    this->HP = currentLevel + 24;
+    this->HP = currentLevel + 5 + currentLevel * 4;
     this->GoldDropped = currentLevel + 24;
     this->DiamondsDropped = currentLevel + 1;
     this->CurrentHP = this->HP;
