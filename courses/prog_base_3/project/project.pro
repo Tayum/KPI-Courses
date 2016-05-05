@@ -17,14 +17,17 @@ SOURCES += main.cpp\
     generalstate.cpp \
     achievements.cpp \
     army.cpp \
-    hirearmy.cpp
+    hirearmy.cpp \
+    perks.cpp
 
 HEADERS  += battlefield.h \
     dragonenemy.h \
     generalstate.h \
     achievements.h \
     army.h \
-    hirearmy.h
+    hirearmy.h \
+    perks.h
 
 FORMS    += battlefield.ui \
-    hirearmy.ui
+    hirearmy.ui \
+    perks.ui

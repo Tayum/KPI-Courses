@@ -8,7 +8,5 @@ int main(int argc, char *argv[])
     BattleField battleField;
     battleField.show();
 
-    battleField.updateUILabels();
-
     return app.exec();
 }

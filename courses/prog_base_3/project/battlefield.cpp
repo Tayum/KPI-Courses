@@ -1,10 +1,13 @@
 #include <QDesktopWidget>
 
 #include <QTimer>
+#include <Qt>
 
 #include "battlefield.h"
 #include "ui_battlefield.h"
 #include "hirearmy.h"
+#include "generalstate.h"
+#include "perks.h"
 
 #define MAX_LEVELS 300
 
@@ -18,33 +21,34 @@ BattleField::BattleField(QWidget *parent) :
     // Initialize current dragon class entity.
     this->currentDragonEnemy = new DragonEnemy(this->generalState->CurrentLevel);
     this->hireArmy = new HireArmy(this->army, this->generalState, this);
+    this->perksWindow = new Perks(this->generalState, this->currentDragonEnemy, this);
 
     // Initialize UI.
     this->ui->setupUi(this);
-    this->updateUILabels();
 
     // Disable resizing a BattleField window.
     setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
+    // Disable 'maximize' and 'hide' button in a BattleField window.
+    setWindowFlags(Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
+
     // Move BattleField window to the center of screen.
     this->move((QApplication::desktop()->width() - this->size().width()) / 2,
                (QApplication::desktop()->height() - this->size().height()) / 2 - 50);
 
     // Initialize timer for army attack.
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(army_attack()));
-    timer->start(1000);
-}
-
-void BattleField::updateUILabels()
-{
-    // Updates info in labels, according to GeneralState class.
-    this->ui->armydamageLabel->setText(QString("Army damage: %1").arg(this->generalState->CurrentArmyDamage));
-    this->ui->criticalchanceLabel->setText(QString("Critical chance: %1%").arg(this->generalState->CurrentCriticalChance * 100));
-    this->ui->diamondsstateLabel->setText(QString("Diamonds: %1").arg(this->generalState->CurrentDiamonds));
-    this->ui->goldstateLabel->setText(QString("Gold: %1").arg(this->generalState->CurrentGold));
-    this->ui->tapdamageLabel->setText(QString("Tap damage: %1").arg(this->generalState->CurrentTapDamage));
-    this->ui->currentlevelLabel->setText(QString("Level: %1/%2").arg(this->generalState->CurrentLevel).arg(MAX_LEVELS));
-    this->ui->monsterHPLabel->setText(QString("Monster HP: %1/%2").arg(this->currentDragonEnemy->CurrentHP).arg(this->currentDragonEnemy->HP));
+    // 1 second == 1 attack.
+    timerArmyAttack = new QTimer(this);
+    connect(timerArmyAttack, SIGNAL(timeout()), this, SLOT(army_attack()));
+    timerArmyAttack->start(1000);
+    // Initialize timer for such updates:
+    // 1. GUI.
+    // 2. Achievements status.
+    // 3. Update total played time.
+    // 4.
+    // Updates each 100 ms.
+    timerUpdate = new QTimer(this);
+    connect(timerUpdate, SIGNAL(timeout()), this, SLOT(update()));
+    timerUpdate->start(100);
 }
 
 void BattleField::on_monsterButton_clicked()
@@ -65,12 +69,37 @@ void BattleField::on_monsterButton_clicked()
         this->generalState->TotalMonsterKills++;
         // Summon a new dragon.
         this->generalState->CurrentLevel++;
-        this->currentDragonEnemy = new DragonEnemy(this->generalState->CurrentLevel);
+        this->currentDragonEnemy->goToNextDragon(this->currentDragonEnemy);
     }
     // Add changes to global state.
     this->generalState->TotalTapsMade++;
-    // At the end, update labels.
-    this->updateUILabels();
+}
+
+void BattleField::on_armyhireButton_clicked()
+{
+    // Open a window, if it is not opened yet.
+    if(!this->hireArmy->isVisible()) {
+        this->hireArmy = new HireArmy(this->army, this->generalState, this);
+        this->hireArmy->show();
+    }
+    // If window is already open - change focus.
+    this->hireArmy->activateWindow();
+}
+
+void BattleField::on_heropowersButton_clicked()
+{
+
+}
+
+void BattleField::on_perksButton_clicked()
+{
+    // Open a window, if it is not opened yet.
+    if(!this->perksWindow->isVisible()) {
+        this->perksWindow = new Perks(this->generalState, this->currentDragonEnemy, this);
+        this->perksWindow->show();
+    }
+    // If window is already open - change focus.
+    this->perksWindow->activateWindow();
 }
 
 void BattleField::army_attack()
@@ -88,17 +117,29 @@ void BattleField::army_attack()
         this->generalState->TotalMonsterKills++;
         // Summon a new dragon.
         this->generalState->CurrentLevel++;
-        this->currentDragonEnemy = new DragonEnemy(this->generalState->CurrentLevel);
+        this->currentDragonEnemy->goToNextDragon(this->currentDragonEnemy);
     }
-    this->updateUILabels();
 }
 
-
-void BattleField::on_armyhireButton_clicked()
+void BattleField::update()
 {
-    if(!this->hireArmy->isVisible()) {
-        this->hireArmy = new HireArmy(this->army, this->generalState, this);
-        this->hireArmy->show();
+    // Update GUI elements.
+    // Updates info in labels, according to GeneralState class.
+    this->ui->monsterHPLabel->setText(QString("Monster HP: %1/%2").arg(this->currentDragonEnemy->HP).arg(this->currentDragonEnemy->CurrentHP));
+    this->ui->armydamageLabel->setText(QString("Army damage: %1").arg(this->generalState->CurrentArmyDamage));
+    this->ui->criticalchanceLabel->setText(QString("Critical chance: %1%").arg(this->generalState->CurrentCriticalChance * 100));
+    this->ui->diamondsstateLabel->setText(QString("Diamonds: %1").arg(this->generalState->CurrentDiamonds));
+    this->ui->goldstateLabel->setText(QString("Gold: %1").arg(this->generalState->CurrentGold));
+    this->ui->tapdamageLabel->setText(QString("Tap damage: %1").arg(this->generalState->CurrentTapDamage));
+    this->ui->currentlevelLabel->setText(QString("Level: %1/%2").arg(this->generalState->CurrentLevel).arg(MAX_LEVELS));
+    // Update Achievements class fields - check if achievements were unlocked.
+    this->achievements->checkAchievements(this->generalState);
+    // Update total time played in GlobalState class.
+    this->generalState->TotalPlayTime.addMSecs(100);
+    if(this->generalState->TotalPlayTime.hour() == 0
+            && this->generalState->TotalPlayTime.minute() == 0
+            && this->generalState->TotalPlayTime.second() == 0
+            && this->generalState->TotalPlayTime.msec() == 0) {
+        this->generalState->TotalDaysPlayed++;
     }
-    this->hireArmy->activateWindow();
 }

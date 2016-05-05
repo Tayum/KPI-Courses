@@ -20,5 +20,6 @@ GeneralState::GeneralState()
     this->TotalDiamondsCollected = 0;
     this->TotalTapsMade = 0;
     this->TotalMonsterKills = 0;
-    this->TotalPlayTime = QTime(0,0,0,0);
+    this->TotalPlayTime = QTime(0,0,1);
+    this->TotalDaysPlayed = 0;
 }

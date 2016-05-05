@@ -6,11 +6,10 @@
 
 Army::Army()
 {
-    // Parse from army.csv to this->army array.
+    // Parse from army.csv to army types array.
     QFile file("army.csv");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QTextStream in(&file);
-
     QString line = "";
     int i = 0;
     while((line = in.readLine()) != NULL)
@@ -18,17 +17,15 @@ Army::Army()
         QStringList data = line.split(',');
         this->army[i].name = data[0];
         this->army[i].price = data[1].toInt();
-        this->army[i].DPS = data[2].toInt();
-        i++;
+        this->army[i++].DPS = data[2].toInt();
     }
-
     // Fill soldiersAmount array with zeros.
-    for (i = 0 ; i < SOLDIERS_AMOUNT; i++)
-        this->soldiersAmount[i] = 0;
+    memset(this->soldiersAmount, 0, SOLDIERS_AMOUNT * sizeof(int));
 }
 
 int Army::getArmyDamage()
 {
+    // Count army total DPS.
     int totalDPS = 0;
     for(int i = 0; i < SOLDIERS_AMOUNT; i++)
     {
@@ -39,6 +36,7 @@ int Army::getArmyDamage()
 
 int Army::getArmyAmount()
 {
+    // Count amount of soldiers in army.
     int totalAmount = 0;
     for(int i = 0; i < SOLDIERS_AMOUNT; i++)
     {

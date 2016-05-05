@@ -9,4 +9,6 @@ public:
     int CurrentHP;
     int GoldDropped;
     int DiamondsDropped;
+
+    void goToNextDragon(DragonEnemy *dragonEnemy);
 };

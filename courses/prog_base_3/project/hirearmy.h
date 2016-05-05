@@ -1,5 +1,4 @@
-#ifndef HIREARMY_H
-#define HIREARMY_H
+#pragma once
 
 #include <QDialog>
 #include "army.h"
@@ -53,7 +52,6 @@ private slots:
     void on_soldier_2_btn_15_clicked();
 
 private:
+    void soldierButtonAction(int index);
     Ui::HireArmy *ui;
 };
-
-#endif // HIREARMY_H
