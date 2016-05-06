@@ -8,6 +8,8 @@
 #include "hirearmy.h"
 #include "generalstate.h"
 #include "perks.h"
+#include "achievementsmenu.h"
+#include "heropowersmenu.h"
 
 #define MAX_LEVELS 300
 
@@ -22,6 +24,8 @@ BattleField::BattleField(QWidget *parent) :
     this->currentDragonEnemy = new DragonEnemy(this->generalState->CurrentLevel);
     this->hireArmy = new HireArmy(this->army, this->generalState, this);
     this->perksWindow = new Perks(this->generalState, this->currentDragonEnemy, this);
+    this->achivmntsWindow = new AchievementsMenu(this->achievements, this);
+    this->heropwrsWindow = new HeroPowersMenu(this->generalState, this);
 
     // Initialize UI.
     this->ui->setupUi(this);
@@ -44,7 +48,6 @@ BattleField::BattleField(QWidget *parent) :
     // 1. GUI.
     // 2. Achievements status.
     // 3. Update total played time.
-    // 4.
     // Updates each 100 ms.
     timerUpdate = new QTimer(this);
     connect(timerUpdate, SIGNAL(timeout()), this, SLOT(update()));
@@ -79,7 +82,6 @@ void BattleField::on_armyhireButton_clicked()
 {
     // Open a window, if it is not opened yet.
     if(!this->hireArmy->isVisible()) {
-        this->hireArmy = new HireArmy(this->army, this->generalState, this);
         this->hireArmy->show();
     }
     // If window is already open - change focus.
@@ -88,18 +90,28 @@ void BattleField::on_armyhireButton_clicked()
 
 void BattleField::on_heropowersButton_clicked()
 {
-
+    if(!this->heropwrsWindow->isVisible()) {
+        this->heropwrsWindow->show();
+    }
+    this->heropwrsWindow->activateWindow();
 }
 
 void BattleField::on_perksButton_clicked()
 {
     // Open a window, if it is not opened yet.
     if(!this->perksWindow->isVisible()) {
-        this->perksWindow = new Perks(this->generalState, this->currentDragonEnemy, this);
         this->perksWindow->show();
     }
     // If window is already open - change focus.
     this->perksWindow->activateWindow();
+}
+
+void BattleField::on_achvmntsButton_clicked()
+{
+    if(!this->achivmntsWindow->isVisible()) {
+        this->achivmntsWindow->show();
+    }
+    this->achivmntsWindow->activateWindow();
 }
 
 void BattleField::army_attack()

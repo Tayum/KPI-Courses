@@ -18,7 +18,9 @@ SOURCES += main.cpp\
     achievements.cpp \
     army.cpp \
     hirearmy.cpp \
-    perks.cpp
+    perks.cpp \
+    achievementsmenu.cpp \
+    heropowersmenu.cpp
 
 HEADERS  += battlefield.h \
     dragonenemy.h \
@@ -26,8 +28,12 @@ HEADERS  += battlefield.h \
     achievements.h \
     army.h \
     hirearmy.h \
-    perks.h
+    perks.h \
+    achievementsmenu.h \
+    heropowersmenu.h
 
 FORMS    += battlefield.ui \
     hirearmy.ui \
-    perks.ui
+    perks.ui \
+    achievementsmenu.ui \
+    heropowersmenu.ui

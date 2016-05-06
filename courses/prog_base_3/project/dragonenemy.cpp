@@ -4,7 +4,7 @@
 DragonEnemy::DragonEnemy(int currentLevel)
 {
     this->HP = currentLevel;
-    this->GoldDropped = this->HP + 1;
+    this->GoldDropped = this->HP + 50;
     this->DiamondsDropped = this->HP + 1;
     this->CurrentHP = this->HP;
 }

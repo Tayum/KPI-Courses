@@ -16,10 +16,6 @@ Perks::Perks(GeneralState *in_generalState, DragonEnemy *in_dragonEnemy, QWidget
 
     // Initialize Perks Dialog UI.
     this->ui->setupUi(this);
-
-    // Initialize timer. TEST TEST TEST
-    this->windfTimer = new QTimer(this);
-    this->prevDmg = 0;
 }
 
 Perks::~Perks()

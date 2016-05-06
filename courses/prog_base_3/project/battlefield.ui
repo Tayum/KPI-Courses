@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>907</width>
+    <width>916</width>
     <height>950</height>
    </rect>
   </property>
@@ -230,7 +230,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="awardsButton">
+           <widget class="QPushButton" name="achvmntsButton">
             <property name="minimumSize">
              <size>
               <width>90</width>
@@ -244,7 +244,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Awards</string>
+             <string>Achievements</string>
             </property>
            </widget>
           </item>
