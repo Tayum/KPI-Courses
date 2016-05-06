@@ -1,10 +1,21 @@
 #include "achievements.h"
-
 #include "generalstate.h"
-#include <QDebug>
+
+// TODO: improve formulas for achievements.
+#define N_GOLD 1000
+#define N_DIAMONDS 1000
+#define N_MONSTERS_KILLED 100
+#define N_LEVELS_COMPLETED 100
+#define N_ARTIFACTS_OWNED 50
+#define N_SOLDIERS_HIRED 1000
+#define N_TIMES_TAPPED 1000
+#define N_HEROPOWERS_USED 10
+#define N_CRITICAL 0.25
 
 Achievements::Achievements()
 {
+    // As default, all achievements are locked.
+    // 'Locked' means achievementField is false.
     this->Ach_EarnNGold = false;
     this->Ach_EarnNDiamonds = false;
     this->Ach_KillNMonsters = false;
@@ -20,7 +31,8 @@ Achievements::Achievements()
 
 void Achievements::checkAchievements(GeneralState *generalState)
 {
-    // If some achievement was unlocked, change field to true.
+    // If condition for achievement is fullfileed (achievement is unlocked) -
+    // change achievement field to true.
     if(generalState->TotalGoldCollected >= N_GOLD)
         this->Ach_EarnNGold = true;
     if(generalState->TotalDiamondsCollected >= N_DIAMONDS)

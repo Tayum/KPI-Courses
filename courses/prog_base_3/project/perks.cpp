@@ -1,10 +1,14 @@
+#include <QDebug>
+#include <QTimer>
+
 #include "perks.h"
 #include "ui_perks.h"
 
 #include "dragonenemy.h"
 
-#include <QDebug>
-#include <QTimer>
+#define ELDORADO_MONEY 100
+#define RUSH_DIAMONDS 100
+#define SWORD_DMG 20
 
 Perks::Perks(GeneralState *in_generalState, DragonEnemy *in_dragonEnemy, QWidget *parent) :
     QDialog(parent),

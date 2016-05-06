@@ -5,11 +5,6 @@
 
 #include "generalstate.h"
 
-#define ANDUIN_DURATION 5000
-#define SYLVANA_DURATION 10000
-#define GULDAN_DURATION 5000
-#define ARTAS_DURATION 5000
-
 namespace Ui {
 class heroPowersMenu;
 }
@@ -22,24 +17,29 @@ public:
     explicit HeroPowersMenu(GeneralState *in_generalState, QWidget *parent = 0);
     ~HeroPowersMenu();
 
-    GeneralState *genState;
-
 private slots:
-    // Button slots:
+    // Slots for buttons behavior.
     void on_anduinMagic_btn_clicked();
     void on_sylvanasCritical_btn_clicked();
     void on_guldanRampage_btn_clicked();
     void on_artasUnity_btn_clicked();
-    // Timer slots:
+
+    // Slots for timers.
     void returnPrevSettings_anduin();
     void returnPrevSettings_sylvana();
     void returnPrevSettings_guldan();
     void returnPrevSettings_artas();
 
 private:
+    // GeneralState class object to reach the global state.
+    GeneralState *genState;
+
+    // Timers to track time, when certain heropowers should
+    // end their actions.
     QTimer *anduinTimer;
     QTimer *sylvanasTimer;
     QTimer *guldanTimer;
     QTimer *artasTimer;
+
     Ui::heroPowersMenu *ui;
 };

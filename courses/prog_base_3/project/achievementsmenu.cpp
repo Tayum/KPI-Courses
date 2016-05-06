@@ -1,20 +1,23 @@
+#include <QTimer>
+
 #include "achievementsmenu.h"
 #include "ui_achievementsmenu.h"
 
-#include <QTimer>
-#include <QDebug>
+#define UPDATE_TIME_MS 100
 
 AchievementsMenu::AchievementsMenu(Achievements *in_achievements, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AchievementsMenu)
 {
-    this->achObj = in_achievements;
     ui->setupUi(this);
+
+    // Initialize achievement object class with global data.
+    this->achObj = in_achievements;
 
     // Each 100ms check if some achievement was reached.
     this->updateTimer = new QTimer(this);
     connect(updateTimer, SIGNAL(timeout()), this, SLOT(updateUI()));
-    updateTimer->start(100);
+    updateTimer->start(UPDATE_TIME_MS);
 }
 
 AchievementsMenu::~AchievementsMenu()
@@ -24,6 +27,9 @@ AchievementsMenu::~AchievementsMenu()
 
 void AchievementsMenu::updateUI()
 {
+    // Go through all achievements and check if some of them was reached.
+    // If the condition is met, change certain status label so it will show
+    // player, that he unlocked an achievement.
     if(this->achObj->Ach_EarnNGold)
         ui->ach1_status_lbl->setText("true");
     if(this->achObj->Ach_EarnNDiamonds)

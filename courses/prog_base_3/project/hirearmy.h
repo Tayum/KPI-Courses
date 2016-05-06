@@ -16,9 +16,6 @@ public:
     explicit HireArmy(Army *army, GeneralState *generalState, QWidget *parent = 0);
     ~HireArmy();
 
-    Army *army_hireArmy;
-    GeneralState *generalState_hireArmy;
-
 private slots:
     void on_soldier_btn_1_clicked();
     void on_soldier_btn_2_clicked();
@@ -52,6 +49,8 @@ private slots:
     void on_soldier_2_btn_15_clicked();
 
 private:
+    Army *army_hireArmy;
+    GeneralState *generalState_hireArmy;
     void soldierButtonAction(int index);
     Ui::HireArmy *ui;
 };

@@ -14,6 +14,7 @@ public:
     int CurrentTapDamage;
     int CurrentArmyDamage;
     double CurrentCriticalChance;
+
     // General state fields.
     int MissionsCompleted;
     int ArmyAmount;
@@ -27,7 +28,8 @@ public:
     int TotalDiamondsCollected;
     int TotalTapsMade;
     int TotalMonsterKills;
-    // Time field.
+
+    // Played time field.
     QTime TotalPlayTime;
     int TotalDaysPlayed;
 };

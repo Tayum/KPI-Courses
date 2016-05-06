@@ -6,10 +6,6 @@
 #include "generalstate.h"
 #include "dragonenemy.h"
 
-#define ELDORADO_MONEY 100
-#define RUSH_DIAMONDS 100
-#define SWORD_DMG 20
-
 namespace Ui {
 class Perks;
 }

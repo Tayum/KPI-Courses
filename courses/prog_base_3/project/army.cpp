@@ -1,12 +1,12 @@
 #include <QFile>
 #include <QTextStream>
-#include <QString>
 
 #include "army.h"
 
 Army::Army()
 {
-    // Parse from army.csv to army types array.
+    // Parse data from army.csv to army types array.
+    // Data in .csv is represented in format [name-price-DPS].
     QFile file("army.csv");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QTextStream in(&file);
@@ -19,13 +19,15 @@ Army::Army()
         this->army[i].price = data[1].toInt();
         this->army[i++].DPS = data[2].toInt();
     }
+
+    // As default, user does not have any soldiers.
     // Fill soldiersAmount array with zeros.
     memset(this->soldiersAmount, 0, SOLDIERS_AMOUNT * sizeof(int));
 }
 
 int Army::getArmyDamage()
 {
-    // Count army total DPS.
+    // Go through army and count total DPS.
     int totalDPS = 0;
     for(int i = 0; i < SOLDIERS_AMOUNT; i++)
     {
@@ -36,7 +38,7 @@ int Army::getArmyDamage()
 
 int Army::getArmyAmount()
 {
-    // Count amount of soldiers in army.
+    // Count total amount of soldiers in whole army.
     int totalAmount = 0;
     for(int i = 0; i < SOLDIERS_AMOUNT; i++)
     {

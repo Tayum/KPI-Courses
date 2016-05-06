@@ -18,12 +18,14 @@ public:
     explicit AchievementsMenu(Achievements *in_achievements, QWidget *parent = 0);
     ~AchievementsMenu();
 
-    Achievements *achObj;
-
 private slots:
     void updateUI();
 
 private:
+    // Achievements class object to check if some achievement was unlocked.
+    Achievements *achObj;
+
+    // Timer to update Achievement Dialog to show that some achievement was achieved.
     QTimer *updateTimer;
     Ui::AchievementsMenu *ui;
 };
