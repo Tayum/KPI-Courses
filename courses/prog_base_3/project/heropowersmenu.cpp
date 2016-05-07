@@ -27,6 +27,7 @@ HeroPowersMenu::HeroPowersMenu(GeneralState *in_generalState, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::heroPowersMenu)
 {
+    // Initialize HireArmy Dialog UI.
     this->ui->setupUi(this);
 
     // Disable 'help' button.

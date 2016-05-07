@@ -1,19 +1,18 @@
-#include <QDebug>
 #include <QTimer>
-#include <QDebug>
-
-#include "perks.h"
-#include "ui_perks.h"
-#include "heropowersmenu.h"
 
 #include "dragonenemy.h"
+#include "heropowersmenu.h"
+#include "perks.h"
+#include "ui_perks.h"
 
-//
-#define ELDORADO_MONEY 100
-#define RUSH_DIAMONDS 100
-#define SWORD_DMG 20
+// What perks do.
+#define ELDORADO_VALUE 100
+#define DIAMRUSH_VALUE 100
+#define ENCHSWORD_VALUE 20
 
-//
+// Perks cost.
+#define DIAMRUSH_COST 5000
+#define ELDORADO_COST 100
 #define ENCHSWORD_COST 100
 #define WINDFARM_COST 100
 #define PASSLVL_COST 100
@@ -22,11 +21,6 @@ Perks::Perks(GeneralState *in_generalState, DragonEnemy *in_dragonEnemy, HeroPow
     QDialog(parent),
     ui(new Ui::Perks)
 {
-    // Get main data from main generalState and dragonEnemy classes.
-    this->perks_generalState = in_generalState;
-    this->perks_dragonEnemy = in_dragonEnemy;
-    this->perks_heroPowers = in_heropowers;
-
     // Initialize Perks Dialog UI.
     this->ui->setupUi(this);
 
@@ -34,6 +28,11 @@ Perks::Perks(GeneralState *in_generalState, DragonEnemy *in_dragonEnemy, HeroPow
     Qt::WindowFlags flags = this->windowFlags();
     flags &= ~Qt::WindowContextHelpButtonHint;
     this->setWindowFlags(flags);
+
+    // Copy general data from other classes.
+    this->gnrlState = in_generalState;
+    this->drgnEnemy = in_dragonEnemy;
+    this->heroPwrs = in_heropowers;
 }
 
 Perks::~Perks()
@@ -43,63 +42,79 @@ Perks::~Perks()
 
 void Perks::on_perksBtn_DiamondsRush_clicked()
 {
-    this->perks_generalState->CurrentDiamonds += RUSH_DIAMONDS;
-    this->perks_generalState->TotalDiamondsCollected += RUSH_DIAMONDS;
+    // check if player has enough gold
+    if(this->gnrlState->CurrentGold >= DIAMRUSH_COST) {
+        // get perk
+        this->gnrlState->CurrentDiamonds += DIAMRUSH_VALUE;
+        this->gnrlState->TotalDiamondsCollected += DIAMRUSH_VALUE;
+        // pay for the perk
+        this->gnrlState->CurrentGold -= DIAMRUSH_COST;
+    }
 }
 
 void Perks::on_perksBtn_Eldorado_clicked()
 {
-
-    this->perks_generalState->CurrentGold += ELDORADO_MONEY;
-    this->perks_generalState->TotalGoldCollected += ELDORADO_MONEY;
+    // check if player has enough diamonds
+    if(this->gnrlState->CurrentDiamonds >= ELDORADO_COST) {
+        // get perk
+        this->gnrlState->CurrentGold += ELDORADO_VALUE;
+        this->gnrlState->TotalGoldCollected += ELDORADO_VALUE;
+        // pay for the perk
+        this->gnrlState->CurrentDiamonds -= ELDORADO_COST;
+    }
 }
 
 void Perks::on_perksBtn_EnchSword_clicked()
 {
-    qDebug() << this->perks_generalState->CurrentDiamonds;
-
-    if(this->perks_generalState->CurrentDiamonds >= ENCHSWORD_COST) {
-        this->perks_dragonEnemy->CurrentHP -= SWORD_DMG;
+    // check if player has enough diamonds
+    if(this->gnrlState->CurrentDiamonds >= ENCHSWORD_COST) {
+        // get perk
+        this->drgnEnemy->CurrentHP -= ENCHSWORD_VALUE;
         // pay diamonds
-        this->perks_generalState->CurrentDiamonds -= ENCHSWORD_COST;
+        this->gnrlState->CurrentDiamonds -= ENCHSWORD_COST;
     }
     // Check if mosnter is dead.
-    if(this->perks_dragonEnemy->CurrentHP <= 0)
+    if(this->drgnEnemy->CurrentHP <= 0)
     {
         // change general status fields.
-        this->perks_generalState->CurrentGold += this->perks_dragonEnemy->GoldDropped;
-        this->perks_generalState->CurrentDiamonds += this->perks_dragonEnemy->DiamondsDropped;
-        this->perks_generalState->TotalGoldCollected += this->perks_dragonEnemy->GoldDropped;
-        this->perks_generalState->TotalDiamondsCollected += this->perks_dragonEnemy->DiamondsDropped;
-        this->perks_generalState->TotalMonsterKills++;
+        this->gnrlState->CurrentGold += this->drgnEnemy->GoldDropped;
+        this->gnrlState->CurrentDiamonds += this->drgnEnemy->DiamondsDropped;
+        this->gnrlState->TotalGoldCollected += this->drgnEnemy->GoldDropped;
+        this->gnrlState->TotalDiamondsCollected += this->drgnEnemy->DiamondsDropped;
+        this->gnrlState->TotalMonsterKills++;
         // new dragon
-        this->perks_generalState->CurrentLevel++;
-        this->perks_dragonEnemy->goToNextDragon(this->perks_dragonEnemy);
+        this->gnrlState->CurrentLevel++;
+        this->drgnEnemy->goToNextDragon(this->drgnEnemy);
     }
 }
 
 void Perks::on_perksBtn_WindfArmory_clicked()
 {
-    if(this->perks_generalState->CurrentDiamonds >= WINDFARM_COST) {
-        this->perks_heroPowers->refreshCD();
+    // check if player has enough diamonds
+    if(this->gnrlState->CurrentDiamonds >= WINDFARM_COST) {
+        // get perk
+        this->heroPwrs->refreshCD();
         // pay diamonds
-        this->perks_generalState->CurrentDiamonds -= WINDFARM_COST;
+        this->gnrlState->CurrentDiamonds -= WINDFARM_COST;
     }
 }
 
 void Perks::on_perksBtn_PassLevel_clicked()
 {
-    if(this->perks_generalState->CurrentDiamonds >= PASSLVL_COST) {
+    // check if player has enough diamonds
+    if(this->gnrlState->CurrentDiamonds >= PASSLVL_COST) {
+        // get perk
         // new level
-        this->perks_generalState->CurrentGold += this->perks_dragonEnemy->GoldDropped;
-        this->perks_generalState->CurrentDiamonds += this->perks_dragonEnemy->DiamondsDropped;
-        this->perks_generalState->TotalGoldCollected += this->perks_dragonEnemy->GoldDropped;
-        this->perks_generalState->TotalDiamondsCollected += this->perks_dragonEnemy->DiamondsDropped;
-        this->perks_generalState->TotalMonsterKills++;
+        // change general status fields.
+        this->gnrlState->CurrentGold += this->drgnEnemy->GoldDropped;
+        this->gnrlState->CurrentDiamonds += this->drgnEnemy->DiamondsDropped;
+        this->gnrlState->TotalGoldCollected += this->drgnEnemy->GoldDropped;
+        this->gnrlState->TotalDiamondsCollected += this->drgnEnemy->DiamondsDropped;
+        this->gnrlState->TotalMonsterKills++;
+        this->gnrlState->CurrentLevel++;
         // new dragon
-        this->perks_generalState->CurrentLevel++;
-        this->perks_dragonEnemy->goToNextDragon(this->perks_dragonEnemy);\
+        this->drgnEnemy->goToNextDragon(this->drgnEnemy);\
         // pay diamonds
-        this->perks_generalState->CurrentDiamonds -= PASSLVL_COST;
+        this->gnrlState->CurrentDiamonds -= PASSLVL_COST;
     }
 }

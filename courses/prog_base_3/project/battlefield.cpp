@@ -1,21 +1,20 @@
 #include <QDesktopWidget>
 
-#include <QTimer>
-#include <Qt>
-#include <QMessageBox>
 #include <QCloseEvent>
-#include <QDebug>
+#include <QMessageBox>
+#include <QTimer>
 
-// ORGANIZE THIS SHIT PLS
+#include "generalstate.h"
+
 #include "battlefield.h"
 #include "ui_battlefield.h"
+
+// Other windows form classes.
 #include "hirearmy.h"
-#include "generalstate.h"
-#include "perks.h"
 #include "achievementsmenu.h"
 #include "heropowersmenu.h"
+#include "perks.h"
 #include "settingsmenu.h"
-// ORGANIZE THIS SHIT PLS
 
 #define MAX_LEVELS 300
 
@@ -169,7 +168,6 @@ void BattleField::update()
     this->achievements->checkAchievements(this->generalState);
     // Update total time played in GlobalState class.
     this->generalState->TotalPlayTime = this->generalState->TotalPlayTime.addMSecs(100);
-    qDebug() << this->generalState->TotalPlayTime.toString("HH:mm:ss") << " " << this->i;
     if(this->generalState->TotalPlayTime.hour() == 0
             && this->generalState->TotalPlayTime.minute() == 0
             && this->generalState->TotalPlayTime.second() == 0

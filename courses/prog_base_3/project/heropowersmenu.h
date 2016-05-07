@@ -17,25 +17,29 @@ public:
     explicit HeroPowersMenu(GeneralState *in_generalState, QWidget *parent = 0);
     ~HeroPowersMenu();
 
-    //
+    // Function to refresh all cooldowns.
+    // Used in Perks class.
     void refreshCD();
 
 private slots:
-    // Slots for buttons behavior.
+    // Buttons behavior handlers.
     void on_anduinMagic_btn_clicked();
     void on_sylvanasCritical_btn_clicked();
     void on_guldanRampage_btn_clicked();
     void on_artasUnity_btn_clicked();
     void on_tapDmg_btn_clicked();
 
-    // Slots for timers.
+    // Timers behavior handlers.
     void returnPrevSettings_anduin();
     void returnPrevSettings_sylvana();
     void returnPrevSettings_guldan();
     void returnPrevSettings_artas();
 
 private:
-    // GeneralState class object to reach the global state.
+    // UI object.
+    Ui::heroPowersMenu *ui;
+
+    // GeneralState class object to reach the global status.
     GeneralState *genState;
 
     // Timers to track time, when certain heropowers should
@@ -45,17 +49,15 @@ private:
     QTimer *guldanTimer;
     QTimer *artasTimer;
 
-    //
+    // Fields to check if some heropower was bought.
     bool anduinBought;
     bool sylvanasBought;
     bool guldanBought;
     bool artasBought;
 
-    //
+    // Fields to handle with heropowers cooldowns.
     bool anduinCD;
     bool sylvanasCD;
     bool guldanCD;
     bool artasCD;
-
-    Ui::heroPowersMenu *ui;
 };

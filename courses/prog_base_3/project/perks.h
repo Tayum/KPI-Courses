@@ -20,21 +20,24 @@ public:
     ~Perks();
 
 private slots:
+    // Buttons behavior handlers.
     void on_perksBtn_DiamondsRush_clicked();
     void on_perksBtn_Eldorado_clicked();
     void on_perksBtn_EnchSword_clicked();
-    void on_perksBtn_WindfArmory_clicked();
     void on_perksBtn_PassLevel_clicked();
+    void on_perksBtn_WindfArmory_clicked();
 
 private:
+    // UI object.
     Ui::Perks *ui;
 
-    //
-    GeneralState *perks_generalState;
+    // General status object.
+    // Also object for perks, that change general status object.
+    GeneralState *gnrlState;
 
-    //
-    DragonEnemy *perks_dragonEnemy;
+    // Object for perks, that change dragon HP: .
+    DragonEnemy *drgnEnemy;
 
-    //
-    HeroPowersMenu *perks_heroPowers;
+    // Object for perk, that changes heroPowers fields: WindFuryArmory
+    HeroPowersMenu *heroPwrs;
 };

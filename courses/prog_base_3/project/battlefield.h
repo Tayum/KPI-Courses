@@ -32,7 +32,7 @@ public:
     DragonEnemy *currentDragonEnemy;
     GeneralState *generalState;
 
-    // Other windows.
+    // Opening other windows.
     HireArmy *hireArmy;
     Perks *perksWindow;
     AchievementsMenu *achivmntsWindow;

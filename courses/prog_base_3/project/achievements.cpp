@@ -1,7 +1,6 @@
 #include "achievements.h"
 #include "generalstate.h"
 
-// TODO: improve formulas for achievements.
 #define N_GOLD 1000
 #define N_DIAMONDS 1000
 #define N_MONSTERS_KILLED 100

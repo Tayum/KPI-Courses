@@ -1,5 +1,4 @@
-#ifndef GLOBALSTATSMENU_H
-#define GLOBALSTATSMENU_H
+#pragma once
 
 #include <QDialog>
 #include <QTimer>
@@ -19,12 +18,16 @@ public:
     ~GlobalStatsMenu();
 
 private slots:
+    // Function to update text in and labels.
     void updateUI();
 
 private:
-    GeneralState *gnrlState;
-    QTimer *updateTimer;
+    // UI object.
     Ui::GlobalStatsMenu *ui;
-};
 
-#endif // GLOBALSTATSMENU_H
+    // GeneralState class object to reach the global state.
+    GeneralState *gnrlState;
+
+    // Timer to update every 100ms global status menu.
+    QTimer *updateTimer;
+};

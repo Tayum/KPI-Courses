@@ -1,5 +1,4 @@
-#ifndef SETTINGSMENU_H
-#define SETTINGSMENU_H
+#pragma once
 
 #include <QDialog>
 
@@ -19,12 +18,16 @@ public:
     ~SettingsMenu();
 
 private slots:
+    // Opening other windows.
     void on_stats_btn_clicked();
 
 private:
-    GeneralState *gnrlState;
-    GlobalStatsMenu *glblStats;
+    // UI object.
     Ui::SettingsMenu *ui;
-};
 
-#endif // SETTINGSMENU_H
+    // General game status.
+    GeneralState *gnrlState;
+
+    // Windows, that are located in 'Settings' menu.
+    GlobalStatsMenu *glblStats;
+};

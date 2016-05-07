@@ -1,7 +1,8 @@
 #include <QTimer>
 
-#include "achievementsmenu.h"
+#include "achievements.h"
 #include "ui_achievementsmenu.h"
+#include "achievementsmenu.h"
 
 #define UPDATE_TIME_MS 100
 
@@ -9,6 +10,7 @@ AchievementsMenu::AchievementsMenu(Achievements *in_achievements, QWidget *paren
     QDialog(parent),
     ui(new Ui::AchievementsMenu)
 {
+    // Initialize UI controls.
     ui->setupUi(this);
 
     // Disable 'help' button.
@@ -23,13 +25,11 @@ AchievementsMenu::AchievementsMenu(Achievements *in_achievements, QWidget *paren
     this->updateTimer = new QTimer(this);
     connect(updateTimer, SIGNAL(timeout()), this, SLOT(updateUI()));
     updateTimer->start(UPDATE_TIME_MS);
-
 }
 
 AchievementsMenu::~AchievementsMenu()
 {
     delete this->updateTimer;
-
     delete ui;
 }
 

@@ -4,7 +4,6 @@
 #include <QTimer>
 
 #include "achievements.h"
-#include "generalstate.h"
 
 namespace Ui {
 class AchievementsMenu;
@@ -19,13 +18,16 @@ public:
     ~AchievementsMenu();
 
 private slots:
+    // Slot to check if some achievement was unlocked.
     void updateUI();
 
 private:
+    // UI object.
+    Ui::AchievementsMenu *ui;
+
     // Achievements class object to check if some achievement was unlocked.
     Achievements *achObj;
 
     // Timer to update Achievement Dialog to show that some achievement was achieved.
     QTimer *updateTimer;
-    Ui::AchievementsMenu *ui;
 };

@@ -7,7 +7,7 @@ class GeneralState
 public:
     GeneralState();
 
-    // Current state fields.
+    // Current status fields.
     int CurrentLevel;
     int CurrentGold;
     int CurrentDiamonds;
@@ -15,15 +15,19 @@ public:
     int CurrentArmyDamage;
     double CurrentCriticalChance;
 
-    // General state fields.
-    int MissionsCompleted;
+    // General status fields.
     int ArmyAmount;
     int ArtifactsUnlocked;
-    int HeropowersUnlocked;
     int AwardsCollected;
+    int HeropowersUnlocked;
+    int MissionsCompleted;
+
+    // Multipliers.
+    double CriticalHitMultiplier;
     double DPSMultiplier;
     double GoldMultiplier;
-    double CriticalHitMultiplier;
+
+    // Total status fields.
     int TotalGoldCollected;
     int TotalDiamondsCollected;
     int TotalTapsMade;

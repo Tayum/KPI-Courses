@@ -1,28 +1,36 @@
 #include <QTimer>
 #include <QTime>
 
+#include "generalstate.h"
 #include "globalstatsmenu.h"
 #include "ui_globalstatsmenu.h"
 
-#include "generalstate.h"
+#define UPDATE_TIME_MS 100
 
 GlobalStatsMenu::GlobalStatsMenu(GeneralState *in_generalState, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::GlobalStatsMenu)
 {
+    // Initialize HireArmy Dialog UI.
     ui->setupUi(this);
 
-    //
+    // Disable 'help' button.
+    Qt::WindowFlags flags = this->windowFlags();
+    flags &= ~Qt::WindowContextHelpButtonHint;
+    this->setWindowFlags(flags);
+
+    // Initialize GeneralState class object with data about global status.
     this->gnrlState = in_generalState;
 
-    //
+    // Initialize timer to update every 100ms global status menu.
     this->updateTimer = new QTimer(this);
     connect(updateTimer, SIGNAL(timeout()), this, SLOT(updateUI()));
-    updateTimer->start(100);
+    updateTimer->start(UPDATE_TIME_MS);
 }
 
 GlobalStatsMenu::~GlobalStatsMenu()
 {
+    delete this->updateTimer;
     delete ui;
 }
 

@@ -7,7 +7,7 @@ class Achievements
 public:
     Achievements();
 
-    // Achievement fields.
+    // Achievement fields to handle with achievements status.
     bool Ach_EarnNGold;
     bool Ach_EarnNDiamonds;
     bool Ach_KillNMonsters;
@@ -20,7 +20,6 @@ public:
     bool Ach_Hidden_MLG;
     bool Ach_Hidden_TenEach;
 
-    // Function to go through all achievements and
-    // check if some of them are accomplished.
+    // Function to check if some achievement is accomplished.
     void checkAchievements(GeneralState *generalState);
 };

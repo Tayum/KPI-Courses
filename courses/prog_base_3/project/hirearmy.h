@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDialog>
+
 #include "army.h"
 #include "generalstate.h"
 
@@ -17,6 +18,7 @@ public:
     ~HireArmy();
 
 private slots:
+    // Buttons behavior handlers.
     void on_soldier_btn_1_clicked();
     void on_soldier_btn_2_clicked();
     void on_soldier_btn_3_clicked();
@@ -49,9 +51,19 @@ private slots:
     void on_soldier_2_btn_15_clicked();
 
 private:
-    Army *army_hireArmy;
-    GeneralState *generalState_hireArmy;
-    void soldierButtonAction(int index);
-    void updateUI();
+    // UI object.
     Ui::HireArmy *ui;
+
+    // Object to get data about soldiers types.
+    Army *armyObj;
+
+    // General game status.
+    GeneralState *gnrlState;
+
+    // Function to combine all buttons action.
+    // See description in .cpp file.
+    void soldierButtonAction(int index);
+
+    // Function to update text in all buttons and labels.
+    void updateUI();
 };

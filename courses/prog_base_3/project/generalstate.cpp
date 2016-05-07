@@ -2,8 +2,9 @@
 
 GeneralState::GeneralState()
 {    
-    // In constructor, default fields values are set.
-    // Current state fields.
+    // Set default values.
+
+    // Current status fields.
     this->CurrentLevel = 1;
     this->CurrentGold = 0;
     this->CurrentDiamonds = 0;
@@ -11,22 +12,26 @@ GeneralState::GeneralState()
     this->CurrentArmyDamage = 0;
     this->CurrentCriticalChance = 0.1;
 
-    // General state fields.
+    // General status fields.
     this->MissionsCompleted = 0;
     this->ArmyAmount = 0;
     this->ArtifactsUnlocked = 0;
     this->HeropowersUnlocked = 0;
     this->AwardsCollected = 0;
+
+    // Multipliers.
     this->DPSMultiplier = 0.0;
     this->GoldMultiplier = 0.0;
     this->CriticalHitMultiplier = 0.0;
+
+    // Total status fields.
     this->TotalGoldCollected = 0;
     this->TotalDiamondsCollected = 0;
     this->TotalTapsMade = 0;
     this->TotalMonsterKills = 0;
 
     // Played time field.
-    // Tracking days is needed, because of Qtime::addMSecs behavior.
+    // Tracking days is needed, because of Qtime::addMSecs specific behavior.
     this->TotalPlayTime = QTime(0,0,1);
     this->TotalDaysPlayed = 0;
 }

@@ -5,14 +5,12 @@ class DragonEnemy
 public:
     DragonEnemy(int currentLevel);
 
-    // Dragon objects characteristics.
-    int HP;
+    // Dragon characteristics.
     int CurrentHP;
     int GoldDropped;
     int DiamondsDropped;
+    int HP;
 
-    // Function to go to next dragon by certain formula.
-    // This function is needed in order to jump to the next dragon,
-    // when current level is completed without creating another DragonEnemy object.
+    // Function that jumps to the next dragon.
     void goToNextDragon(DragonEnemy *dragonEnemy);
 };
