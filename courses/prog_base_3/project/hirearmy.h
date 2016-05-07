@@ -52,5 +52,6 @@ private:
     Army *army_hireArmy;
     GeneralState *generalState_hireArmy;
     void soldierButtonAction(int index);
+    void updateUI();
     Ui::HireArmy *ui;
 };

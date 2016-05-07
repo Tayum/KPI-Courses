@@ -2,7 +2,11 @@
 
 #include <QTimer>
 #include <Qt>
+#include <QMessageBox>
+#include <QCloseEvent>
+#include <QDebug>
 
+// ORGANIZE THIS SHIT PLS
 #include "battlefield.h"
 #include "ui_battlefield.h"
 #include "hirearmy.h"
@@ -10,6 +14,8 @@
 #include "perks.h"
 #include "achievementsmenu.h"
 #include "heropowersmenu.h"
+#include "settingsmenu.h"
+// ORGANIZE THIS SHIT PLS
 
 #define MAX_LEVELS 300
 
@@ -23,15 +29,19 @@ BattleField::BattleField(QWidget *parent) :
     // Initialize current dragon class entity.
     this->currentDragonEnemy = new DragonEnemy(this->generalState->CurrentLevel);
     this->hireArmy = new HireArmy(this->army, this->generalState, this);
-    this->perksWindow = new Perks(this->generalState, this->currentDragonEnemy, this);
-    this->achivmntsWindow = new AchievementsMenu(this->achievements, this);
     this->heropwrsWindow = new HeroPowersMenu(this->generalState, this);
+    this->achivmntsWindow = new AchievementsMenu(this->achievements, this);
+    this->settingsWindow = new SettingsMenu(this->generalState, this);
+    this->perksWindow = new Perks(this->generalState, this->currentDragonEnemy, this->heropwrsWindow, this);
 
     // Initialize UI.
     this->ui->setupUi(this);
 
+    //
+    this->ui->monsterButton->setDefault(true);
+
     // Disable resizing a BattleField window.
-    setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
+    this->setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
     // Disable 'maximize' and 'hide' button in a BattleField window.
     setWindowFlags(Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
 
@@ -52,6 +62,9 @@ BattleField::BattleField(QWidget *parent) :
     timerUpdate = new QTimer(this);
     connect(timerUpdate, SIGNAL(timeout()), this, SLOT(update()));
     timerUpdate->start(100);
+
+    //
+    this->setAttribute(Qt::WA_QuitOnClose);
 }
 
 void BattleField::on_monsterButton_clicked()
@@ -114,6 +127,14 @@ void BattleField::on_achvmntsButton_clicked()
     this->achivmntsWindow->activateWindow();
 }
 
+void BattleField::on_settingsButton_clicked()
+{
+    if(!this->settingsWindow->isVisible()) {
+        this->settingsWindow->show();
+    }
+    this->settingsWindow->activateWindow();
+}
+
 void BattleField::army_attack()
 {
     // Do a damage.
@@ -147,7 +168,8 @@ void BattleField::update()
     // Update Achievements class fields - check if achievements were unlocked.
     this->achievements->checkAchievements(this->generalState);
     // Update total time played in GlobalState class.
-    this->generalState->TotalPlayTime.addMSecs(100);
+    this->generalState->TotalPlayTime = this->generalState->TotalPlayTime.addMSecs(100);
+    qDebug() << this->generalState->TotalPlayTime.toString("HH:mm:ss") << " " << this->i;
     if(this->generalState->TotalPlayTime.hour() == 0
             && this->generalState->TotalPlayTime.minute() == 0
             && this->generalState->TotalPlayTime.second() == 0
@@ -155,3 +177,16 @@ void BattleField::update()
         this->generalState->TotalDaysPlayed++;
     }
 }
+
+void BattleField::closeEvent(QCloseEvent *e)
+{
+    QMessageBox::StandardButton resBtn = QMessageBox::question( this, "Quit program?", tr("Do you want to save your progreses?\n"), QMessageBox::Cancel | QMessageBox::Yes, QMessageBox::Yes);
+    if(resBtn != QMessageBox::Yes) {
+        e->ignore();
+    }
+    else {
+        e->accept();
+    }
+}
+
+

@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     hirearmy.cpp \
     perks.cpp \
     achievementsmenu.cpp \
-    heropowersmenu.cpp
+    heropowersmenu.cpp \
+    settingsmenu.cpp \
+    globalstatsmenu.cpp
 
 HEADERS  += battlefield.h \
     dragonenemy.h \
@@ -30,10 +32,19 @@ HEADERS  += battlefield.h \
     hirearmy.h \
     perks.h \
     achievementsmenu.h \
-    heropowersmenu.h
+    heropowersmenu.h \
+    settingsmenu.h \
+    globalstatsmenu.h
 
 FORMS    += battlefield.ui \
     hirearmy.ui \
     perks.ui \
     achievementsmenu.ui \
-    heropowersmenu.ui
+    heropowersmenu.ui \
+    settingsmenu.ui \
+    globalstatsmenu.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    mediaresources.qrc

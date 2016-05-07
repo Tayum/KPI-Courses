@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>heroPowersMenu</class>
- <widget class="QDialog" name="heroPowersMenu">
+ <class>SettingsMenu</class>
+ <widget class="QDialog" name="SettingsMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>243</height>
+    <width>231</width>
+    <height>229</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Hero powers</string>
+   <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QPushButton" name="tapDmg_btn">
+    <widget class="QPushButton" name="stats_btn">
      <property name="text">
-      <string>Increase Tap damage</string>
+      <string>Global stats</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QPushButton" name="anduinMagic_btn">
+    <widget class="QPushButton" name="save_btn">
      <property name="text">
-      <string>Holy Anduin magic</string>
+      <string>Save</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QPushButton" name="sylvanasCritical_btn">
+    <widget class="QPushButton" name="music_btn">
      <property name="text">
-      <string>Sylvanas critical blades</string>
+      <string>Music</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
-    <widget class="QPushButton" name="guldanRampage_btn">
+    <widget class="QPushButton" name="share_btn">
      <property name="text">
-      <string>Gul`dan rampage</string>
+      <string>Share</string>
      </property>
     </widget>
    </item>
    <item row="4" column="0">
-    <widget class="QPushButton" name="artasUnity_btn">
+    <widget class="QPushButton" name="tutorial_brn">
      <property name="text">
-      <string>Artas unity</string>
+      <string>Tutorial</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QPushButton" name="about_btn">
+     <property name="text">
+      <string>About</string>
      </property>
     </widget>
    </item>

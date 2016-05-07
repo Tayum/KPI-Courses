@@ -14,7 +14,7 @@
    <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Hire army</string>
   </property>
   <property name="whatsThis">
    <string/>

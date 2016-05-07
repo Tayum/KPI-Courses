@@ -14,6 +14,7 @@
 #include "perks.h"
 #include "achievementsmenu.h"
 #include "heropowersmenu.h"
+#include "settingsmenu.h"
 
 namespace Ui {
 class BattleField;
@@ -36,6 +37,7 @@ public:
     Perks *perksWindow;
     AchievementsMenu *achivmntsWindow;
     HeroPowersMenu *heropwrsWindow;
+    SettingsMenu *settingsWindow;
 
 private slots:
     void on_monsterButton_clicked();
@@ -43,6 +45,7 @@ private slots:
     void on_heropowersButton_clicked();
     void on_perksButton_clicked();
     void on_achvmntsButton_clicked();
+    void on_settingsButton_clicked();
     void army_attack();
     void update();
 
@@ -50,4 +53,8 @@ private:
     QTimer *timerArmyAttack;
     QTimer *timerUpdate;
     Ui::BattleField *ui;
+    int i = 0;
+
+    //
+    void closeEvent(QCloseEvent *e);
 };

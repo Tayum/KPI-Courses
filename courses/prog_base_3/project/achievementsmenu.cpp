@@ -11,6 +11,11 @@ AchievementsMenu::AchievementsMenu(Achievements *in_achievements, QWidget *paren
 {
     ui->setupUi(this);
 
+    // Disable 'help' button.
+    Qt::WindowFlags flags = this->windowFlags();
+    flags &= ~Qt::WindowContextHelpButtonHint;
+    this->setWindowFlags(flags);
+
     // Initialize achievement object class with global data.
     this->achObj = in_achievements;
 
@@ -18,10 +23,13 @@ AchievementsMenu::AchievementsMenu(Achievements *in_achievements, QWidget *paren
     this->updateTimer = new QTimer(this);
     connect(updateTimer, SIGNAL(timeout()), this, SLOT(updateUI()));
     updateTimer->start(UPDATE_TIME_MS);
+
 }
 
 AchievementsMenu::~AchievementsMenu()
 {
+    delete this->updateTimer;
+
     delete ui;
 }
 

@@ -7,7 +7,7 @@ Army::Army()
 {
     // Parse data from army.csv to army types array.
     // Data in .csv is represented in format [name-price-DPS].
-    QFile file("army.csv");
+    QFile file(":/files/files/army.csv");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QTextStream in(&file);
     QString line = "";
