@@ -53,7 +53,6 @@ private:
     QTimer *timerArmyAttack;
     QTimer *timerUpdate;
     Ui::BattleField *ui;
-    int i = 0;
 
     //
     void closeEvent(QCloseEvent *e);
