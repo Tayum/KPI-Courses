@@ -95,7 +95,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
         hEdit2 = CreateWindowEx(0, WC_EDIT, "Budget:", WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN | SS_CENTER, 240, 50, 200, 20, hwnd, (HMENU)EDIT2_ID, hInst, NULL);
         hEdit3 = CreateWindowEx(0, WC_EDIT, "Short description:", WS_CHILD | WS_VISIBLE | WS_BORDER | ES_MULTILINE | ES_WANTRETURN | SS_CENTER, 240, 80, 200, 20, hwnd, (HMENU)EDIT3_ID, hInst, NULL);
         // Description static - just for fun.
-        descrStatic = CreateWindowEx(0, WC_STATIC, "Startup level 228", WS_CHILD | WS_VISIBLE | SS_CENTER, 150, 130, 130, 20, hwnd, NULL, hInst, NULL);
+        descrStatic = CreateWindowEx(0, WC_STATIC, "Startup level 2016", WS_CHILD | WS_VISIBLE | SS_CENTER, 150, 130, 130, 20, hwnd, NULL, hInst, NULL);
         break;
     case WM_COMMAND:
         // If edit1 text was changed.
