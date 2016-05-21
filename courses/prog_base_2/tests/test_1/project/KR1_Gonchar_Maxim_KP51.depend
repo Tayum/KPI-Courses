@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1463824995 source:c:\users\maxgo\desktop\kr1_gonchar_maxim_kp51\main.c
+	<stdio.h>
+	<windows.h>
+	"headers/list.h"
+	"headers/chat.h"
+
+1463776275 c:\users\maxgo\desktop\kr1_gonchar_maxim_kp51\headers\list.h
+
+1424096216 c:\program files (x86)\cmocka\include\cmocka.h
+
+1463823833 c:\users\maxgo\desktop\kr1_gonchar_maxim_kp51\headers\chat.h
+	<time.h>
+	"list.h"
+
