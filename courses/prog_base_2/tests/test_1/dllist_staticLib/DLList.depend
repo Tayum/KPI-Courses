@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1463776267 source:c:\users\maxgo\desktop\dllist\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1463776275 c:\users\maxgo\desktop\dllist\list.h
+
