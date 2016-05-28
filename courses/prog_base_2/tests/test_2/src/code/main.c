@@ -136,6 +136,13 @@ int main(void)
     // At the end of the program, free allocated memory.
     socket_free(server);
     lib_free();
+    for (int i = 0; i < MAX_DIRECTORS_AMOUNT; i++)
+    {
+        director_delete(directorsSet[i]);
+    }
+    database_delete(testDB);
+    database_delete(testDB2);
+    list_delete(dirsList);
 
     // End of the program.
     return 0;
