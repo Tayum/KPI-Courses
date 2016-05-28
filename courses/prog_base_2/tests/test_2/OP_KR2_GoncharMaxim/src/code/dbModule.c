@@ -5,6 +5,7 @@
 #include "../headers/sqlite3.h"
 #include "../headers/dbModule.h"
 #include "../headers/director.h"
+#include "../headers/list.h"
 
 #ifndef TRUE
 #define TRUE 1
@@ -228,4 +229,21 @@ int database_filterDirectors(db_t * self, int K, double P, director_t **director
 
     // Return how much students belong to searched query.
     return (directorSetIndex);
+}
+
+list_t *database_getDirectorsList(db_t *self)
+{
+    list_t *out = list_new();
+    for (int i = 0; i < database_countDirectors(self); i++)
+    {
+        director_t *currDirector = database_getDirectorById(self, i + 1);
+        list_insertLast(out, (void *) currDirector);
+        printf("Director with name %s was added.\n", director_getName(currDirector));
+    }
+    return (out);
+}
+
+char *database_getName(db_t *self)
+{
+    return (self->dbPath);
 }

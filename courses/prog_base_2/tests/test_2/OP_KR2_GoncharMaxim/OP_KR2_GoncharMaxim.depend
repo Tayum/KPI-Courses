@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1464427220 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\http.c
+1464431398 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\http.c
 	<stddef.h>
 	<strings.h>
 	<stdlib.h>
@@ -13,7 +13,7 @@
 	<windows.h>
 	<WinSock2.h>
 
-1464427750 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\main.c
+1464434746 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\main.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -48,18 +48,20 @@
 
 1463776275 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\list.h
 
-1464376965 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\dbmodule.c
+1464434195 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\dbmodule.c
 	<stdlib.h>
 	<stdio.h>
 	<strings.h>
 	"../headers/sqlite3.h"
 	"../headers/dbModule.h"
 	"../headers/director.h"
+	"../headers/list.h"
 
-1464425752 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\dbmodule.h
+1464434147 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\dbmodule.h
 	"../headers/director.h"
+	"../headers/list.h"
 
-1464382701 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\xmlmodule.c
+1464434564 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\xmlmodule.c
 	<stdlib.h>
 	<stdio.h>
 	<strings.h>
@@ -191,8 +193,9 @@
 	<libxml/parser.h>
 	<libxml/xlink.h>
 
-1464383631 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\xmlmodule.h
+1464434351 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\xmlmodule.h
 	"../headers/director.h"
+	"../headers/list.h"
 
 1464425105 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\fshelper.c
 	<stdio.h>

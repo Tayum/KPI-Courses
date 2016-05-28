@@ -31,7 +31,6 @@ int main(void)
     socket_listen(server);
 
     // Create directors set.
-    int directorsAmount = INITIAL_DIRECTORS_AMOUNT;
     director_t *directorsSet[MAX_DIRECTORS_AMOUNT];
     for (int i = 0; i < MAX_DIRECTORS_AMOUNT; i++)
     {
@@ -41,6 +40,10 @@ int main(void)
 
     // Create database entity.
     db_t *testDB = database_new(DATABASE_FILE_PATH);
+    db_t *testDB2 = database_new(DATABASE_FILE_PATH2);
+
+    // List to hold all directors together.
+    list_t *dirsList;
 
     // Buffer for socket messages.
     char socketBuffer[10000] = "\0";
@@ -60,13 +63,57 @@ int main(void)
         // Invoke certain http request method.
         if (!strcmp(request.method, "GET"))
         {
+            // First task. (2)
             if (!strcmp(request.uri, "/info"))
             {
                 http_sendXML(client, "src/data/Info.xml");
             }
+            // Second task. (3)
             else if (!strcmp(request.uri, "/external"))
             {
-                http_sendHtml(client, "src/data/NotDone.xml");
+                http_sendHtml(client, "src/html/notDone.html");
+            }
+            // Third task (5)
+            else if (!strcmp(request.uri, "/database"))
+            {
+                dirsList = database_getDirectorsList(testDB);
+                xmlModule_listToXML(dirsList);
+                http_sendXML(client, "src/data/Directors.xml");
+            }
+            // Fourth task (10);
+            else if (strstr(request.uri, "/database/tables/"))
+            {
+                // Buffer to hold certain table name.
+                char tableName[200] = "\0";
+                // Get table name.
+                int checkCode = sscanf(request.uri, "/database/tables/%s", tableName);
+
+                // User can use only two databases: Director1 or Director2.
+                if (checkCode != 0 && (!strcmp("Directors", tableName) || !strcmp("Directors2", tableName)))
+                {
+                    // Send data about certain database!
+                    if (!strcmp("Directors", tableName))
+                    {
+                        dirsList = database_getDirectorsList(testDB);
+                        xmlModule_xmlDatabaseInfo(list_getSize(dirsList), "Directors", XML_FILE_PATH);
+                        http_sendXML(client, XML_FILE_PATH);
+                    }
+                    else if (!strcmp("Directors2", tableName))
+                    {
+                        dirsList = database_getDirectorsList(testDB2);
+                        xmlModule_xmlDatabaseInfo(list_getSize(dirsList), "Directors2", XML_FILE_PATH2);
+                        http_sendXML(client, XML_FILE_PATH2);
+                    }
+                }
+                // Handle situation, when there is no certain database.
+                else
+                {
+                    http_sendHtml(client, "src/html/databaseHelp.html");
+                }
+            }
+            else
+            {
+                http_sendHtml(client, "src/html/pageNotFound.html");
             }
         }
         else if (!strcmp(request.method, "KEEPALIVE"))
