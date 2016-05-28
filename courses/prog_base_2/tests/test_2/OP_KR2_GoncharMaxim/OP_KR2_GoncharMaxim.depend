@@ -1,31 +1,41 @@
 # depslib dependency file v1.0
-1464371738 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\http.c
+1464427220 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\http.c
 	<stddef.h>
 	<strings.h>
 	<stdlib.h>
 	<stdio.h>
 	"../headers/http.h"
 
-1461522622 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\http.h
+1464426552 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\http.h
 	"socket.h"
 
-1460754716 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\socket.h
+1464419003 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\socket.h
+	<windows.h>
+	<WinSock2.h>
 
-1464382005 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\main.c
+1464427750 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\main.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
+	<WinSock2.h>
+	<windows.h>
+	<conio.h>
 	"../headers/sqlite3.h"
 	"../headers/dbModule.h"
 	"../headers/director.h"
 	"../headers/list.h"
 	"../headers/xmlModule.h"
+	"../headers/http.h"
+	"../headers/socket.h"
+	"../headers/FSHelper.h"
 
 1450771366 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\sqlite3.h
 	<stdarg.h>
 
-1464371746 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\socket_win.c
-	<winsock2.h>
+1464419496 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\socket_win.c
+	<WinSock2.h>
+	<windows.h>
+	<stdio.h>
 	"../headers/socket.h"
 
 1464382078 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\director.c
@@ -46,10 +56,10 @@
 	"../headers/dbModule.h"
 	"../headers/director.h"
 
-1464380565 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\dbmodule.h
+1464425752 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\dbmodule.h
 	"../headers/director.h"
 
-1464381516 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\xmlmodule.c
+1464382701 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\xmlmodule.c
 	<stdlib.h>
 	<stdio.h>
 	<strings.h>
@@ -181,6 +191,20 @@
 	<libxml/parser.h>
 	<libxml/xlink.h>
 
-1464381553 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\xmlmodule.h
+1464383631 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\xmlmodule.h
 	"../headers/director.h"
+
+1464425105 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\fshelper.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<dirent.h>
+	<windows.h>
+	"../headers/FSHelper.h"
+
+1464417589 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\fshelper.h
+	<time.h>
 

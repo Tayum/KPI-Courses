@@ -93,3 +93,26 @@ void http_sendHtml(socket_t *client, char *htmlPath)
     fclose(f);
     socket_close(client);
 }
+
+void http_sendXML(socket_t *client, char *xmlPath)
+{
+    char xmlContentToReceive[100000];
+    FILE *f = fopen(xmlPath, "r");
+    int len = fread(xmlContentToReceive, 1, sizeof(xmlContentToReceive), f);
+    xmlContentToReceive[len] = '\0';
+
+    char xmlContentToSend[1024] = "\0";
+    sprintf(xmlContentToSend,
+            "HTTP/1.1 %s\n"
+            "Content-Type: application/xml\n"
+            "Content-Length: %d\n"
+            "Connection: keep-alive\r\n\r\n"
+            "\n%s",
+            (strstr(xmlContentToReceive, "404 page</title>") == NULL) ? "200 OK" : "404",
+            strlen(xmlContentToReceive),
+            xmlContentToReceive);
+    socket_write_string(client, xmlContentToSend);
+
+    fclose(f);
+    socket_close(client);
+}

@@ -3,6 +3,9 @@
 #include "../headers/director.h"
 
 #define DATABASE_FILE_PATH "src/data/Directors.db"
+#define INITIAL_DIRECTORS_AMOUNT 5
+
+#define MAX_DIRECTORS_AMOUNT 100
 
 typedef struct db_s db_t;
 

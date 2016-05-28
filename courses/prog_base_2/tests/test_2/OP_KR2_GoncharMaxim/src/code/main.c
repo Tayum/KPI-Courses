@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
+#include <WinSock2.h>
+#include <windows.h>
+#include <conio.h>
 
 #include "../headers/sqlite3.h"
 #include "../headers/dbModule.h"
@@ -9,13 +12,16 @@
 #include "../headers/xmlModule.h"
 #include "../headers/http.h"
 #include "../headers/socket.h"
+#include "../headers/FSHelper.h"
 
 #ifndef TRUE
 #define TRUE
 #endif // TRUE
 
-int main(void) {
+#define CURL_STATICLIB
 
+int main(void)
+{
     // Begin work with sockets.
     lib_init();
 
@@ -25,9 +31,9 @@ int main(void) {
     socket_listen(server);
 
     // Create directors set.
-    int directorsAmount = 5;
-    director_t *directorsSet[100];
-    for (int i = 0; i < 100; i++)
+    int directorsAmount = INITIAL_DIRECTORS_AMOUNT;
+    director_t *directorsSet[MAX_DIRECTORS_AMOUNT];
+    for (int i = 0; i < MAX_DIRECTORS_AMOUNT; i++)
     {
         directorsSet[i] = director_new_empty();
     }
@@ -37,22 +43,42 @@ int main(void) {
     db_t *testDB = database_new(DATABASE_FILE_PATH);
 
     // Buffer for socket messages.
-    char socketBuffer[10000];
-    memset(socketBuffer, 0, 10000);
+    char socketBuffer[10000] = "\0";
 
     while (TRUE)
     {
+        printf("Waiting for connection...");
+
+        // Get message from server.
         socket_t *client = socket_accept(server);
         socket_read(client, socketBuffer, sizeof(socketBuffer));
-
         printf("%s", socketBuffer);
 
+        // Parse message from server to structure http_request_t.
         http_request_t request = http_request_parse(socketBuffer);
 
-        // if-else loop
-
-        // end of if-else loop
-
+        // Invoke certain http request method.
+        if (!strcmp(request.method, "GET"))
+        {
+            if (!strcmp(request.uri, "/info"))
+            {
+                http_sendXML(client, "src/data/Info.xml");
+            }
+            else if (!strcmp(request.uri, "/external"))
+            {
+                http_sendHtml(client, "src/data/NotDone.xml");
+            }
+        }
+        else if (!strcmp(request.method, "KEEPALIVE"))
+        {
+            // Handler for empty request.
+            // Program shouldn't do anything in this case.
+            http_sendHtml(client, "src/html/emptyMethod.html");
+        }
+        else
+        {
+            http_sendHtml(client, "src/html/incorrectMethod.html");
+        }
         socket_free(client);
     }
 

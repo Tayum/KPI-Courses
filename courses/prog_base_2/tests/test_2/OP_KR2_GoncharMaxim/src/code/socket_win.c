@@ -1,4 +1,6 @@
-#include <winsock2.h>
+#include <WinSock2.h>
+#include <windows.h>
+#include <stdio.h>
 #include "../headers/socket.h"
 
 struct socket_s {
@@ -109,11 +111,84 @@ static WSADATA wsa;
 
 void
 lib_init(void) {
-    WSAStartup(MAKEWORD(2, 2), &wsa);
-    // @todo check status != 0
+    int status = WSAStartup(MAKEWORD(2, 2), &wsa);
+    if (status == 1)
+    {
+        fprintf(stderr, "Cannot initialize dll - WSAStartup failed.");
+        exit(1);
+    }
 }
 
 void
 lib_free(void) {
     WSACleanup();
+}
+
+SOCKET socket_create_v2()
+{
+    SOCKET recvSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (recvSocket == INVALID_SOCKET)
+    {
+        fprintf(stderr, "Socket creation failed.");
+        WSACleanup();
+        return (0);
+    }
+    return (recvSocket);
+}
+
+void socket_connect_v2(SOCKET recvSocket, SOCKADDR_IN recvSockAddr)
+{
+    if (connect(recvSocket, (SOCKADDR*)&recvSockAddr, sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
+    {
+        fprintf(stderr, "Socket connection failed.");
+        closesocket(recvSocket);
+        WSACleanup();
+    }
+}
+
+void socket_sendRequest_v2(const char * host_name, SOCKET recvSocket)
+{
+    char request[200];
+    sprintf(request, "GET /var/4 HTTP/1.1\r\nHost:%s\r\n\r\n", host_name);
+    send(recvSocket, request, strlen(request), 0);
+}
+
+void socket_sendPost_v2(    SOCKET recvSocket, char * host_name, char *avg)
+{
+    char result[30];
+    char request[200];
+    sprintf(result, "result=%s", avg);
+    sprintf(request, "POST /var/4 HTTP/1.1\r\nHost: %s\r\nContent-length: %d\r\n\r\n%s\r\n", host_name, strlen(result), result);
+    send(recvSocket, request, strlen(request), 0);
+}
+
+void socket_receiveInfo_v2(SOCKET recvSocket, char * maxBuff)
+{
+    int status;
+    int numrcv = recv(recvSocket, maxBuff, MAXBUFLEN, NO_FLAGS_SET);
+    if (numrcv == SOCKET_ERROR)
+    {
+        fprintf(stderr, "Socket failed receiving info.");
+        status = closesocket(recvSocket);
+        if (status == SOCKET_ERROR)
+        {
+            fprintf(stderr, "Socket closing failed.");
+        }
+        status = WSACleanup();
+        if (status == SOCKET_ERROR)
+        {
+            fprintf(stderr, "WSACleanup failed.");
+        }
+    }
+}
+
+int initDLL_v2(WSADATA Data)
+{
+    int status = WSAStartup(MAKEWORD(2, 2), &Data);
+    if (status != 0)
+    {
+        printf("ERRIR IN WSASTARTUP\n");
+        exit(1);
+    }
+    return (status);
 }

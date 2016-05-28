@@ -31,10 +31,10 @@ int dir_printFiles(const char * dirname) {
     dp = opendir (dirname);
     if (dp != NULL) {
         while ((ep = readdir (dp))) {
-            if(32 == dp->dd_dta.attrib) {
-                puts(dp->dd_dir.d_name);
-                file_count++;
-            }
+            //if(32 == dp->dd_dta.attrib) {
+            //    puts(dp->dd_dir.d_name);
+            //    file_count++;
+            //}
         }
         (void) closedir (dp);
         return file_count;
