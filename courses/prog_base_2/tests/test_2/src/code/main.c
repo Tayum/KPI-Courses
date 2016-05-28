@@ -13,6 +13,7 @@
 #include "../headers/http.h"
 #include "../headers/socket.h"
 #include "../headers/FSHelper.h"
+#include "../headers/client.h"
 
 #ifndef TRUE
 #define TRUE
@@ -44,6 +45,9 @@ int main(void)
 
     // List to hold all directors together.
     list_t *dirsList;
+
+    // R.A. host name for second task.
+    const char *hostName = "http://pb-homework.appspot.com/test/var/19?format=xml";
 
     // Buffer for socket messages.
     char socketBuffer[10000] = "\0";

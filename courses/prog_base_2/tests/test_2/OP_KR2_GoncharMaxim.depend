@@ -13,7 +13,7 @@
 	<windows.h>
 	<WinSock2.h>
 
-1464434746 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\main.c
+1464437295 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\main.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -28,6 +28,7 @@
 	"../headers/http.h"
 	"../headers/socket.h"
 	"../headers/FSHelper.h"
+	"../headers/client.h"
 
 1450771366 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\sqlite3.h
 	<stdarg.h>
@@ -210,4 +211,16 @@
 
 1464417589 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\fshelper.h
 	<time.h>
+
+1464436803 source:c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\code\client.c
+	<winsock2.h>
+	<stdio.h>
+	<stdlib.h>
+	"../headers/client.h"
+	"../headers/socket.h"
+
+1464436781 c:\users\maxgo\desktop\op_kr2_goncharmaxim\src\headers\client.h
+	<windows.h>
+	<winsock2.h>
+	"../headers/socket.h"
 
