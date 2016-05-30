@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1464608330 source:c:\users\maxgo\desktop\nlp\src\code\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"../headers/textModule.h"
+	"../headers/list.h"
+
+1464608257 c:\users\maxgo\desktop\nlp\src\headers\textmodule.h
+	"../headers/list.h"
+
+1463776275 c:\users\maxgo\desktop\nlp\src\headers\list.h
+
+1464607646 source:c:\users\maxgo\desktop\nlp\src\code\textmodule.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"../headers/textModule.h"
+	"../headers/list.h"
+
