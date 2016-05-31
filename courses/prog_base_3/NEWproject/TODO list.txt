@@ -1,0 +1,24 @@
+1. Formulas for all fields in DragonEnemy class.
+2. Formulas in GeneralState class for more balance
+3. Formulas for achievements in achievements.cpp
+4. Formulas for perks cost.
+5. Formulas for HeroPowers upgrading cost.
+6. Size for NotMain Dialog windows.
+7. New windows should open not at the center but somewhere aside.
+8. In heropowers: how much time left until certain heropower ends.
+9. Save your game stats when player quits the game(or automatically).
+10. Achievements class - do achievements for hidden_MLG and hidden_TenEach 
+11. Alert "Not enough gold".
+12. Some shortcuts.
+13. ToolTips events in Dialogs.
+14. Perks: diamondsValue - wtf is this? think about this perk.
+15. Perks: eldorado shouldn`t be free to use.
+16. qt scrolling Dialogs.
+17. New field - TotalClicksMade into the generalState class
+18. New field - TotalCriticalClicksMade into the generalState class
+19. Total diamonds collected
+21. ѕродолжить удал€ть занки вопроса на DIALOG окнах
+22. ¬о всех классах добавить много delete.
+23. #pragma once in all header files.
+
+Add more comments at the end of your work!
