@@ -1,0 +1,197 @@
+# depslib dependency file v1.0
+1446671344 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1464817934 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\src\code\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../headers/socket.h"
+	"../headers/http.h"
+	"../headers/server.h"
+
+1464382078 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\src\code\director.c
+	<stdlib.h>
+	<stdio.h>
+	<strings.h>
+	"../headers/director.h"
+
+1464373688 c:\users\maxgo\desktop\op_lab4_maximgonchar\src\headers\director.h
+
+1464850283 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\src\code\http.c
+	<stddef.h>
+	<strings.h>
+	<stdlib.h>
+	<stdio.h>
+	"../headers/http.h"
+
+1464778821 c:\users\maxgo\desktop\op_lab4_maximgonchar\src\headers\http.h
+	"socket.h"
+
+1464419003 c:\users\maxgo\desktop\op_lab4_maximgonchar\src\headers\socket.h
+	<windows.h>
+	<WinSock2.h>
+
+1464419496 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\src\code\socket_win.c
+	<WinSock2.h>
+	<windows.h>
+	<stdio.h>
+	"../headers/socket.h"
+
+1464869717 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\src\code\server.c
+	<strings.h>
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"../headers/director.h"
+	"../headers/xmlModule.h"
+	"../headers/server.h"
+
+1464869379 c:\users\maxgo\desktop\op_lab4_maximgonchar\src\headers\xmlmodule.h
+	"../headers/director.h"
+
+1464776067 c:\users\maxgo\desktop\op_lab4_maximgonchar\src\headers\server.h
+	"../headers/http.h"
+	"../headers/socket.h"
+
+1464869869 source:c:\users\maxgo\desktop\op_lab4_maximgonchar\src\code\xmlmodule.c
+	<stdlib.h>
+	<stdio.h>
+	<strings.h>
+	"../headers/director.h"
+	"../headers/xmlModule.h"
+	<libxml/tree.h>
+	<libxml/parser.h>
+	<libxml/xmlmemory.h>
+	<libxml/xpath.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\tree.h
+	<stdio.h>
+	<libxml/xmlversion.h>
+	<libxml/xmlstring.h>
+	<libxml/xmlregexp.h>
+	<libxml/xmlmemory.h>
+
+1308512438 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlversion.h
+	<libxml/xmlexports.h>
+	<ansidecl.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlexports.h
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlstring.h
+	<stdarg.h>
+	<libxml/xmlversion.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlregexp.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+	<libxml/dict.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\dict.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlmemory.h
+	<stdio.h>
+	<libxml/xmlversion.h>
+	<libxml/threads.h>
+	<libxml/globals.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\threads.h
+	<libxml/xmlversion.h>
+	<libxml/globals.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\globals.h
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/xmlerror.h>
+	<libxml/SAX.h>
+	<libxml/SAX2.h>
+	<libxml/xmlmemory.h>
+	<libxml/threads.h>
+
+1288879124 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\parser.h
+	<stdarg.h>
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+	<libxml/dict.h>
+	<libxml/hash.h>
+	<libxml/valid.h>
+	<libxml/entities.h>
+	<libxml/xmlerror.h>
+	<libxml/xmlstring.h>
+	<libxml/encoding.h>
+	<libxml/xmlIO.h>
+	<libxml/globals.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\hash.h
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/dict.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\valid.h
+	<libxml/xmlversion.h>
+	<libxml/xmlerror.h>
+	<libxml/tree.h>
+	<libxml/list.h>
+	<libxml/xmlautomata.h>
+	<libxml/xmlregexp.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlerror.h
+	<libxml/parser.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\list.h
+	<libxml/xmlversion.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlautomata.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+	<libxml/xmlregexp.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\entities.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+
+1288882432 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\encoding.h
+	<libxml/xmlversion.h>
+	<iconv.h>
+	<unicode/ucnv.h>
+	<libxml/tree.h>
+
+1146770614 c:\libsxml\iconv-1.9.2.win32\iconv-1.9.2.win32\include\iconv.h
+	"iconv.h"
+	<stddef.h>
+	<errno.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xmlio.h
+	<stdio.h>
+	<libxml/xmlversion.h>
+	<libxml/globals.h>
+	<libxml/tree.h>
+	<libxml/parser.h>
+	<libxml/encoding.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\sax.h
+	<stdio.h>
+	<stdlib.h>
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/xlink.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xlink.h
+	<libxml/xmlversion.h>
+	<libxml/tree.h>
+
+1253806320 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\sax2.h
+	<stdio.h>
+	<stdlib.h>
+	<libxml/xmlversion.h>
+	<libxml/parser.h>
+	<libxml/xlink.h>
+
+1286864732 c:\libsxml\libxml2-2.7.8.win32\libxml2-2.7.8.win32\include\libxml\xpath.h
+	<libxml/xmlversion.h>
+	<libxml/xmlerror.h>
+	<libxml/tree.h>
+	<libxml/hash.h>
+
