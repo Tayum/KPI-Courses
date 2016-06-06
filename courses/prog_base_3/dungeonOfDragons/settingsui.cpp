@@ -40,7 +40,7 @@ void SettingsUI::updateUI()
     this->ui->val_lbl_7->setText(QString::number(this->stats->CurrentTapDamage));
     this->ui->val_lbl_8->setText(QString::number(this->stats->CurrentCriticalChance));
     this->ui->val_lbl_9->setText(QString::number(this->stats->CurrentArmyDamage));
-    this->ui->val_lbl_10->setText(QString::number(this->stats->DPSMultiplier));
+    this->ui->val_lbl_10->setText(QString::number(this->stats->MonsterHPDecreaser));
     this->ui->val_lbl_11->setText(QString::number(this->stats->CriticalHitMultiplier));
     this->ui->val_lbl_12->setText(QString::number(this->stats->GoldMultiplier));
     this->ui->val_lbl_13->setText(QString::number(this->stats->TotalGoldCollected));

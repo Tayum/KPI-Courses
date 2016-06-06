@@ -47,51 +47,17 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     this->statsUIUpdateTimer->start(100);
 
     // "Hire army" tab.
-    // Get text in labels and buttons from .txt file.
-    for (int i = 1; i < 16; i++)
+    // Get text in labels and buttons from .csv file.
+    for (int i = 0; i < SOLDIERS_AMOUNT; i++)
     {
-        // Pack #1.
         // Buttons.
-        QString curBtnName = QString("soldier_btn_%1").arg(i);
+        QString curBtnName = QString("soldier_btn_%1").arg(i + 1);
         QPushButton *curButton = this->ui->tabWidget->findChild<QPushButton *>(curBtnName);
         connect(curButton, SIGNAL(released()), this, SLOT(buySoldier()));
-        curButton->setText(this->army->army[i - 1].Name);
-        // DPS labels.
-        QString curDpsLblName = QString("soldier_dmg_lbl_%1").arg(i);
-        QLabel *curDpsLabel = this->ui->tabWidget->findChild<QLabel *>(curDpsLblName);
-        curDpsLabel->setText(QString::number(this->army->army[i - 1].DPS));
-        // Price labels.
-        QString curPriceLblName = QString("soldier_price_lbl_%1").arg(i);
-        QLabel *curPriceLabel = this->ui->tabWidget->findChild<QLabel *>(curPriceLblName);
-        curPriceLabel->setText(QString::number(this->army->army[i - 1].Price));
-
-        // Pack #2.
-        // Buttons.
-        QString curBtnNamePack2 = QString("soldier_2_btn_%1").arg(i);
-        QPushButton *curButtonPack2 = this->ui->tabWidget->findChild<QPushButton *>(curBtnNamePack2);
-        connect(curButtonPack2, SIGNAL(released()), this, SLOT(buySoldier()));
-        curButtonPack2->setText(this->army->army[i - 1 + 15].Name);
-        // DPS labels.
-        QString curDpsLblNamePack2 = QString("soldier_2_dmg_lbl_%1").arg(i);
-        QLabel *curDpsLabelPack2 = this->ui->tabWidget->findChild<QLabel *>(curDpsLblNamePack2);
-        curDpsLabelPack2->setText(QString::number(this->army->army[i - 1 + 15].DPS));
-        // Price labels.
-        QString curPriceLblNamePack2 = QString("soldier_2_price_lbl_%1").arg(i);
-        QLabel *curPriceLabelPack2 = this->ui->tabWidget->findChild<QLabel *>(curPriceLblNamePack2);
-        curPriceLabelPack2->setText(QString::number(this->army->army[i - 1 + 15].Price));
+        curButton->setText(this->army->army[i].Name);
     }
-}
-
-BattleFieldUI::~BattleFieldUI()
-{
-    delete this->ui;
-    delete this->achievements;
-    delete this->army;
-    delete this->enemy;
-    delete this->stats;
-    delete this->heropowers;
-    delete this->armyAttackTimer;
-    delete this->statsUIUpdateTimer;
+    // Update DPS and Price labels.
+    this->updateHireArmyUI();
 }
 
 void BattleFieldUI::armyAttack()
@@ -125,13 +91,38 @@ void BattleFieldUI::uiUpdate()
     this->ui->dmndState_lbl->setText(QString("Diamonds: %1").arg(this->stats->CurrentDiamonds));
     this->ui->goldState_lbl->setText(QString("Gold: %1").arg(this->stats->CurrentGold));
     this->ui->tapDmg_lbl->setText(QString("Tap damage: %1").arg(this->stats->CurrentTapDamage));
-    this->ui->currentLevel_lbl->setText(QString("Level: %1/%2").arg(this->stats->CurrentLevel).arg(300));
+    this->ui->currentLevel_lbl->setText(QString("Level: %1").arg(this->stats->CurrentLevel));
 
     // Update Achievements class fields - check if achievements were unlocked.
     this->achievements->checkAchievements(this->stats);
     // Update total time played in GlobalState class.
     this->stats->TotalPlayTime = this->stats->TotalPlayTime.addMSecs(100);
     this->stats->checkDayPassed();
+
+    // Update DPS and Price labels in HireArmy tab.
+    this->updateHireArmyUI();
+
+    // Update Artifacts levels.
+    this->ui->goldArtLvl_lbl->setText(QString::number(this->stats->GoldMultiplier * 100) + QString("%"));
+    this->ui->dmndsArtLvl_lbl->setText(QString::number(this->stats->DiamondsMultiplier * 100) + QString("%"));
+    this->ui->critArtLvl_lbl->setText(QString::number(this->stats->CriticalHitMultiplier * 100) + QString("%"));
+    this->ui->hpdecrArtLvl_lbl->setText(QString::number(this->stats->MonsterHPDecreaser * 100) + QString("%"));
+    this->ui->perksArtLvl_lbl->setText(QString::number(this->stats->PerksCostDecreaser * 100) + QString("%"));
+}
+
+void BattleFieldUI::updateHireArmyUI()
+{
+    for (int i = 0; i < SOLDIERS_AMOUNT; i++)
+    {
+        // DPS labels.
+        QString curDpsLblName = QString("soldier_dmg_lbl_%1").arg(i + 1);
+        QLabel *curDpsLabel = this->ui->tabWidget->findChild<QLabel *>(curDpsLblName);
+        curDpsLabel->setText(QString::number(this->army->army[i].DPS * this->army->soldiersAmount[i]) + QString(" DPS"));
+        // Price labels.
+        QString curPriceLblName = QString("soldier_price_lbl_%1").arg(i + 1);
+        QLabel *curPriceLabel = this->ui->tabWidget->findChild<QLabel *>(curPriceLblName);
+        curPriceLabel->setText(QString::number(this->army->army[i].Price) + QString(" G"));
+    }
 }
 
 void BattleFieldUI::buySoldier()
@@ -156,6 +147,8 @@ void BattleFieldUI::buySoldier()
         this->stats->CurrentArmyDamage += this->army->army[index].DPS;
         // Payment for the hire.
         this->stats->CurrentGold -= this->army->army[index].Price;
+        // Increase army hiring price.
+        this->army->army[index].Price *= 1.15;
     }
 }
 
@@ -169,7 +162,6 @@ void BattleFieldUI::closeEvent(QCloseEvent *e)
     }
     else
     {
-        this->~BattleFieldUI();
         e->accept();
     }
 }
@@ -304,4 +296,84 @@ void BattleFieldUI::returnPrevSettings_artas()
     disconnect(heropowers->artasTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_artas()));
     this->stats->CurrentTapDamage -= ARTAS_UPGRADE_VALUE;
     this->heropowers->artasCD = true;
+}
+
+void BattleFieldUI::on_goldArt_btn_clicked()
+{
+    if (this->stats->CurrentDiamonds >= MULTIPLIER_COST)
+    {
+        if (this->stats->GoldMultiplier >= 0.8) {
+            this->stats->GoldMultiplier = 0.9;
+            this->ui->goldArt_btn->setEnabled(false);
+            return;
+        }
+        // Pay for buying artifact.
+        this->stats->CurrentDiamonds -= MULTIPLIER_COST;
+        // Get artifact effect.
+        this->stats->GoldMultiplier += 0.1;
+    }
+}
+
+void BattleFieldUI::on_dmndsArt_btn_clicked()
+{
+    if (this->stats->CurrentDiamonds >= MULTIPLIER_COST)
+    {
+        if (this->stats->DiamondsMultiplier >= 0.8) {
+            this->stats->DiamondsMultiplier = 0.9;
+            this->ui->dmndsArt_btn->setEnabled(false);
+            return;
+        }
+        // Pay for buying artifact.
+        this->stats->CurrentDiamonds -= MULTIPLIER_COST;
+        // Get artifact effect.
+        this->stats->DiamondsMultiplier += 0.1;
+    }
+}
+
+void BattleFieldUI::on_critArt_btn_clicked()
+{
+    if (this->stats->CurrentDiamonds >= MULTIPLIER_COST)
+    {
+        if (this->stats->CriticalHitMultiplier >= 0.5) {
+            this->stats->CriticalHitMultiplier = 0.6;
+            this->ui->critArt_btn->setEnabled(false);
+            return;
+        }
+        // Pay for buying artifact.
+        this->stats->CurrentDiamonds -= MULTIPLIER_COST;
+        // Get artifact effect.
+        this->stats->CriticalHitMultiplier += 0.1;
+    }
+}
+
+void BattleFieldUI::on_hpdecrArt_btn_clicked()
+{
+    if (this->stats->CurrentDiamonds >= MULTIPLIER_COST)
+    {
+        if (this->stats->MonsterHPDecreaser >= 0.8) {
+            this->stats->MonsterHPDecreaser = 0.9;
+            this->ui->hpdecrArt_btn->setEnabled(false);
+            return;
+        }
+        // Pay for buying artifact.
+        this->stats->CurrentDiamonds -= MULTIPLIER_COST;
+        // Get artifact effect.
+        this->stats->MonsterHPDecreaser += 0.1;
+    }
+}
+
+void BattleFieldUI::on_perksArt_btn_clicked()
+{
+    if (this->stats->CurrentDiamonds >= MULTIPLIER_COST)
+    {
+        if (this->stats->PerksCostDecreaser >= 0.8) {
+            this->stats->PerksCostDecreaser = 0.9;
+            this->ui->perksArt_btn->setEnabled(false);
+            return;
+        }
+        // Pay for buying artifact.
+        this->stats->CurrentDiamonds -= MULTIPLIER_COST;
+        // Get artifact effect.
+        this->stats->PerksCostDecreaser += 0.1;
+    }
 }

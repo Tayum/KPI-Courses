@@ -2,6 +2,8 @@
 
 #include <QTime>
 
+#define MULTIPLIER_COST 20
+
 class Stats
 {
 public:
@@ -15,14 +17,16 @@ public:
     double CurrentCriticalChance;
     // General status fields.
     int ArmyAmount;
-    int ArtifactsUnlocked;
-    int AwardsCollected;
-    int HeropowersUnlocked;
-    int MissionsCompleted;
+    int ArtifactsUnlocked; // TODO
+    int AwardsCollected; // TODO
+    int HeropowersUnlocked; // TODO
+    int MissionsCompleted; // TODO
     // Multipliers.
     double CriticalHitMultiplier;
-    double DPSMultiplier;
     double GoldMultiplier;
+    double DiamondsMultiplier;
+    double MonsterHPDecreaser;
+    double PerksCostDecreaser;
     // Total status fields.
     int TotalGoldCollected;
     int TotalDiamondsCollected;

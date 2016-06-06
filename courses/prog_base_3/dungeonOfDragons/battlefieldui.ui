@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>740</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>800</width>
-    <height>740</height>
+    <height>700</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -62,6 +62,9 @@
             <property name="text">
              <string>Settings</string>
             </property>
+            <property name="shortcut">
+             <string>Alt+S</string>
+            </property>
            </widget>
           </item>
           <item>
@@ -74,6 +77,9 @@
             </property>
             <property name="text">
              <string>Ranking</string>
+            </property>
+            <property name="shortcut">
+             <string>Alt+R</string>
             </property>
            </widget>
           </item>
@@ -124,6 +130,9 @@
             <property name="text">
              <string>Achievements</string>
             </property>
+            <property name="shortcut">
+             <string>Alt+A</string>
+            </property>
            </widget>
           </item>
           <item>
@@ -137,6 +146,9 @@
             <property name="text">
              <string>Perks</string>
             </property>
+            <property name="shortcut">
+             <string>Alt+P</string>
+            </property>
            </widget>
           </item>
          </layout>
@@ -146,11 +158,14 @@
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>500</height>
+            <height>450</height>
            </size>
           </property>
           <property name="text">
            <string>Huge monster here!</string>
+          </property>
+          <property name="shortcut">
+           <string/>
           </property>
           <property name="default">
            <bool>true</bool>
@@ -159,6 +174,9 @@
         </item>
         <item row="2" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
@@ -251,6 +269,297 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="HeroPowers_tab">
+       <attribute name="title">
+        <string>Hero powers</string>
+       </attribute>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>11</x>
+          <y>10</y>
+          <width>761</width>
+          <height>641</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_19">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="tapDmg_btn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>75</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Increase Tap damage</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="tapDmgHeroPower_cost">
+               <property name="text">
+                <string>3 diamonds</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_15">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="anduinMagic_btn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>75</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Holy Anduin magic</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="anduinHeroPower_cost">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>64</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>3 diamonds</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="sylvanasCritical_btn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>75</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Sylvanas critical blades</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="sylvanasHeroPower_cost">
+               <property name="text">
+                <string>3 diamonds</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="guldanRampage_btn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>75</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Gul`dan rampage</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="guldanHeroPower_cost_2">
+               <property name="text">
+                <string>5 diamonds</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>5</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="artasUnity_btn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>75</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Artas unity</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="artasHeroPower_cost_3">
+               <property name="text">
+                <string>3 diamonds</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>20</number>
+           </property>
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>20</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="tapDmgHeroPowerDescription_lbl">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allows you to increase your Tap damage by 1.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="anduinMagicHeroPowerDescription_lbl">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage in 3 times for 5 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="sylvanasHeroPowerDescription_lbl">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Critical Chance by 25% for 10 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="guldanHeroPowerDescription_lbl">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Army damage by 500 for 5 seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="artasUnityHeroPowerDescription_lbl">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage by 50 for 5 seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="HireArmy_tab">
        <attribute name="title">
         <string>Hire soldiers</string>
@@ -267,105 +576,105 @@
              <number>8</number>
             </property>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_1">
+             <widget class="QPushButton" name="soldier_btn_16">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_2">
+             <widget class="QPushButton" name="soldier_btn_17">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_3">
+             <widget class="QPushButton" name="soldier_btn_18">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_4">
+             <widget class="QPushButton" name="soldier_btn_19">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_5">
+             <widget class="QPushButton" name="soldier_btn_20">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_6">
+             <widget class="QPushButton" name="soldier_btn_21">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_7">
+             <widget class="QPushButton" name="soldier_btn_22">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_8">
+             <widget class="QPushButton" name="soldier_btn_23">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_9">
+             <widget class="QPushButton" name="soldier_btn_24">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_10">
+             <widget class="QPushButton" name="soldier_btn_25">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_11">
+             <widget class="QPushButton" name="soldier_btn_26">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_12">
+             <widget class="QPushButton" name="soldier_btn_27">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_13">
+             <widget class="QPushButton" name="soldier_btn_28">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_14">
+             <widget class="QPushButton" name="soldier_btn_29">
               <property name="text">
                <string>___</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="soldier_2_btn_15">
+             <widget class="QPushButton" name="soldier_btn_30">
               <property name="text">
                <string>___</string>
               </property>
@@ -376,7 +685,7 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_8">
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_1">
+             <widget class="QLabel" name="soldier_dmg_lbl_16">
               <property name="text">
                <string>-1</string>
               </property>
@@ -386,7 +695,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_2">
+             <widget class="QLabel" name="soldier_dmg_lbl_17">
               <property name="text">
                <string>-1</string>
               </property>
@@ -396,7 +705,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_3">
+             <widget class="QLabel" name="soldier_dmg_lbl_18">
               <property name="text">
                <string>-1</string>
               </property>
@@ -406,7 +715,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_4">
+             <widget class="QLabel" name="soldier_dmg_lbl_19">
               <property name="text">
                <string>-1</string>
               </property>
@@ -416,7 +725,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_5">
+             <widget class="QLabel" name="soldier_dmg_lbl_20">
               <property name="text">
                <string>-1</string>
               </property>
@@ -426,7 +735,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_6">
+             <widget class="QLabel" name="soldier_dmg_lbl_21">
               <property name="text">
                <string>-1</string>
               </property>
@@ -436,7 +745,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_7">
+             <widget class="QLabel" name="soldier_dmg_lbl_22">
               <property name="text">
                <string>-1</string>
               </property>
@@ -446,7 +755,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_8">
+             <widget class="QLabel" name="soldier_dmg_lbl_23">
               <property name="text">
                <string>-1</string>
               </property>
@@ -456,7 +765,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_9">
+             <widget class="QLabel" name="soldier_dmg_lbl_24">
               <property name="text">
                <string>-1</string>
               </property>
@@ -466,7 +775,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_10">
+             <widget class="QLabel" name="soldier_dmg_lbl_25">
               <property name="text">
                <string>-1</string>
               </property>
@@ -476,7 +785,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_11">
+             <widget class="QLabel" name="soldier_dmg_lbl_26">
               <property name="text">
                <string>-1</string>
               </property>
@@ -486,7 +795,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_12">
+             <widget class="QLabel" name="soldier_dmg_lbl_27">
               <property name="text">
                <string>-1</string>
               </property>
@@ -496,7 +805,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_13">
+             <widget class="QLabel" name="soldier_dmg_lbl_28">
               <property name="text">
                <string>-1</string>
               </property>
@@ -506,7 +815,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_14">
+             <widget class="QLabel" name="soldier_dmg_lbl_29">
               <property name="text">
                <string>-1</string>
               </property>
@@ -516,7 +825,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_dmg_lbl_15">
+             <widget class="QLabel" name="soldier_dmg_lbl_30">
               <property name="text">
                <string>-1</string>
               </property>
@@ -530,7 +839,7 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_1">
+             <widget class="QLabel" name="soldier_price_lbl_16">
               <property name="text">
                <string>-1</string>
               </property>
@@ -540,7 +849,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_2">
+             <widget class="QLabel" name="soldier_price_lbl_17">
               <property name="text">
                <string>-1</string>
               </property>
@@ -550,7 +859,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_3">
+             <widget class="QLabel" name="soldier_price_lbl_18">
               <property name="text">
                <string>-1</string>
               </property>
@@ -560,7 +869,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_4">
+             <widget class="QLabel" name="soldier_price_lbl_19">
               <property name="text">
                <string>-1</string>
               </property>
@@ -570,7 +879,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_5">
+             <widget class="QLabel" name="soldier_price_lbl_20">
               <property name="text">
                <string>-1</string>
               </property>
@@ -580,7 +889,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_6">
+             <widget class="QLabel" name="soldier_price_lbl_21">
               <property name="text">
                <string>-1</string>
               </property>
@@ -590,7 +899,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_7">
+             <widget class="QLabel" name="soldier_price_lbl_22">
               <property name="text">
                <string>-1</string>
               </property>
@@ -600,7 +909,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_8">
+             <widget class="QLabel" name="soldier_price_lbl_23">
               <property name="text">
                <string>-1</string>
               </property>
@@ -610,7 +919,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_9">
+             <widget class="QLabel" name="soldier_price_lbl_24">
               <property name="text">
                <string>-1</string>
               </property>
@@ -620,7 +929,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_10">
+             <widget class="QLabel" name="soldier_price_lbl_25">
               <property name="text">
                <string>-1</string>
               </property>
@@ -630,7 +939,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_11">
+             <widget class="QLabel" name="soldier_price_lbl_26">
               <property name="text">
                <string>-1</string>
               </property>
@@ -640,7 +949,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_12">
+             <widget class="QLabel" name="soldier_price_lbl_27">
               <property name="text">
                <string>-1</string>
               </property>
@@ -650,7 +959,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_13">
+             <widget class="QLabel" name="soldier_price_lbl_28">
               <property name="text">
                <string>-1</string>
               </property>
@@ -660,7 +969,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_14">
+             <widget class="QLabel" name="soldier_price_lbl_29">
               <property name="text">
                <string>-1</string>
               </property>
@@ -670,7 +979,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="soldier_2_price_lbl_15">
+             <widget class="QLabel" name="soldier_price_lbl_30">
               <property name="text">
                <string>-1</string>
               </property>
@@ -1128,157 +1437,198 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="HeroPowers_tab">
+      <widget class="QWidget" name="artifacts_tab">
        <attribute name="title">
-        <string>Hero powers</string>
+        <string>Artifacts</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_10">
-            <property name="spacing">
-             <number>40</number>
-            </property>
-            <item>
-             <widget class="QPushButton" name="tapDmg_btn">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Increase Tap damage</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="anduinMagic_btn">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Holy Anduin magic</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="sylvanasCritical_btn">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Sylvanas critical blades</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="guldanRampage_btn">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Gul`dan rampage</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="artasUnity_btn">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Artas unity</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_11">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>20</number>
-            </property>
-            <property name="topMargin">
-             <number>10</number>
-            </property>
-            <property name="rightMargin">
-             <number>20</number>
-            </property>
-            <property name="bottomMargin">
-             <number>10</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allows you to increase your Tap damage by 1.&lt;/p&gt;&lt;p&gt;Cost: 50 gold&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage in 3 times for 5 seconds.&lt;/p&gt;&lt;p&gt;Cost: 50 gold&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Critical Chance by 25% for 10 seconds.&lt;/p&gt;&lt;p&gt;Cost: 10 gold&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Army damage by 500 for 5 seconds.&lt;/p&gt;&lt;p&gt;Cost: 500 gold&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage by 50 for 5 seconds.&lt;/p&gt;&lt;p&gt;Cost: 10 gold&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>291</width>
+          <height>641</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_12">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="goldArt_btn">
+           <property name="text">
+            <string>Gold multiplier</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="dmndsArt_btn">
+           <property name="text">
+            <string>Diamonds multiplier</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="critArt_btn">
+           <property name="text">
+            <string>Critical hit multiplier</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="hpdecrArt_btn">
+           <property name="text">
+            <string>HP decreaser</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="perksArt_btn">
+           <property name="text">
+            <string>Perks cost decreaser</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>10</y>
+          <width>111</width>
+          <height>641</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_14">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>35</number>
+         </property>
+         <property name="bottomMargin">
+          <number>45</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="goldArtLvl_lbl">
+           <property name="text">
+            <string>__</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="dmndsArtLvl_lbl">
+           <property name="text">
+            <string>__</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="critArtLvl_lbl">
+           <property name="text">
+            <string>__</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="hpdecrArtLvl_lbl">
+           <property name="text">
+            <string>__</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="perksArtLvl_lbl">
+           <property name="text">
+            <string>__</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>10</y>
+          <width>343</width>
+          <height>641</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_13">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <property name="topMargin">
+          <number>45</number>
+         </property>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <property name="bottomMargin">
+          <number>45</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="goldArtDescr_lbl">
+           <property name="text">
+            <string>This artifact allows you gain moneyz multiplier.
+ It does... Cost... Max...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="dmndsArtDescr_lbl">
+           <property name="text">
+            <string>This artifact allows you gain diamonds multiplier. 
+It does... Cost...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="critArtDescr_lbl">
+           <property name="text">
+            <string>This artifact allows you do more critical damage! 
+It does... Cost...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="hpArtDescr_lbl">
+           <property name="text">
+            <string>This artifact will decrease monster HP to pass level easier!
+ It does... Cost...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="perksArtDescr_lbl">
+           <property name="text">
+            <string>This artiact allows you to buy и без этого забафанные перки.
+It does... Cost...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </item>

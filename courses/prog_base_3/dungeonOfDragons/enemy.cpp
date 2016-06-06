@@ -1,31 +1,29 @@
 #include "enemy.h"
 #include "stats.h"
 
-#define CRITICAL_MULTIPLIER 5
-
 Enemy::Enemy(int CurrentLevel)
 {
-    this->TotalHP = CurrentLevel;
-    this->CurrentHP = this->TotalHP;
-    this->GoldDropped = this->TotalHP + 50;
-    this->DiamondsDropped = this->TotalHP + 1;
+    TotalHP = 5 + (int) pow(1.15, CurrentLevel);
+    CurrentHP = TotalHP;
+    GoldDropped = (int) TotalHP * 0.65;
+    DiamondsDropped = CurrentLevel % 10;
 }
 
 void Enemy::goToNextDragon(Stats *stats)
 {
     // Update current and global state fields.
-    stats->CurrentGold += GoldDropped;
-    stats->CurrentDiamonds += DiamondsDropped;
+    stats->CurrentGold += ( GoldDropped + stats->GoldMultiplier * GoldDropped );
+    stats->CurrentDiamonds += ( DiamondsDropped + stats->DiamondsMultiplier * DiamondsDropped );
     stats->TotalGoldCollected += GoldDropped;
     stats->TotalDiamondsCollected += DiamondsDropped;
     stats->TotalMonsterKills++;
     stats->CurrentLevel++;
     // Generate new dragon.
-    int step = TotalHP;
-    TotalHP = step + 1;
-    CurrentHP = step;
-    GoldDropped = step + 1;
-    DiamondsDropped = step + 1;
+    TotalHP = 5 + (int) pow(1.15, stats->CurrentLevel);
+    TotalHP -= (int) TotalHP * stats->MonsterHPDecreaser;
+    CurrentHP = TotalHP;
+    GoldDropped = (int)TotalHP * 0.65;
+    DiamondsDropped = stats->CurrentLevel % 10;
 }
 
 bool Enemy::doDamage(int inDamage)
@@ -38,7 +36,7 @@ bool Enemy::doTapDamage(Stats *stats)
 {
     int randomNum = qrand() % 100;
     if(randomNum <= stats->CurrentCriticalChance * 100) {
-        this->CurrentHP -= stats->CurrentTapDamage * (CRITICAL_MULTIPLIER - 1);
+        this->CurrentHP -= stats->CurrentTapDamage * (5 - 1);
         stats->TotalCriticalTapsMade++;
     }
     stats->TotalTapsMade++;

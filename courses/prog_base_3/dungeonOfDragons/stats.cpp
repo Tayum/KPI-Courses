@@ -3,23 +3,25 @@
 Stats::Stats()
 {
     // Set default values to all fields.
+    // Multipliers.
+    this->GoldMultiplier = 0.0;
+    this->CriticalHitMultiplier = 0.0;
+    this->DiamondsMultiplier = 0.0;
+    this->MonsterHPDecreaser = 0.0;
+    this->PerksCostDecreaser = 0.0;
     // Current stats fields.
     this->CurrentLevel = 1;
-    this->CurrentGold = 123122;
-    this->CurrentDiamonds = 0;
+    this->CurrentGold = 0;
+    this->CurrentDiamonds = 100000;
     this->CurrentTapDamage = 1;
     this->CurrentArmyDamage = 0;
-    this->CurrentCriticalChance = 0.1;
+    this->CurrentCriticalChance = 0.1 + this->CriticalHitMultiplier;
     // General status fields.
     this->MissionsCompleted = 0;
     this->ArmyAmount = 0;
     this->ArtifactsUnlocked = 0;
     this->HeropowersUnlocked = 0;
     this->AwardsCollected = 0;
-    // Multipliers.
-    this->DPSMultiplier = 0.0;
-    this->GoldMultiplier = 0.0;
-    this->CriticalHitMultiplier = 0.0;
     // Total status fields.
     this->TotalGoldCollected = 0;
     this->TotalDiamondsCollected = 0;

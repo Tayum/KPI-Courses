@@ -7,11 +7,11 @@
 #define ENCHSWORD_VALUE 20
 
 // Perks cost.
-#define DIAMRUSH_COST 5000
-#define ELDORADO_COST 100
-#define ENCHSWORD_COST 100
-#define WINDFARM_COST 100
-#define PASSLVL_COST 100
+#define DIAMRUSH_COST 500000
+#define ELDORADO_COST 100000
+#define ENCHSWORD_COST 100000
+#define WINDFURY_COST 100000
+#define PASSLVL_COST 100000
 
 PerksUI::PerksUI(Stats *stats, Enemy *enemy, HeroPowers *heropowers, QWidget *parent) :
     QDialog(parent),
@@ -40,30 +40,33 @@ PerksUI::~PerksUI()
 
 void PerksUI::on_perksPassLvl_btn_clicked()
 {
+    int perkActualCost = PASSLVL_COST - this->stats->PerksCostDecreaser*PASSLVL_COST;
     // check if player has enough diamonds
-    if (this->stats->CurrentDiamonds >= PASSLVL_COST)
+    if (this->stats->CurrentDiamonds >= perkActualCost )
     {
         this->enemy->goToNextDragon(this->stats);
-        this->stats->CurrentDiamonds -= PASSLVL_COST;
+        this->stats->CurrentDiamonds -= perkActualCost ;
     }
 }
 
 void PerksUI::on_perksDmndRush_btn_clicked()
 {
-    if (this->stats->CurrentGold >= DIAMRUSH_COST)
+    int perkActualCost = DIAMRUSH_COST - this->stats->PerksCostDecreaser*DIAMRUSH_COST;
+    if (this->stats->CurrentGold >= perkActualCost)
     {
         this->stats->CurrentDiamonds += DIAMRUSH_VALUE;
         this->stats->TotalDiamondsCollected += DIAMRUSH_VALUE;
-        this->stats->CurrentGold -= DIAMRUSH_COST;
+        this->stats->CurrentGold -= perkActualCost;
     }
 }
 
 void PerksUI::on_perksEnchantedSwrd_btn_clicked()
 {
+    int perkActualCost = ENCHSWORD_COST - this->stats->PerksCostDecreaser*ENCHSWORD_COST;
     bool isKilled = false;
-    if (this->stats->CurrentDiamonds >= ENCHSWORD_COST) {
+    if (this->stats->CurrentDiamonds >= perkActualCost) {
         isKilled = this->enemy->doDamage(ENCHSWORD_VALUE);
-        this->stats->CurrentDiamonds -= ENCHSWORD_COST;
+        this->stats->CurrentDiamonds -= perkActualCost;
     }
     if (isKilled)
     {
@@ -73,18 +76,20 @@ void PerksUI::on_perksEnchantedSwrd_btn_clicked()
 
 void PerksUI::on_perksEldoradoBtn_clicked()
 {
-    if (this->stats->CurrentDiamonds >= ELDORADO_COST)
+    int perkActualCost = ELDORADO_COST - this->stats->PerksCostDecreaser*ELDORADO_COST;
+    if (this->stats->CurrentDiamonds >= perkActualCost)
     {
         this->stats->CurrentGold += ELDORADO_VALUE;
         this->stats->TotalGoldCollected += ELDORADO_VALUE;
-        this->stats->CurrentDiamonds -= ELDORADO_COST;
+        this->stats->CurrentDiamonds -= perkActualCost;
     }
 }
 
 void PerksUI::on_perksWindfury_btn_clicked()
 {
-    if (this->stats->CurrentDiamonds >= WINDFARM_COST) {
+    int perkActualCost = WINDFURY_COST - this->stats->PerksCostDecreaser*WINDFURY_COST;
+    if (this->stats->CurrentDiamonds >= perkActualCost) {
         this->heropowers->refreshCD();
-        this->stats->CurrentDiamonds -= WINDFARM_COST;
+        this->stats->CurrentDiamonds -= perkActualCost;
     }
 }

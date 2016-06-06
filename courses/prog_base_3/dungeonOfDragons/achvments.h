@@ -17,5 +17,5 @@ public:
     bool HeropowNTimes;
     bool DoNCritical;
     // Function to check if some achievement was accomplished.
-    void checkAchievements(Stats *generalState);
+    void checkAchievements(Stats *stats);
 };

@@ -301,7 +301,7 @@
            <item>
             <widget class="QLabel" name="descr_lbl_10">
              <property name="text">
-              <string>DPS multiplier</string>
+              <string>Monster HP decrease</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

@@ -25,24 +25,42 @@ Achvments::Achvments()
     this->DoNCritical = false;
 }
 
-void Achvments::checkAchievements(Stats *generalState)
+void Achvments::checkAchievements(Stats *stats)
 {
-    if(generalState->TotalGoldCollected >= N_GOLD)
+    if(stats->TotalGoldCollected >= N_GOLD && !this->EarnNGold) {
         this->EarnNGold = true;
-    if(generalState->TotalDiamondsCollected >= N_DIAMONDS)
+        stats->AwardsCollected++;
+    }
+    if(stats->TotalDiamondsCollected >= N_DIAMONDS && !this->EarnNDiamonds) {
         this->EarnNDiamonds = true;
-    if(generalState->TotalMonsterKills >= N_MONSTERS_KILLED)
+        stats->AwardsCollected++;
+    }
+    if(stats->TotalMonsterKills >= N_MONSTERS_KILLED && !this->KillNMonsters) {
         this->KillNMonsters = true;
-    if(generalState->CurrentLevel >= N_LEVELS_COMPLETED)
+        stats->AwardsCollected++;
+    }
+    if(stats->CurrentLevel >= N_LEVELS_COMPLETED && !this->ReachNStage) {
         this->ReachNStage = true;
-    if(generalState->ArtifactsUnlocked >= N_ARTIFACTS_OWNED)
+        stats->AwardsCollected++;
+    }
+    if(stats->ArtifactsUnlocked >= N_ARTIFACTS_OWNED && !this->OwnNArtifacts) {
         this->OwnNArtifacts = true;
-    if(generalState->ArmyAmount >= N_SOLDIERS_HIRED)
+        stats->AwardsCollected++;
+    }
+    if(stats->ArmyAmount >= N_SOLDIERS_HIRED && !this->HireNSoldiers) {
         this->HireNSoldiers = true;
-    if(generalState->TotalTapsMade >= N_TIMES_TAPPED)
+        stats->AwardsCollected++;
+    }
+    if(stats->TotalTapsMade >= N_TIMES_TAPPED && !this->TapNTimes) {
         this->TapNTimes = true;
-    if(generalState->HeropowersUnlocked >= N_HEROPOWERS_USED)
+        stats->AwardsCollected++;
+    }
+    if(stats->HeropowersUnlocked >= N_HEROPOWERS_USED && !this->HeropowNTimes) {
         this->HeropowNTimes = true;
-    if(generalState->CurrentCriticalChance >= N_CRITICAL)
+        stats->AwardsCollected++;
+    }
+    if(stats->CurrentCriticalChance >= N_CRITICAL && !this->DoNCritical) {
         this->DoNCritical = true;
+        stats->AwardsCollected++;
+    }
 }
