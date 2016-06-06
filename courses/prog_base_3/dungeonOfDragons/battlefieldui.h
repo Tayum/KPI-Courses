@@ -42,6 +42,7 @@ private:
 
     void closeEvent(QCloseEvent *e);
     void updateHireArmyUI();
+    QString humanizeNumber(unsigned int num);
 
 private slots:
     void armyAttack();

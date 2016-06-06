@@ -11,10 +11,10 @@ Stats::Stats()
     this->PerksCostDecreaser = 0.0;
     // Current stats fields.
     this->CurrentLevel = 1;
-    this->CurrentGold = 0;
-    this->CurrentDiamonds = 100000;
-    this->CurrentTapDamage = 1;
-    this->CurrentArmyDamage = 0;
+    this->CurrentGold = 123456;
+    this->CurrentDiamonds = 123456;
+    this->CurrentTapDamage = 123456;
+    this->CurrentArmyDamage = 123456;
     this->CurrentCriticalChance = 0.1 + this->CriticalHitMultiplier;
     // General status fields.
     this->MissionsCompleted = 0;

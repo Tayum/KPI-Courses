@@ -85,12 +85,14 @@ void BattleFieldUI::on_monster_btn_clicked()
 void BattleFieldUI::uiUpdate()
 {
     // Update info in labels, according to general stats.
-    this->ui->monsterHP_lbl->setText(QString("Monster HP: %1/%2").arg(this->enemy->CurrentHP).arg(this->enemy->TotalHP));
-    this->ui->armyDmg_lbl->setText(QString("Army damage: %1").arg(this->stats->CurrentArmyDamage));
+    this->ui->monsterHP_lbl->setText(QString("Monster HP: %1/%2")
+                                     .arg(this->humanizeNumber(this->enemy->CurrentHP))
+                                     .arg(this->humanizeNumber(this->enemy->TotalHP)));
+    this->ui->armyDmg_lbl->setText(QString("Army damage: %1").arg(this->humanizeNumber(this->stats->CurrentArmyDamage)));
     this->ui->criticalChance_lbl->setText(QString("Critical chance: %1%").arg(this->stats->CurrentCriticalChance * 100));
-    this->ui->dmndState_lbl->setText(QString("Diamonds: %1").arg(this->stats->CurrentDiamonds));
-    this->ui->goldState_lbl->setText(QString("Gold: %1").arg(this->stats->CurrentGold));
-    this->ui->tapDmg_lbl->setText(QString("Tap damage: %1").arg(this->stats->CurrentTapDamage));
+    this->ui->dmndState_lbl->setText(QString("Diamonds: %1").arg(this->humanizeNumber(this->stats->CurrentDiamonds)));
+    this->ui->goldState_lbl->setText(QString("Gold: %1").arg(this->humanizeNumber(this->stats->CurrentGold)));
+    this->ui->tapDmg_lbl->setText(QString("Tap damage: %1").arg(this->humanizeNumber(this->stats->CurrentTapDamage)));
     this->ui->currentLevel_lbl->setText(QString("Level: %1").arg(this->stats->CurrentLevel));
 
     // Update Achievements class fields - check if achievements were unlocked.
@@ -117,12 +119,28 @@ void BattleFieldUI::updateHireArmyUI()
         // DPS labels.
         QString curDpsLblName = QString("soldier_dmg_lbl_%1").arg(i + 1);
         QLabel *curDpsLabel = this->ui->tabWidget->findChild<QLabel *>(curDpsLblName);
-        curDpsLabel->setText(QString::number(this->army->army[i].DPS * this->army->soldiersAmount[i]) + QString(" DPS"));
+        unsigned int curDPSToLbl = this->army->army[i].DPS * this->army->soldiersAmount[i];
+        curDpsLabel->setText(this->humanizeNumber(curDPSToLbl) + QString(" DPS"));
         // Price labels.
         QString curPriceLblName = QString("soldier_price_lbl_%1").arg(i + 1);
         QLabel *curPriceLabel = this->ui->tabWidget->findChild<QLabel *>(curPriceLblName);
-        curPriceLabel->setText(QString::number(this->army->army[i].Price) + QString(" G"));
+        unsigned int curPrice = QString::number(this->army->army[i].Price);
+        curPriceLabel->setText(this->humanizeNumber(curPrice) + QString(" Gold"));
     }
+}
+
+QString BattleFieldUI::humanizeNumber(unsigned int num)
+{
+    QString toRet = "";
+    if (num < 1000)
+        toRet = QString::number((double)num);
+    else if (num >= 1000000000)
+        toRet = QString::number((double)num/1000000000) + " G";
+    else if (num >= 1000000)
+        toRet = QString::number((double)num/1000000) + " M";
+    else if (num >= 1000)
+        toRet = QString::number((double)num/1000) + " K";
+    return (toRet);
 }
 
 void BattleFieldUI::buySoldier()
