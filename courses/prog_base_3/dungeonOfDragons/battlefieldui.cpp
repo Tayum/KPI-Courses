@@ -14,10 +14,10 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     this->achievements = new Achvments();
     this->army = new Army();
     this->stats = new Stats();
+    this->heropowers = new HeroPowers();
     this->enemy = new Enemy(this->stats->CurrentLevel);
     this->perksUi = new PerksUI(this->stats, this->enemy, this->heropowers, this);
     this->achvmentsUi = new AchvmentsUI(this->achievements, this);
-    this->heropowers = new HeroPowers(this->stats, this);
     this->settingsUi = new SettingsUI(this->stats, this);
 
     // Main UI things.
@@ -50,6 +50,7 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     // Get text in labels and buttons from .txt file.
     for (int i = 1; i < 16; i++)
     {
+        // Pack #1.
         // Buttons.
         QString curBtnName = QString("soldier_btn_%1").arg(i);
         QPushButton *curButton = this->ui->tabWidget->findChild<QPushButton *>(curBtnName);
@@ -63,6 +64,21 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
         QString curPriceLblName = QString("soldier_price_lbl_%1").arg(i);
         QLabel *curPriceLabel = this->ui->tabWidget->findChild<QLabel *>(curPriceLblName);
         curPriceLabel->setText(QString::number(this->army->army[i - 1].Price));
+
+        // Pack #2.
+        // Buttons.
+        QString curBtnNamePack2 = QString("soldier_2_btn_%1").arg(i);
+        QPushButton *curButtonPack2 = this->ui->tabWidget->findChild<QPushButton *>(curBtnNamePack2);
+        connect(curButtonPack2, SIGNAL(released()), this, SLOT(buySoldier()));
+        curButtonPack2->setText(this->army->army[i - 1 + 15].Name);
+        // DPS labels.
+        QString curDpsLblNamePack2 = QString("soldier_2_dmg_lbl_%1").arg(i);
+        QLabel *curDpsLabelPack2 = this->ui->tabWidget->findChild<QLabel *>(curDpsLblNamePack2);
+        curDpsLabelPack2->setText(QString::number(this->army->army[i - 1 + 15].DPS));
+        // Price labels.
+        QString curPriceLblNamePack2 = QString("soldier_2_price_lbl_%1").arg(i);
+        QLabel *curPriceLabelPack2 = this->ui->tabWidget->findChild<QLabel *>(curPriceLblNamePack2);
+        curPriceLabelPack2->setText(QString::number(this->army->army[i - 1 + 15].Price));
     }
 }
 
@@ -72,9 +88,6 @@ BattleFieldUI::~BattleFieldUI()
     this->perksUi->~PerksUI();
     this->achvmentsUi->~AchvmentsUI();
     this->settingsUi->~SettingsUI();
-    delete this->perksUi;
-    delete this->achvmentsUi;
-    delete this->settingsUi;
     delete this->achievements;
     delete this->army;
     delete this->enemy;
@@ -98,7 +111,7 @@ void BattleFieldUI::armyAttack()
 void BattleFieldUI::on_monster_btn_clicked()
 {
     // Do a damage. Possible, that it will be a critical damage.
-    bool isKilled = this->enemy->doCriticalDamage(this->stats->CriticalHitMultiplier, this->stats->CurrentTapDamage);
+    bool isKilled = this->enemy->doTapDamage(this->stats);
     // Check if monster was killed.
     if (isKilled)
     {
@@ -159,6 +172,7 @@ void BattleFieldUI::closeEvent(QCloseEvent *e)
     }
     else
     {
+        this->~BattleFieldUI();
         e->accept();
     }
 }
@@ -198,25 +212,99 @@ void BattleFieldUI::on_achvments_btn_clicked()
 
 void BattleFieldUI::on_tapDmg_btn_clicked()
 {
-    emit this->heropowers->on_tapDmg_btn_clicked();
+    if(this->stats->CurrentGold >= TAPDMG_UPGRADE_COST) {
+        this->stats->CurrentTapDamage += TAPDMG_UPGRADE_VALUE;
+        this->stats->CurrentGold -= TAPDMG_UPGRADE_COST;
+    }
 }
 
 void BattleFieldUI::on_anduinMagic_btn_clicked()
 {
-    emit this->heropowers->on_anduinMagic_btn_clicked();
+    // Use ability, if cooldown equals to true.
+    if(this->heropowers->anduinCD) {
+        this->stats->CurrentTapDamage *= ANDUIN_UPGRADE_VALUE;
+        this->heropowers->anduinCD = false;
+        this->heropowers->anduinTimer->start(ANDUIN_DURATION_MS);
+        connect(heropowers->anduinTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_anduin()));
+    }
+    // Check if ability was bought.
+    if(this->stats->CurrentGold >= ANDUIN_UPGRADE_COST && !heropowers->anduinBought) {
+        this->heropowers->anduinCD = true;
+        this->heropowers->anduinBought = true;
+        this->stats->CurrentGold -= ANDUIN_UPGRADE_COST;
+    }
+}
+void BattleFieldUI::returnPrevSettings_anduin()
+{
+    this->heropowers->anduinTimer->stop();
+    disconnect(heropowers->anduinTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_anduin()));
+    this->stats->CurrentTapDamage /= ANDUIN_UPGRADE_VALUE;
+    this->heropowers->anduinCD = true;
 }
 
 void BattleFieldUI::on_sylvanasCritical_btn_clicked()
 {
-    emit this->heropowers->on_sylvanasCritical_btn_clicked();
+    if(this->heropowers->sylvanasCD) {
+        this->stats->CurrentCriticalChance += SYLVANAS_UPGRADE_VALUE;
+        this->heropowers->sylvanasCD = false;
+        this->heropowers->sylvanasTimer->start(SYLVANA_DURATION_MS);
+        connect(heropowers->sylvanasTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_sylvana()));
+    }
+    if(this->stats->CurrentGold >= SYLVANAS_UPGRADE_COST && !heropowers->sylvanasBought) {
+        this->heropowers->sylvanasCD = true;
+        this->heropowers->sylvanasBought = true;
+        this->stats->CurrentGold -= SYLVANAS_UPGRADE_COST;
+    }
+}
+void BattleFieldUI::returnPrevSettings_sylvana()
+{
+    this->heropowers->sylvanasTimer->stop();
+    disconnect(heropowers->sylvanasTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_sylvana()));
+    this->stats->CurrentCriticalChance -= SYLVANAS_UPGRADE_VALUE;
+    this->heropowers->sylvanasCD = true;
 }
 
 void BattleFieldUI::on_guldanRampage_btn_clicked()
 {
-    emit this->heropowers->on_guldanRampage_btn_clicked();
+    if(this->heropowers->guldanCD) {
+        this->stats->CurrentArmyDamage += GULDAN_UPGRADE_VALUE;
+        this->heropowers->guldanCD = false;
+        this->heropowers->guldanTimer->start(GULDAN_DURATION_MS);
+        connect(heropowers->guldanTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_guldan()));
+    }
+    if(this->stats->CurrentGold >= GULDAN_UPGRADE_COST && !heropowers->guldanBought) {
+        this->heropowers->guldanCD = true;
+        this->heropowers->guldanBought = true;
+        this->stats->CurrentGold -= GULDAN_UPGRADE_COST;
+    }
+}
+void BattleFieldUI::returnPrevSettings_guldan()
+{
+    this->heropowers->guldanTimer->stop();
+    disconnect(heropowers->guldanTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_guldan()));
+    this->stats->CurrentArmyDamage -= GULDAN_UPGRADE_VALUE;
+    this->heropowers->guldanCD = true;
 }
 
 void BattleFieldUI::on_artasUnity_btn_clicked()
 {
-    emit this->heropowers->on_artasUnity_btn_clicked();
+    if(this->heropowers->artasCD) {
+        this->stats->CurrentTapDamage += ARTAS_UPGRADE_VALUE;
+        this->heropowers->artasCD = false;
+        this->heropowers->artasTimer->start(ARTAS_DURATION_MS);
+        connect(heropowers->artasTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_artas()));
+    }
+
+    if(this->stats->CurrentGold >= ARTAS_UPGRADE_COST && !heropowers->artasBought) {
+        this->heropowers->artasCD = true;
+        this->heropowers->artasBought = true;
+        this->stats->CurrentGold -= ARTAS_UPGRADE_COST;
+    }
+}
+void BattleFieldUI::returnPrevSettings_artas()
+{
+    this->heropowers->artasTimer->stop();
+    disconnect(heropowers->artasTimer, SIGNAL(timeout()), this, SLOT(returnPrevSettings_artas()));
+    this->stats->CurrentTapDamage -= ARTAS_UPGRADE_VALUE;
+    this->heropowers->artasCD = true;
 }

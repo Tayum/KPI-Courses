@@ -5,7 +5,7 @@ Stats::Stats()
     // Set default values to all fields.
     // Current stats fields.
     this->CurrentLevel = 1;
-    this->CurrentGold = 0;
+    this->CurrentGold = 123122;
     this->CurrentDiamonds = 0;
     this->CurrentTapDamage = 1;
     this->CurrentArmyDamage = 0;
@@ -24,6 +24,7 @@ Stats::Stats()
     this->TotalGoldCollected = 0;
     this->TotalDiamondsCollected = 0;
     this->TotalTapsMade = 0;
+    this->TotalCriticalTapsMade = 0;
     this->TotalMonsterKills = 0;
     // Played time field.
     // Tracking days is needed, because of Qtime::addMSecs specific behavior.

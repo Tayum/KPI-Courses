@@ -13,6 +13,9 @@ SettingsUI::SettingsUI(Stats *stats, QWidget *parent) :
     flags &= ~Qt::WindowContextHelpButtonHint;
     this->setWindowFlags(flags);
 
+    // Set first tab as default.
+    ui->settingsTabs_tabWidget->setCurrentIndex(0);
+
     this->stats = stats;
 
     this->updateUITimer = new QTimer(this);
@@ -41,8 +44,8 @@ void SettingsUI::updateUI()
     this->ui->val_lbl_11->setText(QString::number(this->stats->CriticalHitMultiplier));
     this->ui->val_lbl_12->setText(QString::number(this->stats->GoldMultiplier));
     this->ui->val_lbl_13->setText(QString::number(this->stats->TotalGoldCollected));
-    this->ui->val_lbl_14->setText(QString::number(-1));
-    this->ui->val_lbl_15->setText(QString::number(-1));
+    this->ui->val_lbl_14->setText(QString::number(this->stats->TotalTapsMade));
+    this->ui->val_lbl_15->setText(QString::number(this->stats->TotalCriticalTapsMade));
     this->ui->val_lbl_16->setText(QString::number(this->stats->TotalMonsterKills));
     this->ui->val_lbl_17->setText(QString("%1d %2").arg(this->stats->TotalDaysPlayed).arg(this->stats->TotalPlayTime.toString("hh-mm-ss")));
     this->ui->val_lbl_18->setText(QString::number(-1));

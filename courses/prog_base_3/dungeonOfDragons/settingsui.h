@@ -24,5 +24,4 @@ private:
     Ui::SettingsUI *ui;
     QTimer *updateUITimer;
     Stats *stats;
-
 };

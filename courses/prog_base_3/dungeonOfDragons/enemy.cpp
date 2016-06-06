@@ -34,11 +34,14 @@ bool Enemy::doDamage(int inDamage)
     return (this->CurrentHP <= 0);
 }
 
-bool Enemy::doCriticalDamage(double critChance, int tapDamage)
+bool Enemy::doTapDamage(Stats *stats)
 {
     int randomNum = qrand() % 100;
-    if(randomNum <= critChance * 100)
-        this->CurrentHP -= tapDamage * (CRITICAL_MULTIPLIER - 1);
-    this->CurrentHP -= tapDamage;
+    if(randomNum <= stats->CurrentCriticalChance * 100) {
+        this->CurrentHP -= stats->CurrentTapDamage * (CRITICAL_MULTIPLIER - 1);
+        stats->TotalCriticalTapsMade++;
+    }
+    stats->TotalTapsMade++;
+    this->CurrentHP -= stats->CurrentTapDamage;
     return (this->CurrentHP <= 0);
 }

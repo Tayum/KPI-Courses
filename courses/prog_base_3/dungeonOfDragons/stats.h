@@ -27,6 +27,7 @@ public:
     int TotalGoldCollected;
     int TotalDiamondsCollected;
     int TotalTapsMade;
+    int TotalCriticalTapsMade;
     int TotalMonsterKills;
     // Played time field.
     QTime TotalPlayTime;

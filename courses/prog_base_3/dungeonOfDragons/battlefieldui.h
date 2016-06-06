@@ -51,9 +51,14 @@ private slots:
     void on_perks_btn_clicked();
     void on_achvments_btn_clicked();
     void on_tapDmg_btn_clicked();
+    // Heropowers buttons.
     void on_anduinMagic_btn_clicked();
     void on_sylvanasCritical_btn_clicked();
     void on_guldanRampage_btn_clicked();
     void on_artasUnity_btn_clicked();
     void on_settings_btn_clicked();
+    void returnPrevSettings_anduin();
+    void returnPrevSettings_sylvana();
+    void returnPrevSettings_guldan();
+    void returnPrevSettings_artas();
 };

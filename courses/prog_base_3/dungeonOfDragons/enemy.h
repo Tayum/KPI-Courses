@@ -15,5 +15,5 @@ public:
     void goToNextDragon(Stats *stats);
     // Functions to deal with HP and damage.
     bool doDamage(int inDamage);
-    bool doCriticalDamage(double critChance, int tapDamage);
+    bool doTapDamage(Stats *stats);
 };
