@@ -1,1 +1,0 @@
-really lot of stuff here - too lazy to describe all of that shit
