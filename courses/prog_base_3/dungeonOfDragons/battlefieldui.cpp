@@ -85,9 +85,6 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
 BattleFieldUI::~BattleFieldUI()
 {
     delete this->ui;
-    this->perksUi->~PerksUI();
-    this->achvmentsUi->~AchvmentsUI();
-    this->settingsUi->~SettingsUI();
     delete this->achievements;
     delete this->army;
     delete this->enemy;
