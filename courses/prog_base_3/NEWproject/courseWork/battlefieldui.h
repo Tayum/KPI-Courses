@@ -1,7 +1,18 @@
-#ifndef BATTLEFIELDUI_H
-#define BATTLEFIELDUI_H
+#pragma once
 
 #include <QMainWindow>
+#include <QTimer>
+#include <QCloseEvent>
+
+#include "stats.h"
+#include "achvments.h"
+#include "army.h"
+#include "enemy.h"
+
+#include "perksui.h"
+#include "achvmentsui.h"
+#include "heropowers.h"
+#include "settingsui.h"
 
 namespace Ui {
 class BattleFieldUI;
@@ -13,10 +24,33 @@ class BattleFieldUI : public QMainWindow
 
 public:
     explicit BattleFieldUI(QWidget *parent = 0);
-    ~BattleFieldUI();
 
 private:
     Ui::BattleFieldUI *ui;
-};
+    PerksUI *perksUi;
+    AchvmentsUI *achvmentsUi;
 
-#endif // BATTLEFIELDUI_H
+    Achvments *achievements;
+    Army *army;
+    Enemy *enemy;
+    Stats *stats;
+    HeroPowers *heropowers;
+
+    QTimer *armyAttackTimer;
+    QTimer *statsUIUpdateTimer;
+
+    void closeEvent(QCloseEvent *e);
+
+private slots:
+    void armyAttack();
+    void uiUpdate();
+    void buySoldier();
+    void on_monster_btn_clicked();
+    void on_perks_btn_clicked();
+    void on_achvments_btn_clicked();
+    void on_tapDmg_btn_clicked();
+    void on_anduinMagic_btn_clicked();
+    void on_sylvanasCritical_btn_clicked();
+    void on_guldanRampage_btn_clicked();
+    void on_artasUnity_btn_clicked();
+};

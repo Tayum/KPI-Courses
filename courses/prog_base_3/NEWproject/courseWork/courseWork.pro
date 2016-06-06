@@ -13,8 +13,30 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        battlefieldui.cpp
+        battlefieldui.cpp \
+    enemy.cpp \
+    stats.cpp \
+    achvments.cpp \
+    army.cpp \
+    perksui.cpp \
+    achvmentsui.cpp \
+    heropowers.cpp \
+    settingsui.cpp
 
-HEADERS  += battlefieldui.h
+HEADERS  += battlefieldui.h \
+    enemy.h \
+    stats.h \
+    achvments.h \
+    army.h \
+    perksui.h \
+    achvmentsui.h \
+    heropowers.h \
+    settingsui.h
 
-FORMS    += battlefieldui.ui
+FORMS    += battlefieldui.ui \
+    perksui.ui \
+    achvmentsui.ui \
+    settingsui.ui
+
+RESOURCES += \
+    srcfile.qrc
