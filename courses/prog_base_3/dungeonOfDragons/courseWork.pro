@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -21,7 +22,10 @@ SOURCES += main.cpp\
     perksui.cpp \
     achvmentsui.cpp \
     heropowers.cpp \
-    settingsui.cpp
+    settingsui.cpp \
+    rankingsui.cpp \
+    player.cpp \
+    gameinfo.cpp
 
 HEADERS  += battlefieldui.h \
     enemy.h \
@@ -31,12 +35,16 @@ HEADERS  += battlefieldui.h \
     perksui.h \
     achvmentsui.h \
     heropowers.h \
-    settingsui.h
+    settingsui.h \
+    rankingsui.h \
+    player.h \
+    gameinfo.h
 
 FORMS    += battlefieldui.ui \
     perksui.ui \
     achvmentsui.ui \
-    settingsui.ui
+    settingsui.ui \
+    rankingsui.ui
 
 RESOURCES += \
     srcfile.qrc

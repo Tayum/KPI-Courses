@@ -1,0 +1,20 @@
+<game>
+	<setings>
+		<firstLaunch>0</firstLaunch>
+		<username>__emptyName___</username>
+	</setings>
+	<achievements>
+		<earnNGold>0</earnNGold>
+		<earnNDiamonds>0</earnNDiamonds>
+		<kllNMonsters>0</killNMonsters>
+		<reachNStage>0</reachNStage>
+		<ownNArtifacts>0</ownNArtifacts>
+		<hireNSoldiers>0</hireNSoldiers>
+		<tapNTimes>0</tapNTimes>
+		<heropowNTimes>0</heropowNTimes>
+		<doNCritical>0</doNCritical>
+	</achievements>
+
+
+
+</game>

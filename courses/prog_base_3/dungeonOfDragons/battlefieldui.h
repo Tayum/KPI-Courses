@@ -8,11 +8,13 @@
 #include "achvments.h"
 #include "army.h"
 #include "enemy.h"
+#include "gameinfo.h"
 
 #include "perksui.h"
 #include "achvmentsui.h"
 #include "heropowers.h"
 #include "settingsui.h"
+#include "rankingsui.h"
 
 namespace Ui {
 class BattleFieldUI;
@@ -30,12 +32,14 @@ private:
     PerksUI *perksUi;
     AchvmentsUI *achvmentsUi;
     SettingsUI *settingsUi;
+    RankingsUI *rankingsUi;
 
     Achvments *achievements;
     Army *army;
     Enemy *enemy;
     Stats *stats;
     HeroPowers *heropowers;
+    GameInfo *gameInfo;
 
     QTimer *armyAttackTimer;
     QTimer *statsUIUpdateTimer;
@@ -54,6 +58,7 @@ private slots:
     void on_perks_btn_clicked();
     void on_achvments_btn_clicked();
     void on_settings_btn_clicked();
+    void on_ranking_btn_clicked();
 
     // Heropowers buttons.
     void on_tapDmg_btn_clicked();

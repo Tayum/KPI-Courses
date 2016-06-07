@@ -2,6 +2,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QLabel>
+#include <QtXml>
 
 #include "battlefieldui.h"
 #include "ui_battlefieldui.h"
@@ -16,9 +17,11 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     this->stats = new Stats();
     this->heropowers = new HeroPowers();
     this->enemy = new Enemy(this->stats->CurrentLevel);
+    this->gameInfo = new GameInfo("___YourName___");
     this->perksUi = new PerksUI(this->stats, this->enemy, this->heropowers, this);
     this->achvmentsUi = new AchvmentsUI(this->achievements, this);
     this->settingsUi = new SettingsUI(this->stats, this);
+    this->rankingsUi = new RankingsUI(this->gameInfo, this->stats, this);
 
     // Main UI things.
     // Initialize UI objects.
@@ -124,7 +127,7 @@ void BattleFieldUI::updateHireArmyUI()
         // Price labels.
         QString curPriceLblName = QString("soldier_price_lbl_%1").arg(i + 1);
         QLabel *curPriceLabel = this->ui->tabWidget->findChild<QLabel *>(curPriceLblName);
-        unsigned int curPrice = QString::number(this->army->army[i].Price);
+        unsigned int curPrice = this->army->army[i].Price;
         curPriceLabel->setText(this->humanizeNumber(curPrice) + QString(" Gold"));
     }
 }
@@ -215,6 +218,17 @@ void BattleFieldUI::on_achvments_btn_clicked()
     }
     // If window is already open - change focus.
     this->achvmentsUi->activateWindow();
+}
+
+void BattleFieldUI::on_ranking_btn_clicked()
+{
+    // Open a window, if it is not opened yet.
+    if (!this->rankingsUi->isVisible())
+    {
+        this->rankingsUi->show();
+    }
+    // If window is already open - change focus.
+    this->rankingsUi->activateWindow();
 }
 
 void BattleFieldUI::on_tapDmg_btn_clicked()
@@ -395,3 +409,4 @@ void BattleFieldUI::on_perksArt_btn_clicked()
         this->stats->PerksCostDecreaser += 0.1;
     }
 }
+
