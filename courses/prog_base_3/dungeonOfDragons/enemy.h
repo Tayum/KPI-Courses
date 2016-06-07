@@ -6,6 +6,7 @@ class Enemy
 {
 public:
     Enemy(int CurrentLevel);
+    Enemy(int currentHP, int goldDropped, int diamondsDropped, int totalHP);
     // Dragon characteristics.
     int CurrentHP;
     int GoldDropped;

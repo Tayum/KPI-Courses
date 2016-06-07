@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QCloseEvent>
+#include <QtXml>
 
 #include "stats.h"
 #include "achvments.h"
@@ -44,8 +45,13 @@ private:
     QTimer *armyAttackTimer;
     QTimer *statsUIUpdateTimer;
 
+    QDomElement root;
+
     void closeEvent(QCloseEvent *e);
     void updateHireArmyUI();
+    void loadSettingsFromXML();
+    void writeSettingsToXML();
+    QString listElements(QString tagName1, QString tagName2);
     QString humanizeNumber(unsigned int num);
 
 private slots:

@@ -17,11 +17,34 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     this->stats = new Stats();
     this->heropowers = new HeroPowers();
     this->enemy = new Enemy(this->stats->CurrentLevel);
-    this->gameInfo = new GameInfo("___YourName___");
+    this->gameInfo = new GameInfo("___ErrorName___");
     this->perksUi = new PerksUI(this->stats, this->enemy, this->heropowers, this);
     this->achvmentsUi = new AchvmentsUI(this->achievements, this);
     this->settingsUi = new SettingsUI(this->stats, this);
     this->rankingsUi = new RankingsUI(this->gameInfo, this->stats, this);
+
+    // Upload info from .xml file.
+    // Load the file.
+    QDomDocument document;
+    QFile file(":/data/data/settings.xml");
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        qDebug() << "Failed open file stream.";
+        return;
+    }
+    else
+    {
+        if (!document.setContent(&file))
+        {
+            qDebug() << "Failed to load document.";
+            return;
+        }
+        file.close();
+    }
+    // Get the root element.
+    this->root = document.firstChildElement();
+    // Fill all classes fields.
+    this->loadSettingsFromXML();
 
     // Main UI things.
     // Initialize UI objects.
@@ -183,6 +206,7 @@ void BattleFieldUI::closeEvent(QCloseEvent *e)
     }
     else
     {
+        this->writeSettingsToXML();
         e->accept();
     }
 }
@@ -410,3 +434,74 @@ void BattleFieldUI::on_perksArt_btn_clicked()
     }
 }
 
+QString BattleFieldUI::listElements(QString tagName1, QString tagName2)
+{
+    QDomNodeList items = this->root.elementsByTagName(tagName1);
+    QDomNodeList items2 = items.at(0).childNodes();
+    for (int i = 0; i < items2.count(); i++)
+    {
+        QDomNode curNode = items2.at(i).toElement();
+        if (!QString::compare(curNode.nodeName(), tagName2))
+        {
+            QDomElement curElem = curNode.toElement();
+            return (curElem.text());
+        }
+    }
+    qDebug() << "ALARM ERROR OMG WTF in listElements (error with parsing xml file)";
+    return (QString("notFound"));
+}
+
+
+void BattleFieldUI::loadSettingsFromXML()
+{
+    // GameInfo settings class.
+    gameInfo->firstLaunch = listElements("gameinfo", "firstLaunch").toInt();
+    gameInfo->playerName = listElements("gameinfo", "username");
+    // Achievements settings class.
+    achievements->EarnNGold = listElements("achievements", "earnNGold").toInt();
+    achievements->EarnNDiamonds = listElements("achievements", "earnNDiamonds").toInt();
+    achievements->KillNMonsters = listElements("achievements", "killNMOnsters").toInt();
+    achievements->ReachNStage = listElements("achievements", "reachNStage").toInt();
+    achievements->OwnNArtifacts = listElements("achievements", "ownNArtifacts").toInt();
+    achievements->HireNSoldiers = listElements("achievements", "hireNSoldiers").toInt();
+    achievements->TapNTimes = listElements("achievements", "tapNTimes").toInt();
+    achievements->HeropowNTimes = listElements("achievements", "heropowNTimes").toInt();
+    achievements->DoNCritical = listElements("achievements", "doNCritical").toInt();
+    // Army class.
+    for (int i = 1; i < 31; i++)
+    {
+        QString query = QString("type%1").arg(i);
+        army->soldiersAmount[i - 1] = listElements("army", query).toInt();
+    }
+    // Stats class.
+    stats->CurrentLevel = listElements("stats", "currentLevel").toInt();
+    stats->CurrentGold = listElements("stats", "currentGold").toInt();
+    stats->CurrentDiamonds = listElements("stats", "currentDiamonds").toInt();
+    stats->CurrentTapDamage = listElements("stats", "currentTapDamage").toInt();
+    stats->CurrentArmyDamage = listElements("stats", "currentArmyDamage").toInt();
+    stats->CurrentCriticalChance = listElements("stats", "currentCriticalChance").toDouble();
+    stats->ArmyAmount = listElements("stats", "armyAmount").toInt();
+    stats->ArtifactsUnlocked = listElements("stats", "artifactsUnlocked").toInt();
+    stats->HeropowersUnlocked = listElements("stats", "heropowersUnlocked").toInt();
+    stats->AwardsCollected = listElements("stats", "awardsCollected").toInt();
+    stats->TotalGoldCollected = listElements("stats", "totalGoldCollected").toInt();
+    stats->TotalDiamondsCollected = listElements("stats", "totalDiamondsCollected").toInt();
+    stats->TotalTapsMade = listElements("stats", "totalTapsMade").toInt();
+    stats->TotalCriticalTapsMade = listElements("stats", "totalCriticalTapsMade").toInt();
+    stats->TotalMonsterKills = listElements("stats", "totalMonsterKills").toInt();
+    int h = listElements("stats", "totalPlayTimeH").toInt();
+    int m = listElements("stats", "totalPlayTimeM").toInt();
+    int s = listElements("stats", "totalPlayTimeS").toInt();
+    stats->TotalPlayTime.setHMS(h, m, s);
+    stats->TotalDaysPlayed = listElements("stats", "totalDaysPlayed").toDouble();
+    stats->GoldMultiplier = listElements("stats", "goldMultiplier").toDouble();
+    stats->CriticalHitMultiplier = listElements("stats", "criticalHitMultiplier").toDouble();
+    stats->DiamondsMultiplier = listElements("stats", "diamondsMultiplier").toDouble();
+    stats->MonsterHPDecreaser = listElements("stats", "monsterHPDecreaser").toDouble();
+    stats->PerksCostDecreaser = listElements("stats", "perksCostDecreaser").toDouble();
+}
+
+void BattleFieldUI::writeSettingsToXML()
+{
+
+}

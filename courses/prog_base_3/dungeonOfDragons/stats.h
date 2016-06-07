@@ -20,7 +20,6 @@ public:
     int ArtifactsUnlocked; // TODO
     int AwardsCollected; // TODO
     int HeropowersUnlocked; // TODO
-    int MissionsCompleted; // TODO
     // Multipliers.
     double CriticalHitMultiplier;
     double GoldMultiplier;

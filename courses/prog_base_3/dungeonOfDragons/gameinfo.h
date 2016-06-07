@@ -7,5 +7,7 @@ class GameInfo
 public:
     GameInfo(QString playerName);
 
+    bool firstLaunch;
     QString playerName;
+
 };

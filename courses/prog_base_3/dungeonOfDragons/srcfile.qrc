@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/data">
         <file>data/army.csv</file>
+        <file>data/settings.xml</file>
     </qresource>
 </RCC>

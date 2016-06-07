@@ -1,12 +1,12 @@
-<game>
-	<setings>
+<settings>
+	<gameinfo>
 		<firstLaunch>0</firstLaunch>
-		<username>__emptyName___</username>
-	</setings>
+		<username>TestSupaMegaName</username>
+	</gameinfo>
 	<achievements>
 		<earnNGold>0</earnNGold>
 		<earnNDiamonds>0</earnNDiamonds>
-		<kllNMonsters>0</killNMonsters>
+		<killNMonsters>0</killNMonsters>
 		<reachNStage>0</reachNStage>
 		<ownNArtifacts>0</ownNArtifacts>
 		<hireNSoldiers>0</hireNSoldiers>
@@ -14,7 +14,74 @@
 		<heropowNTimes>0</heropowNTimes>
 		<doNCritical>0</doNCritical>
 	</achievements>
-
-
-
-</game>
+	<army>
+		<type1>0</type1>
+		<type2>0</type2>
+		<type3>0</type3>
+		<type4>0</type4>
+		<type5>0</type5>
+		<type6>0</type6>
+		<type7>0</type7>
+		<type8>0</type8>
+		<type9>0</type9>
+		<type10>0</type10>
+		<type11>0</type11>
+		<type12>0</type12>
+		<type13>0</type13>
+		<type14>0</type14>
+		<type15>0</type15>
+		<type16>0</type16>
+		<type17>0</type17>
+		<type18>0</type18>
+		<type19>0</type19>
+		<type20>0</type20>
+		<type21>0</type21>
+		<type22>0</type22>
+		<type23>0</type23>
+		<type24>0</type24>
+		<type25>0</type25>
+		<type26>0</type26>
+		<type27>0</type27>
+		<type28>0</type28>
+		<type29>0</type29>
+		<type30>0</type30>
+	</army>
+	<stats>
+		<currentLevel>1</currentLevel>
+		<currentGold>0</currentGold>
+		<currentDiamonds>0</currentDiamonds>
+		<currentTapDamage>1</currentTapDamage>
+		<currentArmyDamage>0</currentArmyDamage>
+		<currentCriticalChance>0.1</currentCriticalChance>
+		<armyAmount>0</armyAmount>
+		<artifactsUnlocked>0</artifactsUnlocked>
+		<heropowersUnlocked>0</heropowersUnlocked>
+		<awardsCollected>0</awardsCollected>
+		<totalGoldCollected>0</totalGoldCollected>
+		<totalDiamondsCollected>0</totalDiamondsCollected>
+		<totalTapsMade>0</totalTapsMade>
+		<totalCriticalTapsMade>0</totalCriticalTapsMade>
+		<totalMonsterKills>0</totalMonsterKills>
+		<totalPlayTimeH>0</totalPlayTimeH>
+		<totalPlayTimeM>0</totalPlayTimeM>
+		<totalPlayTimeS>1</totalPlayTimeS>
+		<totalDaysPlayed>0</totalDaysPlayed>
+		<goldMultiplier>0</goldMultiplier>
+		<criticalHitMultiplier>0</criticalHitMultiplier>
+		<diamondsMultiplier>0</diamondsMultiplier>
+		<monsterHPDecreaser>0</monsterHPDecreaser>
+		<perksCostDecreaser>0</perksCostDecreaser>
+	</stats>
+	<heropowers>
+		<anduinBought>0</anduinBought>
+		<sylvanasBought>0</sylvanasBought>
+		<guldanBought>0</guldanBought>
+		<artasBought>0</artasBought>
+	</heropowers>
+	<enemy>
+		<currentHP>6</currentHP>
+		<goldDropped>3</goldDropped>
+		<diamondsDropped>0</diamondsDropped>
+		<totalHP>6</totalHP>
+	</enemy>
+</settings>

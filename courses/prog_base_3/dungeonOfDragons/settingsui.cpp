@@ -32,7 +32,7 @@ SettingsUI::~SettingsUI()
 void SettingsUI::updateUI()
 {
     this->ui->val_lbl_1->setText(QString::number(this->stats->CurrentLevel));
-    this->ui->val_lbl_2->setText(QString::number(this->stats->MissionsCompleted));
+    this->ui->val_lbl_2->setText(QString::number(this->stats->CurrentGold));
     this->ui->val_lbl_3->setText(QString::number(this->stats->ArmyAmount));
     this->ui->val_lbl_4->setText(QString::number(this->stats->ArtifactsUnlocked));
     this->ui->val_lbl_5->setText(QString::number(this->stats->HeropowersUnlocked));

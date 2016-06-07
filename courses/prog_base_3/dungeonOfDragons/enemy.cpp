@@ -9,6 +9,14 @@ Enemy::Enemy(int CurrentLevel)
     DiamondsDropped = CurrentLevel % 10;
 }
 
+Enemy::Enemy(int currentHP, int goldDropped, int diamondsDropped, int totalHP)
+{
+    this->CurrentHP = currentHP;
+    this->GoldDropped = goldDropped;
+    this->DiamondsDropped = diamondsDropped;
+    this->TotalHP = totalHP;
+}
+
 void Enemy::goToNextDragon(Stats *stats)
 {
     // Update current and global state fields.

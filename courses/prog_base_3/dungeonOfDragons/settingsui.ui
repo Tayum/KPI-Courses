@@ -103,7 +103,7 @@
            <item>
             <widget class="QLabel" name="descr_lbl_2">
              <property name="text">
-              <string>Missions completed</string>
+              <string>Current gold</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
