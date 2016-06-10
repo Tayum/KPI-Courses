@@ -6,6 +6,7 @@
 #include <QXmlStreamWriter>
 #include <QDebug>
 #include <QDir>
+#include <QCursor>
 
 #include "battlefieldui.h"
 #include "ui_battlefieldui.h"
@@ -55,6 +56,7 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     // Check if it was the first launch.
     if (this->gameInfo->firstLaunch == 0) {
         this->gameInfo->firstLaunch = 1;
+        // TODO: go to "New Player UI" window.
     }
 
     // Main UI things.
@@ -69,6 +71,15 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     // Move BattleField window to the center of screen.
     this->move((QApplication::desktop()->width() - this->size().width()) / 2,
                (QApplication::desktop()->height() - this->size().height()) / 2 - 50);
+
+    // Update everything on the main window.
+    emit this->uiUpdate();
+
+    // Set cursors
+    QCursor cursorTarget = QCursor(QPixmap(":/cursors/design/cursors/cursorTarget.png"));
+    this->ui->monster_btn->setCursor(cursorTarget);
+    QCursor standartCursor = QCursor(QPixmap(":/cursors/design/cursors/cursorArrovRed.png"));
+    this->setCursor(standartCursor);
 
     // "Battle field" tab.
     // Set monster button and first tab as default.
@@ -91,7 +102,7 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
         QString curBtnName = QString("soldier_btn_%1").arg(i + 1);
         QPushButton *curButton = this->ui->tabWidget->findChild<QPushButton *>(curBtnName);
         connect(curButton, SIGNAL(released()), this, SLOT(buySoldier()));
-        curButton->setText(this->army->army[i].Name);
+        curButton->setText("");
     }
     // Update DPS and Price labels.
     this->updateHireArmyUI();
@@ -156,43 +167,40 @@ void BattleFieldUI::updateHireArmyUI()
         // DPS labels.
         QString curDpsLblName = QString("soldier_dmg_lbl_%1").arg(i + 1);
         QLabel *curDpsLabel = this->ui->tabWidget->findChild<QLabel *>(curDpsLblName);
-        unsigned int curDPSToLbl = this->army->army[i].DPS * this->army->soldiersAmount[i];
+        long long curDPSToLbl = this->army->army[i].DPS * this->army->soldiersAmount[i];
         curDpsLabel->setText(this->humanizeNumber(curDPSToLbl) + QString(" DPS"));
         // Price labels.
         QString curPriceLblName = QString("soldier_price_lbl_%1").arg(i + 1);
         QLabel *curPriceLabel = this->ui->tabWidget->findChild<QLabel *>(curPriceLblName);
-        unsigned int curPrice = this->army->army[i].Price;
+        long long curPrice = this->army->army[i].Price;
         curPriceLabel->setText(this->humanizeNumber(curPrice) + QString(" Gold"));
     }
 }
 
-QString BattleFieldUI::humanizeNumber(unsigned int num)
+QString BattleFieldUI::humanizeNumber(long long num)
 {
     QString toRet = "";
     if (num < 1000)
         toRet = QString::number((double)num);
     else if (num >= 1000000000)
-        toRet = QString::number((double)num/1000000000) + " G";
+        toRet = QString::number((double)num/1000000000) + "G";
     else if (num >= 1000000)
-        toRet = QString::number((double)num/1000000) + " M";
+        toRet = QString::number((double)num/1000000) + "M";
     else if (num >= 1000)
-        toRet = QString::number((double)num/1000) + " K";
+        toRet = QString::number((double)num/1000) + "K";
     return (toRet);
 }
 
 void BattleFieldUI::buySoldier()
 {
+    // Get index of soldier, that player wants to buy.
     QPushButton *senderObj = (QPushButton *)QObject::sender();
+    QString senderName = senderObj->objectName();
+    QByteArray senderNameInBytes = senderName.toLatin1();
+    char *senderNameInCharPtr = senderNameInBytes.data();
     int index = 0;
-    // Find certain index.
-    for (int i = 0; i < SOLDIERS_AMOUNT; i++)
-    {
-        if (!QString::compare(senderObj->text(), this->army->army[i].Name))
-        {
-            index = i;
-            break;
-        }
-    }
+    sscanf(senderNameInCharPtr, "soldier_btn_%i", &index);
+    index--;
     // Check if player has enough gold to hire specific soldier.
     if (this->stats->CurrentGold >= this->army->army[index].Price)
     {
@@ -472,7 +480,7 @@ QString BattleFieldUI::listElements(QString tagName1, QString tagName2)
             return (curElem.text());
         }
     }
-    qDebug() << "ALARM ERROR OMG WTF in listElements (error with parsing xml file)";
+    qDebug() << "ACHTUNG! ERROR in listElements (error with parsing xml file)";
     return (QString("notFound"));
 }
 
@@ -492,7 +500,7 @@ void BattleFieldUI::loadSettingsFromXML()
     achievements->HeropowNTimes = listElements("achievements", "heropowNTimes").toInt();
     achievements->DoNCritical = listElements("achievements", "doNCritical").toInt();
     // Army class.
-    for (int i = 1; i < 31; i++)
+    for (int i = 1; i < 11; i++)
     {
         QString query = QString("type%1").arg(i);
         army->soldiersAmount[i - 1] = listElements("army", query).toInt();
@@ -523,6 +531,16 @@ void BattleFieldUI::loadSettingsFromXML()
     stats->DiamondsMultiplier = listElements("stats", "diamondsMultiplier").toDouble();
     stats->MonsterHPDecreaser = listElements("stats", "monsterHPDecreaser").toDouble();
     stats->PerksCostDecreaser = listElements("stats", "perksCostDecreaser").toDouble();
+    // Heropowers class.
+    heropowers->anduinBought = listElements("heropowers", "anduinBought").toInt();
+    heropowers->sylvanasBought = listElements("heropowers", "sylvanasBought").toInt();
+    heropowers->guldanBought = listElements("heropowers", "guldanBought").toInt();
+    heropowers->artasBought = listElements("heropowers", "artasBought").toInt();
+    // Enemy class.
+    enemy->CurrentHP = listElements("enemy", "currentHP").toInt();
+    enemy->GoldDropped = listElements("enemy", "goldDropped").toInt();
+    enemy->DiamondsDropped = listElements("enemy", "diamondsDropped").toInt();
+    enemy->TotalHP = listElements("enemy", "totalHP").toInt();
 }
 
 void BattleFieldUI::writeSettingsToXML()
@@ -558,7 +576,7 @@ void BattleFieldUI::writeSettingsToXML()
     xmlWriter.writeEndElement();
     // Army section.
     xmlWriter.writeStartElement("army");
-    for (int i = 1; i < 31; i++)
+    for (int i = 1; i < 11; i++)
     {
         QString query = QString("type%1").arg(i);
         xmlWriter.writeTextElement(query, QString::number(army->soldiersAmount[i - 1]));

@@ -254,7 +254,7 @@ QPushButton#perksArt_btn {
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="BattleField_tab">
        <attribute name="title">

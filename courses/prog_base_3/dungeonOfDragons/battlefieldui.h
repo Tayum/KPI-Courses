@@ -52,7 +52,7 @@ private:
     void updateHireArmyUI();
     void loadSettingsFromXML();
     QString listElements(QString tagName1, QString tagName2);
-    QString humanizeNumber(unsigned int num);
+    QString humanizeNumber(long long num);
 
 private slots:
     void armyAttack();

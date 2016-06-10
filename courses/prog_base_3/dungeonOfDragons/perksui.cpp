@@ -3,15 +3,15 @@
 
 // What perks do.
 #define ELDORADO_VALUE 100
-#define DIAMRUSH_VALUE 100
+#define DIAMRUSH_VALUE 100000
 #define ENCHSWORD_VALUE 20
 
 // Perks cost.
-#define DIAMRUSH_COST 500000
-#define ELDORADO_COST 100000
-#define ENCHSWORD_COST 100000
-#define WINDFURY_COST 100000
-#define PASSLVL_COST 100000
+#define DIAMRUSH_COST 50
+#define ELDORADO_COST 10000
+#define ENCHSWORD_COST 10000
+#define WINDFURY_COST 10000
+#define PASSLVL_COST 10000
 
 PerksUI::PerksUI(Stats *stats, Enemy *enemy, HeroPowers *heropowers, QWidget *parent) :
     QDialog(parent),

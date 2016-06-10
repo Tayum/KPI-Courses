@@ -1,6 +1,6 @@
 #pragma once
 
-#define SOLDIERS_AMOUNT 30
+#define SOLDIERS_AMOUNT 10
 
 class Army
 {

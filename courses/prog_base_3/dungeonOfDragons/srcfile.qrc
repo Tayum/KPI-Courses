@@ -23,5 +23,19 @@
         <file>design/artifacts/criticalchance.png</file>
         <file>design/artifacts/hpdecreaser.png</file>
         <file>design/artifacts/perksdecreaser.png</file>
+        <file>design/army/dasha.png</file>
+        <file>design/army/kiev_batman.png</file>
+        <file>design/army/kim_5plus.png</file>
+        <file>design/army/matroskin.png</file>
+        <file>design/army/minion_child.png</file>
+        <file>design/army/penguin.png</file>
+        <file>design/army/peppa_pig.png</file>
+        <file>design/army/rabbit.png</file>
+        <file>design/army/rishuchiy_hromadyanin.png</file>
+        <file>design/army/sponge_bob.png</file>
+    </qresource>
+    <qresource prefix="/cursors">
+        <file>design/cursors/cursorArrovRed.png</file>
+        <file>design/cursors/cursorTarget.png</file>
     </qresource>
 </RCC>

@@ -3,8 +3,6 @@
 
 #include "army.h"
 
-#define SOLDIERS_AMOUNT 30
-
 Army::Army()
 {
     // Parse data from army.csv to army types array.
