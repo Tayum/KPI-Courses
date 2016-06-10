@@ -35,7 +35,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="settingsTabs_tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="gnrlSettings_tab">
       <attribute name="title">
@@ -44,8 +44,8 @@
       <widget class="QLabel" name="todo1">
        <property name="geometry">
         <rect>
-         <x>50</x>
-         <y>160</y>
+         <x>270</x>
+         <y>290</y>
          <width>141</width>
          <height>13</height>
         </rect>
@@ -54,31 +54,65 @@
         <string>TODO: something with music.</string>
        </property>
       </widget>
-      <widget class="QLabel" name="todo2">
+      <widget class="QPushButton" name="save_btn">
        <property name="geometry">
         <rect>
-         <x>50</x>
-         <y>200</y>
-         <width>141</width>
-         <height>13</height>
+         <x>240</x>
+         <y>40</y>
+         <width>191</width>
+         <height>91</height>
         </rect>
        </property>
        <property name="text">
-        <string>TODO: something with share.</string>
+        <string>Save progress</string>
        </property>
       </widget>
-      <widget class="QLabel" name="todo3">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
-         <x>50</x>
-         <y>250</y>
-         <width>94</width>
-         <height>13</height>
+         <x>180</x>
+         <y>150</y>
+         <width>301</width>
+         <height>101</height>
         </rect>
        </property>
-       <property name="text">
-        <string>TODO: save button</string>
-       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="shareDescr_lbl">
+          <property name="text">
+           <string>Tell your friends about this game!</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="vkshare_btn">
+            <property name="text">
+             <string>VK</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="fbshare_btn">
+            <property name="text">
+             <string>Facebook</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="twishare_btn">
+            <property name="text">
+             <string>Twitter</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
      <widget class="QWidget" name="glblStats_tab">
@@ -123,7 +157,7 @@
            <item>
             <widget class="QLabel" name="descr_lbl_4">
              <property name="text">
-              <string>Artefacts found</string>
+              <string>Artifacts upgraded</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

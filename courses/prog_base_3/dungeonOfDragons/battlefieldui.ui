@@ -31,6 +31,14 @@
   <property name="windowTitle">
    <string>Dungeon of dragons</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+background-image: url(:/design/design/battlefield/background.png);
+}
+
+
+</string>
+  </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
   </property>
@@ -41,8 +49,157 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">/*-----------------------------------------------------LABELS-----------------------------------------------------*/
+
+QLabel {
+	background-color: rgba(255, 255, 255, 70);
+	font: 75 bold 16pt &quot;PMingLiU-ExtB&quot;;
+	color: black;
+}
+
+QLabel#currentLevel_lbl {
+	color: black;
+}
+
+QLabel#monsterHP_lbl {
+	color: black;
+}
+
+/*-----------------------------------------------------QTABWIDGET-----------------------------------------------------*/
+
+QTabWidget::pane {
+    border-top: 2px solid rgb(191, 191, 191);
+}
+
+QTabWidget::tab-bar {
+    left: 2px;
+}
+
+QTabBar::tab {
+	background-image: url(:/design/design/tabwidget_tabBG.png);
+    border: 3px solid rgb(137, 90, 255);
+	width: 172px;
+    padding: 8px;
+	color: white;
+	font: 75 bold 12pt &quot;PMingLiU-ExtB&quot;;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background-image: url(:/design/design/tabwidget_tabHoveredBG.png);
+}
+
+QTabBar::tab:selected {
+    border: 3px solid rgb(137, 90, 255);
+}
+
+QTabBar::tab:!selected {
+    margin-top: 5px;
+}
+
+QTabBar::tab:first:selected {
+    margin-left: 0;
+}
+
+QTabBar::tab:last:selected {
+    margin-right: 0;
+}
+
+/*-----------------------------------------------------TAB_IMAGES-----------------------------------------------------*/
+
+QWidget#BattleField_tab {
+	background-image: url(:/design/design/battlefield/battlefieldtab_BG.png);
+}
+
+QWidget#HeroPowers_tab {
+	background-image: url(:/design/design/battlefield/heropowerstab_BG.png);
+}
+
+QWidget#HireArmy_tab {
+	background-image: url(:/design/design/battlefield/hiresoldierstab_BG.png);
+}
+
+QWidget#artifacts_tab {
+	background-image: url(:/design/design/battlefield/artifactstab_BG.png);
+}
+
+/*-----------------------------------------------------MONSTER BUTTON-----------------------------------------------------*/
+
+QPushButton#monster_btn {
+	border-image: url(:/design/design/enemy.png);
+	background-color: transparent;
+	background: none;
+	border: none;
+	background-repeat: none;
+}
+
+QPushButton#monster_btn:pressed {
+	border-image: url(:/design/design/enemy_pressed.png);
+
+}
+
+/*-----------------------------------------------------BATTLEFIELD BUTTONS AND LABELS-----------------------------------------------------*/
+
+QPushButton#achvments_btn, QPushButton#perks_btn, QPushButton#ranking_btn, QPushButton#settings_btn {
+	border-image: url(:/design/design/controlButton_BG.png);
+	color: white;
+	font: 75 bold 13pt &quot;PMingLiU-ExtB&quot;;
+}
+
+QLabel#dmndState_lbl, QLabel#goldState_lbl, QLabel#armyDmg_lbl, QLabel#criticalChance_lbl, QLabel#tapDmg_lbl {
+	color: black;
+	font: 75 bold 17pt &quot;PMingLiU-ExtB&quot;;
+}
+
+/*-----------------------------------------------------HEROPOWERS BUTTONS-----------------------------------------------------*/
+QPushButton#tapDmg_btn {
+	border-image: url(:/design/design/heropowers/tapdamage.png);
+}
+
+QPushButton#anduinMagic_btn {
+	border-image: url(:/design/design/heropowers/anduin_heropower.png);
+}
+
+QPushButton#sylvanasCritical_btn {
+	border-image: url(:/design/design/heropowers/sylvanasHeroPower.png);
+}
+
+QPushButton#guldanRampage_btn {
+	border-image: url(:/design/design/heropowers/guldanrampage.png);
+}
+
+QPushButton#artasUnity_btn {
+	border-image: url(:/design/design/heropowers/artasunity.png);
+}
+
+/*-----------------------------------------------------ARTIFACTS BUTTONS-----------------------------------------------------*/
+
+QPushButton#goldArt_btn {
+	border-image: url(:/design/design/artifacts/goldmultiplier.png);
+}
+
+QPushButton#dmndsArt_btn {
+	border-image: url(:/design/design/artifacts/diamonds.png);
+}
+
+QPushButton#critArt_btn {
+	border-image: url(:/design/design/artifacts/criticalchance.png);
+}
+
+QPushButton#hpdecrArt_btn {
+	border-image: url(:/design/design/artifacts/hpdecreaser.png);
+}
+
+QPushButton#perksArt_btn {
+	border-image: url(:/design/design/artifacts/perksdecreaser.png);
+}</string>
+      </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="BattleField_tab">
        <attribute name="title">
@@ -59,6 +216,12 @@
               <height>50</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="text">
              <string>Settings</string>
             </property>
@@ -73,6 +236,12 @@
              <size>
               <width>0</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -127,6 +296,12 @@
               <height>50</height>
              </size>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="text">
              <string>Achievements</string>
             </property>
@@ -141,6 +316,12 @@
              <size>
               <width>0</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -162,7 +343,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Huge monster here!</string>
+           <string/>
           </property>
           <property name="shortcut">
            <string/>
@@ -187,11 +368,29 @@
                 <height>50</height>
                </size>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
               <property name="text">
                <string>__goldState_lbl__</string>
               </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+              <property name="indent">
+               <number>-1</number>
               </property>
              </widget>
             </item>
@@ -203,11 +402,29 @@
                 <height>50</height>
                </size>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
               <property name="text">
                <string>__dmndState_lbl__</string>
               </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+              <property name="indent">
+               <number>-1</number>
               </property>
              </widget>
             </item>
@@ -223,11 +440,29 @@
                 <height>30</height>
                </size>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
               <property name="text">
                <string>__tapDmg_lbl__</string>
               </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+              <property name="indent">
+               <number>-1</number>
               </property>
              </widget>
             </item>
@@ -239,11 +474,29 @@
                 <height>30</height>
                </size>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
               <property name="text">
                <string>__armyDmg_lbl__</string>
               </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+              <property name="indent">
+               <number>-1</number>
               </property>
              </widget>
             </item>
@@ -255,11 +508,29 @@
                 <height>30</height>
                </size>
               </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
               <property name="text">
                <string>__criticalChance_lbl__</string>
               </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+              <property name="indent">
+               <number>-1</number>
               </property>
              </widget>
             </item>
@@ -273,292 +544,331 @@
        <attribute name="title">
         <string>Hero powers</string>
        </attribute>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>11</x>
-          <y>10</y>
-          <width>761</width>
-          <height>641</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_19">
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_10">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="tapDmg_btn">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>75</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Increase Tap damage</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="tapDmgHeroPower_cost">
-               <property name="text">
-                <string>3 diamonds</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_15">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="anduinMagic_btn">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>75</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Holy Anduin magic</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="anduinHeroPower_cost">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>64</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>3 diamonds</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_16">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="sylvanasCritical_btn">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>75</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Sylvanas critical blades</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="sylvanasHeroPower_cost">
-               <property name="text">
-                <string>3 diamonds</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_17">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="guldanRampage_btn">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>75</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Gul`dan rampage</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="guldanHeroPower_cost_2">
-               <property name="text">
-                <string>5 diamonds</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_18">
-             <property name="leftMargin">
-              <number>5</number>
-             </property>
-             <property name="topMargin">
-              <number>5</number>
-             </property>
-             <property name="rightMargin">
-              <number>5</number>
-             </property>
-             <property name="bottomMargin">
-              <number>5</number>
-             </property>
-             <item>
-              <widget class="QPushButton" name="artasUnity_btn">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>75</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Artas unity</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="artasHeroPower_cost_3">
-               <property name="text">
-                <string>3 diamonds</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_11">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="leftMargin">
-            <number>20</number>
-           </property>
-           <property name="topMargin">
-            <number>10</number>
-           </property>
-           <property name="rightMargin">
-            <number>20</number>
-           </property>
-           <property name="bottomMargin">
-            <number>10</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="tapDmgHeroPowerDescription_lbl">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allows you to increase your Tap damage by 1.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="anduinMagicHeroPowerDescription_lbl">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage in 3 times for 5 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="sylvanasHeroPowerDescription_lbl">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Critical Chance by 25% for 10 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="guldanHeroPowerDescription_lbl">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Army damage by 500 for 5 seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="artasUnityHeroPowerDescription_lbl">
-             <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage by 50 for 5 seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_19">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="tapDmg_btn">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>85</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="tapDmgHeroPower_cost">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>+Tap Damage - 3 diamonds</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_15">
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="anduinMagic_btn">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>85</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="anduinHeroPower_cost">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>64</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Anduin magic - 3 diamonds</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="sylvanasCritical_btn">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>85</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="sylvanasHeroPower_cost">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Sylvanas crits - 3 diamonds</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_17">
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="guldanRampage_btn">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>85</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="guldanHeroPower_cost_2">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Guldan rampage - 5 diamonds</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_18">
+              <property name="leftMargin">
+               <number>5</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="rightMargin">
+               <number>5</number>
+              </property>
+              <property name="bottomMargin">
+               <number>5</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="artasUnity_btn">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>85</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="artasHeroPower_cost_3">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Artas unity - 3 diamonds</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="tapDmgHeroPowerDescription_lbl">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;This heropower allows you to increase your Tap damage by 1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="anduinMagicHeroPowerDescription_lbl">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allows you to increase your Tap Damage in 3 times for 5 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="sylvanasHeroPowerDescription_lbl">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Critical Chance by 25% for 10 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="guldanHeroPowerDescription_lbl">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Army damage by 500 for 5 seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="artasUnityHeroPowerDescription_lbl">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This heropower allow you to increase your Tap Damage by 50 for 5 seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="HireArmy_tab">
        <attribute name="title">
@@ -1445,9 +1755,9 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>10</y>
+          <y>40</y>
           <width>291</width>
-          <height>641</height>
+          <height>591</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1459,36 +1769,66 @@
          </property>
          <item>
           <widget class="QPushButton" name="goldArt_btn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>110</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Gold multiplier</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="dmndsArt_btn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>110</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Diamonds multiplier</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="critArt_btn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>110</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Critical hit multiplier</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="hpdecrArt_btn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>110</height>
+            </size>
+           </property>
            <property name="text">
-            <string>HP decreaser</string>
+            <string/>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="perksArt_btn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>110</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Perks cost decreaser</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -1498,9 +1838,9 @@
         <property name="geometry">
          <rect>
           <x>310</x>
-          <y>10</y>
+          <y>40</y>
           <width>111</width>
-          <height>641</height>
+          <height>591</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -1508,10 +1848,10 @@
           <number>0</number>
          </property>
          <property name="topMargin">
-          <number>35</number>
+          <number>0</number>
          </property>
          <property name="bottomMargin">
-          <number>45</number>
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="goldArtLvl_lbl">
@@ -1569,29 +1909,34 @@
         <property name="geometry">
          <rect>
           <x>430</x>
-          <y>10</y>
-          <width>343</width>
-          <height>641</height>
+          <y>40</y>
+          <width>341</width>
+          <height>591</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_13">
          <property name="leftMargin">
-          <number>20</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
-          <number>45</number>
+          <number>0</number>
          </property>
          <property name="rightMargin">
-          <number>20</number>
+          <number>0</number>
          </property>
          <property name="bottomMargin">
-          <number>45</number>
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="goldArtDescr_lbl">
            <property name="text">
-            <string>This artifact allows you gain moneyz multiplier.
- It does... Cost... Max...</string>
+            <string>Gain money multiplier. Max... Cost...</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -1601,6 +1946,12 @@
             <string>This artifact allows you gain diamonds multiplier. 
 It does... Cost...</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -1608,6 +1959,12 @@ It does... Cost...</string>
            <property name="text">
             <string>This artifact allows you do more critical damage! 
 It does... Cost...</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -1617,6 +1974,12 @@ It does... Cost...</string>
             <string>This artifact will decrease monster HP to pass level easier!
  It does... Cost...</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -1625,9 +1988,63 @@ It does... Cost...</string>
             <string>This artiact allows you to buy и без этого забафанные перки.
 It does... Cost...</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QLabel" name="artifactNameDescr_lbl">
+        <property name="geometry">
+         <rect>
+          <x>14</x>
+          <y>10</y>
+          <width>291</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Name</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="artifactValueDescr_lbl">
+        <property name="geometry">
+         <rect>
+          <x>314</x>
+          <y>10</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Level</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="artifactDescription_lbl">
+        <property name="geometry">
+         <rect>
+          <x>434</x>
+          <y>10</y>
+          <width>341</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Description</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </widget>
      </widget>

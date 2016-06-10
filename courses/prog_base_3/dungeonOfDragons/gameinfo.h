@@ -9,5 +9,4 @@ public:
 
     bool firstLaunch;
     QString playerName;
-
 };

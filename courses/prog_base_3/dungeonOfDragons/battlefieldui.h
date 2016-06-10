@@ -27,6 +27,7 @@ class BattleFieldUI : public QMainWindow
 
 public:
     explicit BattleFieldUI(QWidget *parent = 0);
+    void writeSettingsToXML();
 
 private:
     Ui::BattleFieldUI *ui;
@@ -50,7 +51,6 @@ private:
     void closeEvent(QCloseEvent *e);
     void updateHireArmyUI();
     void loadSettingsFromXML();
-    void writeSettingsToXML();
     QString listElements(QString tagName1, QString tagName2);
     QString humanizeNumber(unsigned int num);
 

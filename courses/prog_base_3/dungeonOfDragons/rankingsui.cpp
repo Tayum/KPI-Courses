@@ -35,7 +35,7 @@ void RankingsUI::uiUpdate()
     Player *playerSet[10];
     QString playerNamesSet[10] = {"Lesha", "Ivan", "Tosha", "Vasya", "Petya", "Andrey", "Misha", "Igor", "Sasha", this->gameInfo->playerName};
     int playerLevelSet[10] = {20,50,100,200,250,500,750,1000,1250,this->stats->CurrentLevel};
-    int playerTapDmgSet[10] = {40,60,100,250,500,1000,1500,2500,5000,this->stats->CurrentTapDamage};
+    int playerTapDmgSet[10] = {40,60,100,250,500,1000,1500,2500,5000,(int)this->stats->CurrentTapDamage};
     QTime *playerTimePlayedSet[10];
     for (int i = 0; i < 9; i++) {
         playerTimePlayedSet[i] = new QTime(i+2,i+20, rand()%20);

@@ -1,5 +1,10 @@
+#include <QUrl>
+#include <QDesktopServices>
+
 #include "settingsui.h"
 #include "ui_settingsui.h"
+
+#include "battlefieldui.h"
 
 SettingsUI::SettingsUI(Stats *stats, QWidget *parent) :
     QDialog(parent),
@@ -49,4 +54,25 @@ void SettingsUI::updateUI()
     this->ui->val_lbl_16->setText(QString::number(this->stats->TotalMonsterKills));
     this->ui->val_lbl_17->setText(QString("%1d %2").arg(this->stats->TotalDaysPlayed).arg(this->stats->TotalPlayTime.toString("hh-mm-ss")));
     this->ui->val_lbl_18->setText(QString::number(-1));
+}
+
+void SettingsUI::on_save_btn_clicked()
+{
+    BattleFieldUI *bfObj = (BattleFieldUI *)this->parent();
+    bfObj->writeSettingsToXML();
+}
+
+void SettingsUI::on_vkshare_btn_clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://vk.com/id0", QUrl::TolerantMode));
+}
+
+void SettingsUI::on_fbshare_btn_clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://www.facebook.com/profile.php?=743264506", QUrl::TolerantMode));
+}
+
+void SettingsUI::on_twishare_btn_clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://twitter.com", QUrl::TolerantMode));
 }

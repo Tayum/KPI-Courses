@@ -3,10 +3,10 @@
 
 Enemy::Enemy(int CurrentLevel)
 {
-    TotalHP = 5 + (int) pow(1.15, CurrentLevel);
-    CurrentHP = TotalHP;
-    GoldDropped = (int) TotalHP * 0.65;
-    DiamondsDropped = CurrentLevel % 10;
+    TotalHP = CurrentLevel;
+    CurrentHP = 1;
+    GoldDropped = 0;
+    DiamondsDropped = 0;
 }
 
 Enemy::Enemy(int currentHP, int goldDropped, int diamondsDropped, int totalHP)
@@ -31,7 +31,7 @@ void Enemy::goToNextDragon(Stats *stats)
     TotalHP -= (int) TotalHP * stats->MonsterHPDecreaser;
     CurrentHP = TotalHP;
     GoldDropped = (int)TotalHP * 0.65;
-    DiamondsDropped = stats->CurrentLevel % 10;
+    DiamondsDropped = (stats->CurrentLevel % 10 == 0) ? 1 : 0;
 }
 
 bool Enemy::doDamage(int inDamage)

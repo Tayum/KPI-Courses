@@ -3,9 +3,14 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QtXml>
+#include <QXmlStreamWriter>
+#include <QDebug>
+#include <QDir>
 
 #include "battlefieldui.h"
 #include "ui_battlefieldui.h"
+
+#define XML_FILE_PATH "C:/Users/Max/Desktop/courseWork/data/settings.xml"
 
 BattleFieldUI::BattleFieldUI(QWidget *parent) :
     QMainWindow(parent),
@@ -26,10 +31,11 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     // Upload info from .xml file.
     // Load the file.
     QDomDocument document;
-    QFile file(":/data/data/settings.xml");
+    QFile file(XML_FILE_PATH);
     if (!file.open(QFile::ReadOnly | QFile::Text))
     {
         qDebug() << "Failed open file stream.";
+        qDebug() << file.error();
         return;
     }
     else
@@ -45,6 +51,11 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
     this->root = document.firstChildElement();
     // Fill all classes fields.
     this->loadSettingsFromXML();
+    file.close();
+    // Check if it was the first launch.
+    if (this->gameInfo->firstLaunch == 0) {
+        this->gameInfo->firstLaunch = 1;
+    }
 
     // Main UI things.
     // Initialize UI objects.
@@ -198,7 +209,7 @@ void BattleFieldUI::buySoldier()
 
 void BattleFieldUI::closeEvent(QCloseEvent *e)
 {
-    QMessageBox::StandardButton resBtn = QMessageBox::question(this, "Quit program?", tr("Do you want to save your progreses?\n"),
+    QMessageBox::StandardButton resBtn = QMessageBox::question(this, "Quit program?", tr("Save progress and exit battle field?\n"),
                                                                QMessageBox::Cancel | QMessageBox::Yes, QMessageBox::Yes);
     if(resBtn != QMessageBox::Yes)
     {
@@ -276,6 +287,7 @@ void BattleFieldUI::on_anduinMagic_btn_clicked()
     if(this->stats->CurrentGold >= ANDUIN_UPGRADE_COST && !heropowers->anduinBought) {
         this->heropowers->anduinCD = true;
         this->heropowers->anduinBought = true;
+        this->stats->HeropowersUnlocked++;
         this->stats->CurrentGold -= ANDUIN_UPGRADE_COST;
     }
 }
@@ -298,6 +310,7 @@ void BattleFieldUI::on_sylvanasCritical_btn_clicked()
     if(this->stats->CurrentGold >= SYLVANAS_UPGRADE_COST && !heropowers->sylvanasBought) {
         this->heropowers->sylvanasCD = true;
         this->heropowers->sylvanasBought = true;
+        this->stats->HeropowersUnlocked++;
         this->stats->CurrentGold -= SYLVANAS_UPGRADE_COST;
     }
 }
@@ -320,6 +333,7 @@ void BattleFieldUI::on_guldanRampage_btn_clicked()
     if(this->stats->CurrentGold >= GULDAN_UPGRADE_COST && !heropowers->guldanBought) {
         this->heropowers->guldanCD = true;
         this->heropowers->guldanBought = true;
+        this->stats->HeropowersUnlocked++;
         this->stats->CurrentGold -= GULDAN_UPGRADE_COST;
     }
 }
@@ -343,6 +357,7 @@ void BattleFieldUI::on_artasUnity_btn_clicked()
     if(this->stats->CurrentGold >= ARTAS_UPGRADE_COST && !heropowers->artasBought) {
         this->heropowers->artasCD = true;
         this->heropowers->artasBought = true;
+        this->stats->HeropowersUnlocked++;
         this->stats->CurrentGold -= ARTAS_UPGRADE_COST;
     }
 }
@@ -367,6 +382,8 @@ void BattleFieldUI::on_goldArt_btn_clicked()
         this->stats->CurrentDiamonds -= MULTIPLIER_COST;
         // Get artifact effect.
         this->stats->GoldMultiplier += 0.1;
+        //
+        this->stats->ArtifactsUnlocked++;
     }
 }
 
@@ -383,6 +400,8 @@ void BattleFieldUI::on_dmndsArt_btn_clicked()
         this->stats->CurrentDiamonds -= MULTIPLIER_COST;
         // Get artifact effect.
         this->stats->DiamondsMultiplier += 0.1;
+        //
+        this->stats->ArtifactsUnlocked++;
     }
 }
 
@@ -399,6 +418,8 @@ void BattleFieldUI::on_critArt_btn_clicked()
         this->stats->CurrentDiamonds -= MULTIPLIER_COST;
         // Get artifact effect.
         this->stats->CriticalHitMultiplier += 0.1;
+        //
+        this->stats->ArtifactsUnlocked++;
     }
 }
 
@@ -415,6 +436,8 @@ void BattleFieldUI::on_hpdecrArt_btn_clicked()
         this->stats->CurrentDiamonds -= MULTIPLIER_COST;
         // Get artifact effect.
         this->stats->MonsterHPDecreaser += 0.1;
+        //
+        this->stats->ArtifactsUnlocked++;
     }
 }
 
@@ -431,6 +454,8 @@ void BattleFieldUI::on_perksArt_btn_clicked()
         this->stats->CurrentDiamonds -= MULTIPLIER_COST;
         // Get artifact effect.
         this->stats->PerksCostDecreaser += 0.1;
+        //
+        this->stats->ArtifactsUnlocked++;
     }
 }
 
@@ -451,7 +476,6 @@ QString BattleFieldUI::listElements(QString tagName1, QString tagName2)
     return (QString("notFound"));
 }
 
-
 void BattleFieldUI::loadSettingsFromXML()
 {
     // GameInfo settings class.
@@ -460,7 +484,7 @@ void BattleFieldUI::loadSettingsFromXML()
     // Achievements settings class.
     achievements->EarnNGold = listElements("achievements", "earnNGold").toInt();
     achievements->EarnNDiamonds = listElements("achievements", "earnNDiamonds").toInt();
-    achievements->KillNMonsters = listElements("achievements", "killNMOnsters").toInt();
+    achievements->KillNMonsters = listElements("achievements", "killNMonsters").toInt();
     achievements->ReachNStage = listElements("achievements", "reachNStage").toInt();
     achievements->OwnNArtifacts = listElements("achievements", "ownNArtifacts").toInt();
     achievements->HireNSoldiers = listElements("achievements", "hireNSoldiers").toInt();
@@ -503,5 +527,85 @@ void BattleFieldUI::loadSettingsFromXML()
 
 void BattleFieldUI::writeSettingsToXML()
 {
-
+    QFile file(XML_FILE_PATH);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        qDebug() << "Failed open file stream";
+        qDebug() << file.error();
+        return;
+    }
+    QXmlStreamWriter xmlWriter(&file);
+    xmlWriter.setAutoFormatting(true);
+    xmlWriter.writeStartDocument();
+    // Start writing to .xml file.
+    xmlWriter.writeStartElement("settings");
+    // Gameinfo section.
+    xmlWriter.writeStartElement("gameinfo");
+    xmlWriter.writeTextElement("firstLaunch", QString::number(gameInfo->firstLaunch));
+    xmlWriter.writeTextElement("username", gameInfo->playerName);
+    xmlWriter.writeEndElement();
+    // Achievements section.
+    xmlWriter.writeStartElement("achievements");
+    xmlWriter.writeTextElement("earnNGold", QString::number(achievements->EarnNGold));
+    xmlWriter.writeTextElement("earnNDiamonds", QString::number(achievements->EarnNDiamonds));
+    xmlWriter.writeTextElement("killNMonsters", QString::number(achievements->KillNMonsters));
+    xmlWriter.writeTextElement("reachNStage", QString::number(achievements->ReachNStage));
+    xmlWriter.writeTextElement("ownNArtifacts", QString::number(achievements->OwnNArtifacts));
+    xmlWriter.writeTextElement("hireNSoldiers", QString::number(achievements->HireNSoldiers));
+    xmlWriter.writeTextElement("tapNTimes", QString::number(achievements->TapNTimes));
+    xmlWriter.writeTextElement("heropowNTimes", QString::number(achievements->HeropowNTimes));
+    xmlWriter.writeTextElement("doNCritical", QString::number(achievements->DoNCritical));
+    xmlWriter.writeEndElement();
+    // Army section.
+    xmlWriter.writeStartElement("army");
+    for (int i = 1; i < 31; i++)
+    {
+        QString query = QString("type%1").arg(i);
+        xmlWriter.writeTextElement(query, QString::number(army->soldiersAmount[i - 1]));
+    }
+    xmlWriter.writeEndElement();
+    // Stats section.
+    xmlWriter.writeStartElement("stats");
+    xmlWriter.writeTextElement("currentLevel", QString::number(stats->CurrentLevel));
+    xmlWriter.writeTextElement("currentGold", QString::number(stats->CurrentGold));
+    xmlWriter.writeTextElement("currentDiamonds", QString::number(stats->CurrentDiamonds));
+    xmlWriter.writeTextElement("currentTapDamage", QString::number(stats->CurrentTapDamage));
+    xmlWriter.writeTextElement("currentArmyDamage", QString::number(stats->CurrentArmyDamage));
+    xmlWriter.writeTextElement("currentCriticalChance", QString::number(stats->CurrentCriticalChance));
+    xmlWriter.writeTextElement("armyAmount", QString::number(stats->ArmyAmount));
+    xmlWriter.writeTextElement("artifactsUnlocked", QString::number(stats->ArtifactsUnlocked));
+    xmlWriter.writeTextElement("heropowersUnlocked", QString::number(stats->HeropowersUnlocked));
+    xmlWriter.writeTextElement("awardsCollected", QString::number(stats->AwardsCollected));
+    xmlWriter.writeTextElement("totalGoldCollected", QString::number(stats->TotalGoldCollected));
+    xmlWriter.writeTextElement("totalDiamondsCollected", QString::number(stats->TotalDiamondsCollected));
+    xmlWriter.writeTextElement("totalTapsMade", QString::number(stats->TotalTapsMade));
+    xmlWriter.writeTextElement("totalCriticalTapsMade", QString::number(stats->TotalCriticalTapsMade));
+    xmlWriter.writeTextElement("totalMonsterKills", QString::number(stats->TotalMonsterKills));
+    xmlWriter.writeTextElement("totalPlayTimeH", QString::number(stats->TotalPlayTime.hour()));
+    xmlWriter.writeTextElement("totalPlayTimeM", QString::number(stats->TotalPlayTime.minute()));
+    xmlWriter.writeTextElement("totalPlayTimeS", QString::number(stats->TotalPlayTime.second()));
+    xmlWriter.writeTextElement("totalDaysPlayed", QString::number(stats->TotalDaysPlayed));
+    xmlWriter.writeTextElement("goldMultiplier", QString::number(stats->GoldMultiplier));
+    xmlWriter.writeTextElement("criticalHitMultiplier", QString::number(stats->CriticalHitMultiplier));
+    xmlWriter.writeTextElement("diamondsMultiplier", QString::number(stats->DiamondsMultiplier));
+    xmlWriter.writeTextElement("monsterHPDecreaser", QString::number(stats->MonsterHPDecreaser));
+    xmlWriter.writeTextElement("perksCostDecreaser", QString::number(stats->PerksCostDecreaser));
+    xmlWriter.writeEndElement();
+    // Heropowers section.
+    xmlWriter.writeStartElement("heropowers");
+    xmlWriter.writeTextElement("anduinBought", QString::number(heropowers->anduinBought));
+    xmlWriter.writeTextElement("sylvanasBought", QString::number(heropowers->sylvanasBought));
+    xmlWriter.writeTextElement("guldanBought", QString::number(heropowers->guldanBought));
+    xmlWriter.writeTextElement("artasBought", QString::number(heropowers->artasBought));
+    xmlWriter.writeEndElement();
+    // Enemy section.
+    xmlWriter.writeStartElement("enemy");
+    xmlWriter.writeTextElement("currentHP", QString::number(enemy->CurrentHP));
+    xmlWriter.writeTextElement("goldDropped", QString::number(enemy->GoldDropped));
+    xmlWriter.writeTextElement("diamondsDropped", QString::number(enemy->DiamondsDropped));
+    xmlWriter.writeTextElement("totalHP", QString::number(enemy->TotalHP));
+    xmlWriter.writeEndElement();
+    // End of the .xml file.
+    xmlWriter.writeEndElement();
+    file.close();
 }

@@ -1,6 +1,27 @@
 <RCC>
     <qresource prefix="/data">
         <file>data/army.csv</file>
-        <file>data/settings.xml</file>
+    </qresource>
+    <qresource prefix="/design">
+        <file>design/battlefield/background.png</file>
+        <file>design/battlefield/artifactstab_BG.png</file>
+        <file>design/battlefield/hiresoldierstab_BG.png</file>
+        <file>design/battlefield/heropowerstab_BG.png</file>
+        <file>design/tabwidget_tabBG.png</file>
+        <file>design/battlefield/battlefieldtab_BG.png</file>
+        <file>design/enemy.png</file>
+        <file>design/tabwidget_tabHoveredBG.png</file>
+        <file>design/enemy_pressed.png</file>
+        <file>design/controlButton_BG.png</file>
+        <file>design/heropowers/tapdamage.png</file>
+        <file>design/heropowers/anduin_heropower.png</file>
+        <file>design/heropowers/sylvanasHeroPower.png</file>
+        <file>design/heropowers/guldanrampage.png</file>
+        <file>design/heropowers/artasunity.png</file>
+        <file>design/artifacts/goldmultiplier.png</file>
+        <file>design/artifacts/diamonds.png</file>
+        <file>design/artifacts/criticalchance.png</file>
+        <file>design/artifacts/hpdecreaser.png</file>
+        <file>design/artifacts/perksdecreaser.png</file>
     </qresource>
 </RCC>

@@ -10,16 +10,16 @@ public:
     Stats();
     // Current status fields.
     int CurrentLevel;
-    int CurrentGold;
-    int CurrentDiamonds;
-    int CurrentTapDamage;
-    int CurrentArmyDamage;
+    long long CurrentGold;
+    long long CurrentDiamonds;
+    long long CurrentTapDamage;
+    long long CurrentArmyDamage;
     double CurrentCriticalChance;
     // General status fields.
     int ArmyAmount;
-    int ArtifactsUnlocked; // TODO
-    int AwardsCollected; // TODO
-    int HeropowersUnlocked; // TODO
+    int ArtifactsUnlocked;
+    int AwardsCollected;
+    int HeropowersUnlocked;
     // Multipliers.
     double CriticalHitMultiplier;
     double GoldMultiplier;
