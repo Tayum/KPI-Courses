@@ -30,4 +30,5 @@ private:
     Ui::SettingsUI *ui;
     QTimer *updateUITimer;
     Stats *stats;
+    QString humanizeNumber(long long num);
 };

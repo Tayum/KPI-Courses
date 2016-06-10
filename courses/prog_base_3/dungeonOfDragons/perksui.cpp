@@ -2,13 +2,13 @@
 #include "ui_perksui.h"
 
 // What perks do.
-#define ELDORADO_VALUE 100
-#define DIAMRUSH_VALUE 100000
+#define ELDORADO_VALUE 100000
+#define DIAMRUSH_VALUE 100
 #define ENCHSWORD_VALUE 20
 
 // Perks cost.
-#define DIAMRUSH_COST 50
-#define ELDORADO_COST 10000
+#define DIAMRUSH_COST 50000
+#define ELDORADO_COST 10
 #define ENCHSWORD_COST 10000
 #define WINDFURY_COST 10000
 #define PASSLVL_COST 10000

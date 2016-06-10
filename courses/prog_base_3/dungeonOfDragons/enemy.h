@@ -1,6 +1,9 @@
 #pragma once
 
+#include <limits.h>
+
 #include "stats.h"
+
 
 class Enemy
 {
@@ -8,10 +11,10 @@ public:
     Enemy(int CurrentLevel);
     Enemy(int currentHP, int goldDropped, int diamondsDropped, int totalHP);
     // Dragon characteristics.
-    int CurrentHP;
-    int GoldDropped;
-    int DiamondsDropped;
-    int TotalHP;
+    long long CurrentHP;
+    long long GoldDropped;
+    long long DiamondsDropped;
+    long long TotalHP;
     // Function, that jumps to the next dragon.
     void goToNextDragon(Stats *stats);
     // Functions to deal with HP and damage.

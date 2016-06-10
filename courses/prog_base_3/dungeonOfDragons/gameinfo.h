@@ -9,4 +9,5 @@ public:
 
     bool firstLaunch;
     QString playerName;
+    int positionInRank;
 };

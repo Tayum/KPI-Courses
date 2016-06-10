@@ -56,7 +56,7 @@ void RankingsUI::uiUpdate()
     for (int i = 0; i < 10; i++)
     {
         QString idLblCurName = QString("id_lbl_%1").arg(i + 1);
-        fillTextInLabelByItsName(idLblCurName, QString::number(i + 1));
+        fillTextInLabelByItsName(idLblCurName, QString("Rank %1").arg(i + 1));
         QString nameLblCurName = QString("name_lbl_%1").arg(i + 1);
         fillTextInLabelByItsName(nameLblCurName, playerSet[i]->name);
         QString levelLblCurName = QString("level_lbl_%1").arg(i + 1);

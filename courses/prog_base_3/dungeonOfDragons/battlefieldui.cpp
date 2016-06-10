@@ -489,6 +489,7 @@ void BattleFieldUI::loadSettingsFromXML()
     // GameInfo settings class.
     gameInfo->firstLaunch = listElements("gameinfo", "firstLaunch").toInt();
     gameInfo->playerName = listElements("gameinfo", "username");
+    gameInfo->positionInRank = listElements("gameinfo", "rank").toInt();
     // Achievements settings class.
     achievements->EarnNGold = listElements("achievements", "earnNGold").toInt();
     achievements->EarnNDiamonds = listElements("achievements", "earnNDiamonds").toInt();
@@ -561,6 +562,7 @@ void BattleFieldUI::writeSettingsToXML()
     xmlWriter.writeStartElement("gameinfo");
     xmlWriter.writeTextElement("firstLaunch", QString::number(gameInfo->firstLaunch));
     xmlWriter.writeTextElement("username", gameInfo->playerName);
+    xmlWriter.writeTextElement("rank", QString::number(gameInfo->positionInRank));
     xmlWriter.writeEndElement();
     // Achievements section.
     xmlWriter.writeStartElement("achievements");

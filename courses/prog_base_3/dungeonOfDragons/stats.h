@@ -27,7 +27,7 @@ public:
     double MonsterHPDecreaser;
     double PerksCostDecreaser;
     // Total status fields.
-    int TotalGoldCollected;
+    long long TotalGoldCollected;
     int TotalDiamondsCollected;
     int TotalTapsMade;
     int TotalCriticalTapsMade;

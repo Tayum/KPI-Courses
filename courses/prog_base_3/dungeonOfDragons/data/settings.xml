@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
     <gameinfo>
-        <firstLaunch>0</firstLaunch>
-        <username>TestSupaMegaName</username>
+        <firstLaunch>1</firstLaunch>
+        <username>Maxim</username>
+	<rank>10</rank>
     </gameinfo>
     <achievements>
-        <earnNGold>0</earnNGold>
+        <earnNGold>1</earnNGold>
         <earnNDiamonds>0</earnNDiamonds>
-        <killNMonsters>0</killNMonsters>
-        <reachNStage>0</reachNStage>
+        <killNMonsters>1</killNMonsters>
+        <reachNStage>1</reachNStage>
         <ownNArtifacts>0</ownNArtifacts>
         <hireNSoldiers>0</hireNSoldiers>
-        <tapNTimes>0</tapNTimes>
+        <tapNTimes>1</tapNTimes>
         <heropowNTimes>0</heropowNTimes>
         <doNCritical>0</doNCritical>
     </achievements>
     <army>
-        <type1>0</type1>
+        <type1>4</type1>
         <type2>0</type2>
-        <type3>0</type3>
+        <type3>1</type3>
         <type4>0</type4>
         <type5>0</type5>
         <type6>0</type6>
@@ -28,24 +29,24 @@
         <type10>0</type10>
     </army>
     <stats>
-        <currentLevel>1</currentLevel>
-        <currentGold>0</currentGold>
-        <currentDiamonds>0</currentDiamonds>
-        <currentTapDamage>1</currentTapDamage>
-        <currentArmyDamage>0</currentArmyDamage>
+        <currentLevel>379</currentLevel>
+        <currentGold>30017</currentGold>
+        <currentDiamonds>37</currentDiamonds>
+        <currentTapDamage>63</currentTapDamage>
+        <currentArmyDamage>1200</currentArmyDamage>
         <currentCriticalChance>0.1</currentCriticalChance>
-        <armyAmount>0</armyAmount>
+        <armyAmount>5</armyAmount>
         <artifactsUnlocked>0</artifactsUnlocked>
         <heropowersUnlocked>0</heropowersUnlocked>
-        <awardsCollected>0</awardsCollected>
-        <totalGoldCollected>0</totalGoldCollected>
-        <totalDiamondsCollected>0</totalDiamondsCollected>
-        <totalTapsMade>0</totalTapsMade>
-        <totalCriticalTapsMade>0</totalCriticalTapsMade>
-        <totalMonsterKills>0</totalMonsterKills>
+        <awardsCollected>4</awardsCollected>
+        <totalGoldCollected>31449</totalGoldCollected>
+        <totalDiamondsCollected>37</totalDiamondsCollected>
+        <totalTapsMade>1023</totalTapsMade>
+        <totalCriticalTapsMade>107</totalCriticalTapsMade>
+        <totalMonsterKills>378</totalMonsterKills>
         <totalPlayTimeH>0</totalPlayTimeH>
-        <totalPlayTimeM>0</totalPlayTimeM>
-        <totalPlayTimeS>0</totalPlayTimeS>
+        <totalPlayTimeM>8</totalPlayTimeM>
+        <totalPlayTimeS>21</totalPlayTimeS>
         <totalDaysPlayed>0</totalDaysPlayed>
         <goldMultiplier>0</goldMultiplier>
         <criticalHitMultiplier>0</criticalHitMultiplier>
@@ -60,9 +61,9 @@
         <artasBought>0</artasBought>
     </heropowers>
     <enemy>
-        <currentHP>0</currentHP>
-        <goldDropped>0</goldDropped>
+        <currentHP>478</currentHP>
+        <goldDropped>167</goldDropped>
         <diamondsDropped>0</diamondsDropped>
-        <totalHP>0</totalHP>
+        <totalHP>478</totalHP>
     </enemy>
 </settings>

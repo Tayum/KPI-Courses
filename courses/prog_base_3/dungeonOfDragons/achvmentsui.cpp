@@ -32,22 +32,22 @@ AchvmentsUI::~AchvmentsUI()
 void AchvmentsUI::updateUI()
 {
     if(this->achvments->EarnNGold)
-        ui->ach1_status_1->setText("true");
+        ui->ach1_status_1->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->EarnNDiamonds)
-        ui->ach2_status_2->setText("true");
+        ui->ach2_status_2->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->KillNMonsters)
-        ui->ach3_status_3->setText("true");
+        ui->ach3_status_3->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->ReachNStage)
-        ui->ach4_status_4->setText("true");
+        ui->ach4_status_4->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->OwnNArtifacts)
-        ui->ach5_status_5->setText("true");
+        ui->ach5_status_5->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->HireNSoldiers)
-        ui->ach6_status_6->setText("true");
+        ui->ach6_status_6->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->TapNTimes)
-        ui->ach7_status_7->setText("true");
+        ui->ach7_status_7->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->HeropowNTimes)
-        ui->ach8_status_8->setText("true");
+        ui->ach8_status_8->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
     if(this->achvments->DoNCritical)
-        ui->ach9_status_9->setText("true");
+        ui->ach9_status_9->setStyleSheet("background-image: url(:/design/achievementDone_label.png)");
 }
 

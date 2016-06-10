@@ -31,9 +31,112 @@
   <property name="windowTitle">
    <string>Setings</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-image: url(:/design/design/battlefield/background.png);
+}
+
+
+</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="settingsTabs_tabWidget">
+     <property name="styleSheet">
+      <string notr="true">/*-----------------------------------------------------LABELS-----------------------------------------------------*/
+
+QLabel {
+	background-color: rgba(255, 255, 255, 170);
+	font: 75 bold 16pt &quot;PMingLiU-ExtB&quot;;
+	color: black;
+}
+
+QPushButton:pressed {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-style: inset;
+}
+
+/*-----------------------------------------------------QTABWIDGET-----------------------------------------------------*/
+
+QTabWidget::pane {
+    border-top: 2px solid rgb(191, 191, 191);
+}
+
+QTabWidget::tab-bar {
+    left: 0px;
+}
+
+QTabBar::tab {
+	background-image: url(:/design/design/tabwidget_tabBG.png);
+    border: 3px solid rgb(137, 90, 255);
+	width: 147px;
+    padding: 8px;
+	color: white;
+	font: 75 bold 12pt &quot;PMingLiU-ExtB&quot;;
+	border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background-image: url(:/design/design/tabwidget_tabHoveredBG.png);
+}
+
+QTabBar::tab:selected {
+    border: 3px solid rgb(137, 90, 255);
+}
+
+QTabBar::tab:!selected {
+    margin-top: 10px;
+}
+
+QTabBar::tab:first:selected {
+    margin-left: 0;
+}
+
+QTabBar::tab:last:selected {
+    margin-right: 0;
+}
+
+/*-----------------------------------------------------TAB_IMAGES-----------------------------------------------------*/
+
+QWidget#gnrlSettings_tab {
+	background-image: url(:/design/design/settings/settingsBG.png);
+}
+
+QWidget#glblStats_tab {
+	background-image: url(:/design/design/settings/settingsBG.png);
+}
+
+QWidget#tutorial_tab {
+	background-image: url(:/design/design/settings/settingsBG.png);
+}
+
+QWidget#about_tab {
+	background-image: url(:/design/design/settings/settingsBG.png);
+}
+
+/*-----------------------------------------------------BUTTON IMAGES-----------------------------------------------------*/
+QPushButton#vkshare_btn {
+	border-image: url(:/design/design/settings/vklogo.png);
+}
+
+QPushButton#fbshare_btn {
+	border-image: url(:/design/design/settings/fblogo.png);
+}
+
+QPushButton#twishare_btn {
+	border-image: url(:/design/design/settings/twitterlogo.png);
+}
+
+QPushButton#save_btn {
+	border-image: url(:/design/design/settings/saveButton.png);
+}</string>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -41,39 +144,13 @@
       <attribute name="title">
        <string>General settings</string>
       </attribute>
-      <widget class="QLabel" name="todo1">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>270</x>
-         <y>290</y>
-         <width>141</width>
-         <height>13</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>TODO: something with music.</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="save_btn">
-       <property name="geometry">
-        <rect>
-         <x>240</x>
-         <y>40</y>
-         <width>191</width>
-         <height>91</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Save progress</string>
-       </property>
-      </widget>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>180</x>
-         <y>150</y>
-         <width>301</width>
-         <height>101</height>
+         <x>170</x>
+         <y>180</y>
+         <width>344</width>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -89,28 +166,90 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>20</number>
+          </property>
           <item>
            <widget class="QPushButton" name="vkshare_btn">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="text">
-             <string>VK</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="fbshare_btn">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="text">
-             <string>Facebook</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="twishare_btn">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="text">
-             <string>Twitter</string>
+             <string/>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>20</y>
+         <width>241</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Save your progress</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="save_btn">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>1000</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -322,7 +461,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>50</width>
+           <width>30</width>
            <height>20</height>
           </size>
          </property>

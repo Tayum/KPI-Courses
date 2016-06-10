@@ -21,16 +21,22 @@ void Enemy::goToNextDragon(Stats *stats)
 {
     // Update current and global state fields.
     stats->CurrentGold += ( GoldDropped + stats->GoldMultiplier * GoldDropped );
+    if (stats->CurrentGold <= 0) {
+        stats->CurrentGold = LONG_LONG_MAX - 10000;
+    }
     stats->CurrentDiamonds += ( DiamondsDropped + stats->DiamondsMultiplier * DiamondsDropped );
     stats->TotalGoldCollected += GoldDropped;
+    if (stats->TotalGoldCollected <= 0) {
+        stats->TotalGoldCollected = LONG_LONG_MAX - 10000;
+    }
     stats->TotalDiamondsCollected += DiamondsDropped;
     stats->TotalMonsterKills++;
     stats->CurrentLevel++;
     // Generate new dragon.
-    TotalHP = 5 + (int) pow(1.15, stats->CurrentLevel);
-    TotalHP -= (int) TotalHP * stats->MonsterHPDecreaser;
+    TotalHP = 5 + (long long) stats->CurrentLevel * 1.25;
+    TotalHP -= (long long) TotalHP * stats->MonsterHPDecreaser;
     CurrentHP = TotalHP;
-    GoldDropped = (int)TotalHP * 0.65;
+    GoldDropped = (long long)TotalHP * 0.35;
     DiamondsDropped = (stats->CurrentLevel % 10 == 0) ? 1 : 0;
 }
 

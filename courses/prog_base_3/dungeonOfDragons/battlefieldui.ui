@@ -108,7 +108,7 @@ QTabBar::tab:selected {
 }
 
 QTabBar::tab:!selected {
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
 QTabBar::tab:first:selected {
@@ -653,7 +653,7 @@ QPushButton#perksArt_btn {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>+Tap Damage - 3 diamonds</string>
+               <string>+Tap Damage - 300 Gold</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -701,7 +701,7 @@ QPushButton#perksArt_btn {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Anduin's magic - 3 diamonds</string>
+               <string>Anduin's magic - 3K Gold</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -743,7 +743,7 @@ QPushButton#perksArt_btn {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Sylvanas crits - 3 diamonds</string>
+               <string>Sylvanas crits - 3K Gold</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -785,7 +785,7 @@ QPushButton#perksArt_btn {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Guldan's rampage - 5 diamonds</string>
+               <string>Guldan's rampage - 5K Gold</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -827,7 +827,7 @@ QPushButton#perksArt_btn {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>Artas unity - 3 diamonds</string>
+               <string>Artas unity - 3K Gold</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1637,7 +1637,7 @@ Max: 90%</string>
            <property name="text">
             <string>This artifact allows you do more critical damage 
 Cost: 20 diamonds
-Max: 90%</string>
+Max: 60%</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
