@@ -33,10 +33,10 @@ void Enemy::goToNextDragon(Stats *stats)
     stats->TotalMonsterKills++;
     stats->CurrentLevel++;
     // Generate new dragon.
-    TotalHP = 5 + (long long) stats->CurrentLevel * 1.25;
+    TotalHP = 5 + (long long) pow(stats->CurrentLevel, 1.80);
     TotalHP -= (long long) TotalHP * stats->MonsterHPDecreaser;
     CurrentHP = TotalHP;
-    GoldDropped = (long long)TotalHP * 0.35;
+    GoldDropped = (long long)TotalHP * 0.75;
     DiamondsDropped = (stats->CurrentLevel % 10 == 0) ? 1 : 0;
 }
 

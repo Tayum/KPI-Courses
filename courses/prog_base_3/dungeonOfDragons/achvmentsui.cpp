@@ -21,6 +21,8 @@ AchvmentsUI::AchvmentsUI(Achvments *achvments, QWidget *parent) :
     this->updateTimer = new QTimer(this);
     connect(updateTimer, SIGNAL(timeout()), this, SLOT(updateUI()));
     this->updateTimer->start(100);
+
+    setWindowIcon(QIcon(":/design/design/windowicon.png"));
 }
 
 AchvmentsUI::~AchvmentsUI()

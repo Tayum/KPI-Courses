@@ -74,6 +74,8 @@ BattleFieldUI::BattleFieldUI(QWidget *parent) :
 
     // Update everything on the main window.
     emit this->uiUpdate();
+    // Update window icon
+    setWindowIcon(QIcon(":/design/design/windowicon.png"));
 
     // Set cursors
     QCursor cursorTarget = QCursor(QPixmap(":/cursors/design/cursors/cursorTarget.png"));

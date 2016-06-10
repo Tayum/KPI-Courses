@@ -39,6 +39,7 @@
         <file>design/settings/twitterlogo.png</file>
         <file>design/settings/vklogo.png</file>
         <file>design/settings/saveButton.png</file>
+        <file>design/windowicon.png</file>
     </qresource>
     <qresource prefix="/cursors">
         <file>design/cursors/cursorArrovRed.png</file>

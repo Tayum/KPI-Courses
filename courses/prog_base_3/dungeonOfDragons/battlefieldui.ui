@@ -254,7 +254,7 @@ QPushButton#perksArt_btn {
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="BattleField_tab">
        <attribute name="title">
@@ -653,7 +653,7 @@ QPushButton#perksArt_btn {
                <string notr="true"/>
               </property>
               <property name="text">
-               <string>+Tap Damage - 300 Gold</string>
+               <string>+Tap Damage - 20 Gold</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>

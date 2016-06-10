@@ -26,6 +26,8 @@ SettingsUI::SettingsUI(Stats *stats, QWidget *parent) :
     this->updateUITimer = new QTimer(this);
     connect(updateUITimer, SIGNAL(timeout()), this, SLOT(updateUI()));
     this->updateUITimer->start(100);
+
+    setWindowIcon(QIcon(":/design/design/windowicon.png"));
 }
 
 SettingsUI::~SettingsUI()

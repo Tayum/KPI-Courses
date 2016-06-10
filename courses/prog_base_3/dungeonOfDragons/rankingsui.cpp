@@ -21,6 +21,8 @@ RankingsUI::RankingsUI(GameInfo *gameInfo, Stats *stats, QWidget *parent) :
     this->uiUpdateTimer = new QTimer(this);
     connect(uiUpdateTimer, SIGNAL(timeout()), this, SLOT(uiUpdate()));
     this->uiUpdateTimer->start(100);
+
+    setWindowIcon(QIcon(":/design/design/windowicon.png"));
 }
 
 RankingsUI::~RankingsUI()

@@ -31,6 +31,8 @@ PerksUI::PerksUI(Stats *stats, Enemy *enemy, HeroPowers *heropowers, QWidget *pa
     this->enemy = enemy;
     this->stats = stats;
     this->heropowers = heropowers;
+
+    setWindowIcon(QIcon(":/design/design/windowicon.png"));
 }
 
 PerksUI::~PerksUI()
