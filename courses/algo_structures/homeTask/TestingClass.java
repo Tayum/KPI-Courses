@@ -68,7 +68,6 @@ public class TestingClass {
 		int[] worstTestSet = generator.generateWorstCase(10000);
 		QuickSorter sorter3 = new QuickSorter(worstTestSet.clone());
 
-		
 		System.out.println("Sorting random set of numbers - average case.");
 		startTime = System.nanoTime();
 		sorter.quicksort(0, averageTestSet.length - 1);
@@ -112,18 +111,42 @@ public class TestingClass {
 		double estTime = 0.0;
 
 		// Lists for two subexperiments.
-		SingleLinkedList list1 = generator.generateUnsortedLinkedList(10000);
-		SingleLinkedList list2 = generator.generateUnsortedLinkedList(10000);
-		// Chaining hash tables for two subexperiments.
-		HashTable_Chaining bestCaseHT = generator.generateBestAverCaseChainingTable(10000);
-		HashTable_Chaining worstCaseHT = generator.generateWorstCaseChainingTable(10000);
-		
-		
+		SingleLinkedList list1 = generator.generateUnsortedLinkedList(100000);
+		// Chaining hash tables for two sub-experiments.
+		HashTable_Chaining bestCaseHT = generator.generateBestAverCaseChainingTable(100000);
+		HashTable_Chaining worstCaseHT = generator.generateWorstCaseChainingTable(100000);
 
+		System.out.println("Average case - deleting random elements from hashtable.");
+		startTime = System.nanoTime();
+		for (int i = 0; i < 1000; i++) {
+			bestCaseHT.remove(i);
+		}
+		endTime = System.nanoTime();
+		estTime = (endTime - startTime) / 1000000000.0;
+		System.out.println("Estimated time for average case: " + estTime + "\n");
+		
+		System.out.println("Worst case - deleting random elements from hashtable.");
+		startTime = System.nanoTime();
+		for (int i = 0; i < 1000; i++) {
+			worstCaseHT.remove(i);
+		}
+		endTime = System.nanoTime();
+		estTime = (endTime - startTime) / 1000000000.0;
+		System.out.println("Estimated time for average case: " + estTime + "\n");
+		
+		System.out.println("Deleting random elements from list with random elements.");
+		startTime = System.nanoTime();
+		for (int i = 0; i < 1000; i++) {
+			list1.deleteIndex(i + 500);
+		}
+		endTime = System.nanoTime();
+		estTime = (endTime - startTime) / 1000000000.0;
+		System.out.println("Estimated time: " + estTime + "\n");
 	}
 
 	public static void main(String[] args) {
 		// experiment1();
 		// experiment2();
+		experiment3();
 	}
 }
