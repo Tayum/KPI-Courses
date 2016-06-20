@@ -41,7 +41,7 @@ public class HashTable_Chaining {
 		}
 	}
 
-	public void remove(int key) {
+	public int remove(int key) {
 		int hash = (key % TABLE_SIZE);
 		if (table[hash] != null) {
 			LinkedHashEntry prevEntry = null;
@@ -51,11 +51,17 @@ public class HashTable_Chaining {
 				entry = entry.getNext();
 			}
 			if (entry.getKey() == key) {
-				if (prevEntry == null)
+				if (prevEntry == null) {
+					int toRet = entry.getValue();
 					table[hash] = entry.getNext();
-				else
+					return toRet;
+				} else {
+					int toRet = entry.getValue();
 					prevEntry.setNext(entry.getNext());
+					return toRet;
+				}
 			}
 		}
+		return 0;
 	}
 }
