@@ -1,17 +1,20 @@
-# kpi
-Repository for KPI projects.
+# KPI-courses
+Repository for KPI projects from the programming and other courses.
+Currently such projects/resources can be found here:
+- 1 term - programming essentials course (1 part) - [/prog_base];
+- 1 term - programming essentials course (2 part) - [/prob_base_1];
+- 1 term - programming course work - [/prog_base_2];
+- 1 term - algorithms and data structures course - [/algo_structures];
+- 1 term - discrete math course - [/discrMath_discrStructures];
+- 2 term - web programming essentials - [/prog_base_4];
 
-# courses 
-Main folder with everything else. One day i'll put everything from it on the lower level
+# More info
+You can always find more information in the folders mentioned above.
 
-# IN COURSES
-<h4>algo_structures</h4>
-Algorithms and data structures course labs. <br />
-<h4>discrMath_discrStructures</h4>
-Discrete math course labs. <br />
-<h4>prog_base</h4>
-First semester of programming course. <br />
-<h4>prog_base_2</h4>
-Second semester of programming course. <br />
-<h4>prog_base_3</h4>
-First term course work<br />
+# Feedback
+Pull requests and adding issues are always welcome.
+Please, note me, if you've noticed something in my code.
+You can find me here:
+- VK: [diferenzial13 - Maxim Gonchar](https://www.vk.com/diferenzial13)
+- FB: [diferenzial13 - Maxim Gonchar](https://www.facebook.com/diferenzial13)
+- Twitter: [diferenzial13 - Maxim Gonchar](https://www.twitter.com/diferenzial13)
