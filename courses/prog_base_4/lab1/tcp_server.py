@@ -59,6 +59,8 @@ def main():
         except socket.error as e:
             print('Error with socket handled: {0}'.format(e))
             sys.exit(1)
+	    except KeyboardInterrupt:
+	    	break
         except:
             print('\n{0} Server ended working.\n'.format(serv_prompt))
             sys.exit(1)
@@ -133,12 +135,13 @@ def process_client_msg(msg, addr):
         # If there was no object, pass the whole JSON.
         if not object_name:
             with open('data.json') as f:
+            	# For last two whitespaces.
                 return f.read()[:-2]
         # If there is an object, pass it and his type.
         with open('data.json', encoding='utf-8') as f:
             tmp = f.read()
             json_content = json.loads(tmp)
-        print('\nTESTING\n', json_content)
+        # TODO: instead of ['post'] should be something else. 
         if object_name in json_content['post']:
             found_obj = json_content['post'][object_name]
             return found_obj.__str__() + '\n' + found_obj.__class__.__name__
