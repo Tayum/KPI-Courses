@@ -1,19 +1,12 @@
 /*GLOBAL FEATURES*/
-.centered-text
-{
-  position: absolute;
-  top: 30%;
-  left: 0;
-
-  width: 100%;
-
-  text-align: center;
-}
-
 /*.index-main-content
 {
     height: 100vh;
 }*/
+.row-content
+{
+  padding: 30px 10px;
+}
 
 /*BUTTONS*/
 .soc_btn_white
@@ -29,7 +22,8 @@
 /*NAVIGATION BAR*/
 .navbar-global
 {
-  padding: 20px;
+  margin-bottom: 30px;
+  padding: 30px;
 
   background-color: #3a3e64;
 }
@@ -37,39 +31,93 @@
 {
   text-transform: uppercase;
 
+  color: "red";
+
   font-family: "Libre Franklin", sans-serif;
   font-size: 25px;
 }
+.navbar-link-header
+{
+  padding-right: 30px;
+  padding-left: 30px;
+
+  font-size: 50px;
+}
 
 /*INDEX.HTML - MAIN CONTENT*/
-.index-main-content
+.index-maincontent
 {
   position: relative;
 }
-.index-main-content img
+.index-maincontent p
 {
-  width: 100%;
-  height: auto;
+  position: absolute;
 
-  opacity: 0.3;
-}
-.index-main-content p
-{
+  width: 100%;
+  padding: 30px 20%;
+
+  text-align: center;
+
   font-family: "Libre Franklin", sans-serif;
   font-size: 90px;
+}
+
+/*POST.HTML - POSTS PANELS*/
+.panel-default > .panel-heading
+{
+  text-align: center;
+
+  color: #333;
+  border-color: #ddd;
+  background-image: url("../img/index-maincontent-sm.jpg");
+}
+.panel-default > .panel-footer
+{
+  text-align: right;
+}
+.panel-default > .panel-body
+{
+  min-height: 200px;
+  text-align: center;
+}
+.post-image
+{
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}
+
+/*CONTACT.HTML*/
+address
+{
+  margin: 0px;
+
+  color: #9d9fb2;
+
+  font-size: 100%;
+}
+.address-icons
+{
+  font-size: 10px;
+}
+.address-icons i
+{
+  padding: 5px;
 }
 
 /*FOOTER SECTION*/
 .main_footer
 {
+  /*position: absolute;
+  bottom: 0;
+  left: 0;*/
+  width: 100%;
   padding: 35px 0;
 
   background-color: #3a3e64;
 }
 .footer_item
 {
-  margin-bottom: 30px;
-
   text-align: center;
 }
 .footer_item h5
@@ -94,20 +142,4 @@
   text-align: center;
 
   font-size: 25px;
-}
-
-/*COPYRIGHT BLOCK*/
-.copyright_block
-{
-  padding: 10px 0;
-
-  text-align: center;
-  text-transform: uppercase;
-
-  color: #fff;
-  background-color: #313454;
-}
-.copy_txt
-{
-  color: #9d9fb2;
 }
