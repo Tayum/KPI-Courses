@@ -59,8 +59,8 @@ def main():
         except socket.error as e:
             print('Error with socket handled: {0}'.format(e))
             sys.exit(1)
-	    except KeyboardInterrupt:
-	    	break
+        except (KeyboardInterrupt, SystemExit):
+            break
         except:
             print('\n{0} Server ended working.\n'.format(serv_prompt))
             sys.exit(1)
@@ -127,15 +127,15 @@ def process_client_msg(msg, addr):
         if username_to_delete in clients:
             del clients[username_to_delete]
             return '__quit_code__'
-        # ErrorHandler for strange exceptions.
-        raise RuntimeError
+        else:
+            return 'Error: wrong json key.'
     # Client wants to get json content.
     elif msg.startswith('--serv-getjson'):
         object_name = msg[15:]
         # If there was no object, pass the whole JSON.
         if not object_name:
             with open('data.json') as f:
-            	# For last two whitespaces.
+                # For last two whitespaces.
                 return f.read()[:-2]
         # If there is an object, pass it and his type.
         with open('data.json', encoding='utf-8') as f:
@@ -146,7 +146,7 @@ def process_client_msg(msg, addr):
             found_obj = json_content['post'][object_name]
             return found_obj.__str__() + '\n' + found_obj.__class__.__name__
         else:
-            raise RuntimeError
+            return 'Error: wrong json key.'
 
     # Client wants to get list of clients, connected to the serv.
     elif msg == '--serv-getclients':
