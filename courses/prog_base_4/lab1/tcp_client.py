@@ -10,7 +10,7 @@ def main():
     # Get client address from the user.
     print('{0} Create a client:'.format(client_prompt))
     try:
-        host = input('Enter client address: ')
+        host = input('Enter server address: ')
         port = input('Enter the port: ')
     except KeyboardInterrupt:
         print('')
