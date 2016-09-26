@@ -7,6 +7,7 @@ Currently such projects/resources can be found here:
 - 1 term - algorithms and data structures course - [/algo_structures];
 - 1 term - discrete math course - [/discrMath_discrStructures];
 - 2 term - web programming essentials - [/prog_base_4];
+- 2 term - labs from the object oriented programming course - [/oop]
 
 # More info
 You can always find more information in the folders mentioned above.
