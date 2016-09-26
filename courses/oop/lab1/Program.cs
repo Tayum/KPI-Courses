@@ -6,8 +6,16 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
     {
         static void Main(string[] args)
         {
-            Model a = new Model(123, 5, 5);
-            Console.WriteLine(a);
+            //Logger lg = new Logger();
+
+            //Model a = new Model(123, 5, 5);
+            //Console.WriteLine(a);
+
+            Hero h = new Hero();
+            Console.WriteLine(h);
+            Hero h2 = new Hero("Maxim");
+            Console.WriteLine(h2);
+
         }
     }
 }

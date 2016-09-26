@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace OOP_Lab1_Gonchar_Maxim_KP51
 {
-    class CasualMonster : Monster
+    class WeakKnight : Hero
     {
-        public CasualMonster() : base() { }
+        public WeakKnight() : base() { }
 
         public override string ToString()
         {
-            return String.Format("Arrrgh, I will kill you! By the way, my name is {0}.", this.Name);
+            return String.Format("Weak Knight {0} ready!", this.Name);
         }
     }
 }
