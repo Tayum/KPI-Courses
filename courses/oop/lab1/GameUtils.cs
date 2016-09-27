@@ -1,18 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_Lab1_Gonchar_Maxim_KP51
 {
     /// <summary>
-    /// Game utilities.
+    /// <para>Class to represent useful game utilities.</para>
+    /// <para>This class mostly used for generation different type of data.</para>
     /// </summary>
     public static class GameUtils
     {
         /// <summary>
-        /// Random check if place (posX, posY) is free on the map.
+        /// <para>Sole ItemsShop to get access to the ItemsShop list.</para>
+        /// </summary>
+        private readonly static ItemsShop itemsShopInst;
+        static GameUtils()
+        {
+            ItemsShop.AccessCode = 12345;
+            itemsShopInst = ItemsShop.Instance;
+        }
+
+        /// <summary>
+        /// <para>Random check if place (posX, posY) is free on the map.</para>
         /// </summary>
         /// <param name="posX">Position on OX axis.</param>
         /// <param name="posY">Position on OY axis.</param>
@@ -29,57 +36,47 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// Fill backpack (string array) with random tools.
+        /// <para>Fill backpack (string array) with random tools.</para>
         /// </summary>
         /// <param name="backpack">Backpack to fill</param>
         public static string[] createBackPack()
         {
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            Random r = new Random();
-            string[] backpack = new string[10];
-            for (int i = 0; i < backpack.Length; i++)
+            string[] backpack = new string[itemsShopInst.Items.Length - 1];
+            for (int i = 1; i < backpack.Length; i++)
             {
-                backpack[i] = chars[r.Next(chars.Length)].ToString() + "-item";
+                backpack[i] = itemsShopInst.Items[i];
             }
             return backpack;
         }
 
         /// <summary>
-        /// Return a sword (string) object with length of 10 characters.
+        /// <para>Return a sword (string) object with length of 10 characters.</para>
         /// </summary>
         /// <returns>Random generated sword</returns>
         public static string createSword()
         {
-            Random r = new Random();
-            string sword = "";
-            for (int i = 0; i < 10; i++)
-            {
-                sword += r.Next(i).ToString();
-            }
-            return sword;
+            return itemsShopInst.Items[0];
         }
 
         /// <summary>
-        /// Calculate damage for the hero.
+        /// <para>Calculate damage for the hero, depending on his backpack and current sword.</para>
         /// </summary>
         /// <param name="backpack">A backpack.</param>
         /// <param name="sword">A sword.</param>
         /// <returns></returns>
         public static int calculateDamageHero(string[] backpack, string sword)
         {
-            // TODO: do an algorithm for the proper calculating of the damage.
             Random r = new Random();
             return r.Next(50);
         }
 
         /// <summary>
-        /// Calculate damage for the monster.
+        /// <para>Calculate damage for the monster, depending on the goldDrop.</para>
         /// </summary>
         /// <param name="goldDrop">Gold dropped from the Monster.</param>
         /// <returns></returns>
         public static int calculateDamageMonster(int goldDrop)
         {
-            // TODO: do an algorithm for the proper calculating of the damage.
             Random r = new Random();
             return r.Next(50);
         }

@@ -23,7 +23,26 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         /// <summary>
         /// <para>Amount of Models health.</para>
         /// </summary>
-        protected int Health { get; set; }
+        private int health;
+        protected int Health
+        {
+            get
+            {
+                return health;
+            }
+
+            set
+            {
+                if (health > 100)
+                {
+                    health = 100;
+                }
+                else
+                {
+                    health = value;
+                }
+            }
+        }
 
         /// <summary>
         /// <para>Amount of Models damage.</para>
@@ -91,13 +110,13 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// <para>Default constructor, which fills all fields with default values.</para>
+        /// <para>Default constructor, which fills health and name with default values.</para>
         /// </summary>
         public Model()
         {
             this.Health = 100;
             this.Name = "model-" + (++Id).ToString();
-            Logger.printMsgSystem("Model has been created.");
+            Logger.printMsgSystem(String.Format("Model {0} has been created.", this.Name));
         }
 
         /// <summary>
@@ -112,6 +131,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
             this.Health = health;
             this.PosX = posX;
             this.PosY = posY;
+            Logger.printMsgSystem(String.Format("Model {0} has been created. It is on {1}-{2} now.", this.Name, this.PosX, this.PosY));
         }
 
         /// <summary>
@@ -121,6 +141,17 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         public double getSpecificPosition()
         {
             return Math.Sqrt(Math.Pow(PosX, 2) + Math.Pow(PosY, 2));
+        }
+
+        /// <summary>
+        /// <para>Set a specific position to X and Y coordinates simultaneously</para>
+        /// </summary>
+        /// <param name="posX">OX axis coordinates.</param>
+        /// <param name="posY">OY axis coordinates.</param>
+        public void setSpecificPosition(double posX, double posY)
+        {
+            this.PosX = posX;
+            this.PosY = posY;
         }
 
         public override string ToString()

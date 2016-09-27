@@ -17,13 +17,16 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         private static string userName;
         private static string promptSystem;
         private static string promptPlayer;
+        private static string promptGame;
 
         static Logger()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             logFilePath = formLogFilePath("log.txt");
             userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             promptSystem = userName + "@system:~ $ ";
             promptPlayer = userName + "@player:~ $ ";
+            promptGame = userName + "@game:~ $ ";
             printGreetings();
         }
 
@@ -61,11 +64,9 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         /// </summary>
         private static void printGreetings()
         {
-            Console.WriteLine("------------------------------------------------");
-            Console.WriteLine("{0}Logger{1} has been created.", promptSystem, loggerVersion);
+            Console.WriteLine("{0}Logger {1} has been created.", promptSystem, loggerVersion);
             Console.WriteLine("{0}You are using a program under {1} account.", promptSystem, userName);
-            Console.WriteLine("{0}A log file will be saved to following path: {1}.", promptSystem, logFilePath);
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine("{0}A log file will be saved to following path: {1}.\n", promptSystem, logFilePath);
         }
 
         /// <summary>
@@ -74,7 +75,11 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         /// <param name="contents">Message to be printed and written to the log.</param>
         public static void printMsgSystem(string contents)
         {
-            Console.WriteLine(promptSystem + contents);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(promptSystem);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(contents);
+            writeMsg(contents);
         }
 
         /// <summary>
@@ -83,7 +88,24 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         /// <param name="contents">Message to be printed and written to the log.</param>
         public static void printMsgPlayer(string contents)
         {
-            Console.WriteLine(promptPlayer + contents);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(promptPlayer);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(contents);
+            writeMsg(contents);
+        }
+
+        /// <summary>
+        /// Print a message to the console and write it into the .log file as a game object.
+        /// </summary>
+        /// <param name="contents">Message to be printed and written to the log.</param>
+        public static void printMsgGame(string contents)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("\n" + promptGame);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(contents);
+            writeMsg(contents);
         }
 
         /// <summary>
@@ -92,7 +114,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         /// <param name="contents">Message to be written.</param>
         public static void writeMsg(string contents)
         {
-            File.WriteAllText(logFilePath, contents);
+            File.AppendAllText(logFilePath, contents + Environment.NewLine);
         }
     }
 }
