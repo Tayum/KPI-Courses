@@ -2,8 +2,8 @@
 Repository for KPI projects from the programming and other courses.
 Currently such projects/resources can be found here:
 - 1 term - programming essentials course (1 part) - [/prog_base];
-- 1 term - programming essentials course (2 part) - [/prog_base_1];
-- 1 term - programming course work - [/prog_base_2];
+- 1 term - programming essentials course (2 part) - [/prog_base_2];
+- 1 term - programming course work - [/prog_base_3];
 - 1 term - algorithms and data structures course - [/algo_structures];
 - 1 term - discrete math course - [/discrMath_discrStructures];
 - 2 term - web programming essentials - [/prog_base_4];
