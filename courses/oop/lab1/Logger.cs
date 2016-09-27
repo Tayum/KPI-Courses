@@ -6,11 +6,11 @@ using System.Collections.Generic;
 namespace OOP_Lab1_Gonchar_Maxim_KP51
 {
     /// <summary>
-    /// Class to help user build an appropriate log file.
+    /// <para>Class to help user build an appropriate log file.</para>
     /// <para>printMsg(string contents) - write message into console.</para>
     /// <para>writeMsg(string contents) - write message only into the log.</para>
     /// </summary>
-    public static class Logger
+    internal static class Logger
     {
         internal static string loggerVersion = "v0.0.1";
         private static string logFilePath;
@@ -31,7 +31,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// Form an appropriate path for the log file, that can be used for writing a log.
+        /// <para>Form an appropriate path for the log file, that can be used for writing a log.</para>
         /// </summary>
         /// <param name="logFileName">Actual log filename.</param>
         /// <returns>Full log path.</returns>
@@ -60,7 +60,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// Print a greetings to the user. Display info about logger creation, user, log filepath.
+        /// <para>Print a greetings to the user. Display info about logger creation, user, log filepath.</para>
         /// </summary>
         private static void printGreetings()
         {
@@ -70,7 +70,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// Print a message to the console and write it into the .log file as an admin.
+        /// <para>Print a message to the console and write it into the .log file as an admin.</para>
         /// </summary>
         /// <param name="contents">Message to be printed and written to the log.</param>
         public static void printMsgSystem(string contents)
@@ -83,7 +83,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// Print a message to the console and write it into the .log file as an user.
+        /// <para>Print a message to the console and write it into the .log file as an user.</para>
         /// </summary>
         /// <param name="contents">Message to be printed and written to the log.</param>
         public static void printMsgPlayer(string contents)
@@ -96,7 +96,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         }
 
         /// <summary>
-        /// Print a message to the console and write it into the .log file as a game object.
+        /// <para>Print a message to the console and write it into the .log file as a game object.</para>
         /// </summary>
         /// <param name="contents">Message to be printed and written to the log.</param>
         public static void printMsgGame(string contents)
