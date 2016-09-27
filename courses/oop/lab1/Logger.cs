@@ -79,7 +79,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
             Console.Write(promptSystem);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(contents);
-            writeMsg(contents);
+            writeMsg(contents, role: "System");
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
             Console.Write(promptPlayer);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(contents);
-            writeMsg(contents);
+            writeMsg(contents, role: "Player");
         }
 
         /// <summary>
@@ -105,16 +105,31 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
             Console.Write("\n" + promptGame);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(contents);
-            writeMsg(contents);
+            writeMsg(contents, role: "Game");
+        }
+
+        public static void simplePrint(string contents)
+        {
+            Console.WriteLine(contents);
+            writeMsg(contents, "");
         }
 
         /// <summary>
-        /// Write a message into the .log file.
+        /// <para>Write a message into the .log file.</para>
         /// </summary>
         /// <param name="contents">Message to be written.</param>
-        public static void writeMsg(string contents)
+        private static void writeMsg(string contents, string role)
         {
-            File.AppendAllText(logFilePath, contents + Environment.NewLine);
+            string toWrite = "";
+            if (role == "")
+            {
+                toWrite = String.Format("{0} {1}", contents, Environment.NewLine);
+            }
+            else
+            {
+                toWrite = String.Format("[{0}] - {1}{2}", role, contents, Environment.NewLine);
+            }
+            File.AppendAllText(logFilePath, toWrite);
         }
     }
 }
