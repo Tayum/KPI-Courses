@@ -1,0 +1,49 @@
+Game is creating instances for heroes and monsters.
+Model model-1 has been created.
+Access pass is set
+Hero model-1 has been created.
+Hero Maxim has been created.
+Model model-2 has been created.
+Hero model-2 has been created.
+Model model-3 has been created.
+Monster model-3 has been created.
+Monster MegaBoss has been created.
+Model model-4 has been created.
+Monster model-4 has been created.
+Game is creating instances of Model for testing.
+Model model-5 has been created.
+Model model-6 has been created.
+Model model-6 has been created. It is on 4,5-4,5 now.
+Game is placing monsters on the map.
+Game is introducing heroes and monsters.
+At the moment there are following models in the game:
+Game is creating a fight.
+Swordsman starts hitting boss.
+Swordsman is ready to fight!
+Ha-Ha, our Swordsman is attacking!
+Arggh, BOSS got damaged...
+Weak knight starts hitting a boss.
+A WeakKnight is ready to fight! God bless him.
+Master, I will fight for you! WeakKnight is attacking!
+Arggh, BOSS got damaged...
+Boss starts hitting a weakknight.
+BOSS: I WILL CRUSH YOU!
+Arggh, BOSS is attacking!
+Oh no, Weak knight got damaged...
+Casual monster starts hitting a weakknight.
+Casual monster is ready to fight!
+Arggh, Casual Monster is attacking!
+Oh no, Weak knight got damaged...
+Heroes and monsters start doing critical hits.
+Swordsman does a critical hit to boss!
+Hero Maxim did a critical damage to MegaBoss!
+Arggh, BOSS got damaged...
+Weak knight does a critical hit to boss!
+This hero cannot use a critical hit ability.
+Boss does a critical hit to weakknight!
+Monster MegaBoss did a critical damage to Maxim!
+Oh no, our SwordsMan has been damaged!
+Casual monster does a critical hit to weakknight!
+This monster cannot use a critical hit ability.
+HP after the battle:
+End of the program
