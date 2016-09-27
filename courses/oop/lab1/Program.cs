@@ -38,7 +38,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
             Logger.printMsgGame("Game is introducing heroes and monsters.");
             Logger.printMsgGame("At the moment there are following models in the game:");
             foreach (Model model in models)
-                Console.WriteLine("->" + model.ToString());
+                Logger.simplePrint("->" + model.ToString());
 
             // Make a fight between heroes and monsters.
             Logger.printMsgGame("Game is creating a fight.");
@@ -64,10 +64,10 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
 
             // Print result of the battle.
             Logger.printMsgGame("HP after the battle:");
-            Console.WriteLine("->Swordsman: " + hero_sm.getCurrentHealth());
-            Console.WriteLine("->Weak knight:" + hero_wk.getCurrentHealth());
-            Console.WriteLine("->Monster boss:" + monst_boss.getCurrentHealth());
-            Console.WriteLine("->Casual monster:" + monst_cm.getCurrentHealth());
+            Logger.simplePrint("->" + hero_sm.getCurrentHealth());
+            Logger.simplePrint("->" + hero_wk.getCurrentHealth());
+            Logger.simplePrint("->" + monst_boss.getCurrentHealth());
+            Logger.simplePrint("->" + monst_cm.getCurrentHealth());
 
             Console.WriteLine();
             Logger.printMsgGame("End of the program");
