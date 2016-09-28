@@ -28,19 +28,12 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
         {
             get
             {
-                return health;
+                return this.health;
             }
 
             set
             {
-                if (health > 100)
-                {
-                    health = 100;
-                }
-                else
-                {
-                    health = value;
-                }
+                this.health = (health > 100) ? 100 : value;
             }
         }
 
@@ -72,14 +65,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
 
             set
             {
-                if (GameUtils.checkIfPositionIsFree(posX: posX))
-                {
-                    posX = value;
-                }
-                else
-                {
-                    posX = 0;
-                }
+                posX = (GameUtils.checkIfPositionIsFree(posX: posX)) ? value : 0;
             }
         }
 
@@ -98,14 +84,7 @@ namespace OOP_Lab1_Gonchar_Maxim_KP51
 
             set
             {
-                if (GameUtils.checkIfPositionIsFree(posY: posY))
-                {
-                    posY = value;
-                }
-                else
-                {
-                    posY = 0;
-                }
+                posY = (GameUtils.checkIfPositionIsFree(posY: posY)) ? value : 0;
             }
         }
 
